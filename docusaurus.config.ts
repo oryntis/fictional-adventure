@@ -2,11 +2,11 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Project Orion',
+  tagline: 'Documentation for the Cosmos Hybrid Microkernel and Orion OS',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -68,7 +68,28 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        docsRouteBasePath: ['/docs'],
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: true,
+      },
+    ],
+  ],
+
+  themes: ['@docusaurus/theme-search-algolia'],
+
   themeConfig: {
+    algolia: {
+      appId: 'APP_ID',
+      apiKey: 'SEARCH_API_KEY',
+      indexName: 'INDEX_NAME',
+    },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
@@ -82,15 +103,44 @@ const config: Config = {
       },
       items: [
         {
+          type: 'dropdown',
+          label: 'Resources',
+          position: 'left',
+          items: [
+            {
+              type: 'dropdown',
+              label: 'Guides',
+              items: [
+                {
+                  label: 'Beginner',
+                  to: '/docs/beginner',
+                },
+                {
+                  label: 'Advanced',
+                  to: '/docs/advanced',
+                },
+              ],
+            },
+            {
+              label: 'API',
+              to: '/docs/api',
+            },
+          ],
+        },
+        {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Orion Docs',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'docsVersionDropdown',
           position: 'right',
         },
       ],
@@ -102,8 +152,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Orion Docs',
+              to: '/docs/orion/orion_00_master_index_v9',
             },
           ],
         },
