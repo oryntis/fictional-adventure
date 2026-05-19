@@ -20,8 +20,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/orion/orion_00_master_index_v9">
-            Read Orion Documentation 📚
+            to="/docs">
+            Read Orion Design Docs 📚
           </Link>
         </div>
       </div>

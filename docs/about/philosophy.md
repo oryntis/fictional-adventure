@@ -1,4 +1,4 @@
-# Orion OS Philosophy
+# Philosophy
 
 Orion OS is built on a **set of non-negotiable principles** that guide every technical decision. These principles are the **constitution** of the project—if a feature or design conflicts with them, it is rejected or redesigned.
 
