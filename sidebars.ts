@@ -14,44 +14,117 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
  */
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
-    'about',
+    'index',
     {
       type: 'category',
-      label: 'Introduction & Setup',
-      items: [
-        'orion/orion_00_master_index_v9',
-        'orion/orion_vol0_quickstart_contributing_roadmap',
-      ],
+      label: 'About',
+      items: ['about/index', 'about/comparison-matrix', 'about/philosophy', 'about/roadmap'],
     },
     {
       type: 'category',
-      label: 'Orion Volumes',
+      label: 'Phases',
       items: [
-        'orion/orion_vol1_vision_strategy',
-        'orion/orion_vol1_supplement',
-        'orion/orion_vol2_unified',
-        'orion/orion_vol3_build_requirements',
-        'orion/orion_vol3_supplement',
-        'orion/orion_vol4_learning_resources',
-        'orion/orion_vol5_philosophy_problems',
-        'orion/orion_vol6_developer_tools',
-        'orion/orion_vol7_problems_solutions',
-        'orion/orion_vol8_os_landscape_analysis',
-        'orion/orion_vol9_research_innovation_hub',
-        {type: 'category', label: 'Future Volumes', items: [
-          'orion/orion_vol10_roadmap'
-        ]}
-      ],
+       {
+        type: 'category',
+        label: 'Phase 0: Cosmic Dawn',
+        items: [
+          'phases/phase-0/index',
+          'phases/phase-0/resources',
+          {
+            type: 'category',
+            label: 'Tasks',
+            items: [
+              {
+                type: 'category',
+                label: 'Task 0.1: Bootloader',
+                items:[
+                  'phases/phase-0/tasks/bootloader/index',
+                  'phases/phase-0/tasks/bootloader/implementation',
+                  'phases/phase-0/tasks/bootloader/testing',
+                  'phases/phase-0/tasks/bootloader/troubleshooting'
+                ]
+              },
+              {
+                type: 'category',
+                label: 'Task 0.2: Kernel-Entry',
+                items:[
+                  'phases/phase-0/tasks/kernel-entry/index',
+                  'phases/phase-0/tasks/kernel-entry/implementation',
+                  'phases/phase-0/tasks/kernel-entry/testing',
+                  'phases/phase-0/tasks/kernel-entry/troubleshooting'
+                ]
+              },
+              {
+                type: 'category',
+                label: 'Task 0.3: Memory Management',
+                items:[
+                  'phases/phase-0/tasks/memory-management/index',
+                  'phases/phase-0/tasks/memory-management/implementation',
+                  'phases/phase-0/tasks/memory-management/testing',
+                  'phases/phase-0/tasks/memory-management/troubleshooting'
+                ]
+              },
+            ]
+          },
+          'phases/phase-0/summary'
+        ]
+       },
+        {
+        type: 'category',
+        label: 'Phase 1: Core Being',
+        items: [
+          'phases/phase-1/index',
+          'phases/phase-1/resources',
+          {
+            type: 'category',
+            label: 'Tasks',
+            items: [
+              {
+                type: 'category',
+                label: 'Task 1.1 Process Management',
+                items:[
+                  'phases/phase-1/tasks/process-management/index',
+                  'phases/phase-1/tasks/process-management/implementation',
+                  'phases/phase-1/tasks/process-management/testing',
+                  'phases/phase-1/tasks/process-management/troubleshooting'
+                ]
+              },
+            ]
+          },
+          'phases/phase-0/summary'
+        ]
+       }
+      ]
     },
-    {
-      type: 'category',
-      label: 'Analysis & Reports',
-      items: [
-        'orion/orion_analysis_feedback_report',
-        'orion/orion_master_flaw_register',
-        'orion/orion_project_tools_spec',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Orion Volumes',
+    //   items: [
+    //     'orion/orion_vol1_vision_strategy',
+    //     'orion/orion_vol1_supplement',
+    //     'orion/orion_vol2_unified',
+    //     'orion/orion_vol3_build_requirements',
+    //     'orion/orion_vol3_supplement',
+    //     'orion/orion_vol4_learning_resources',
+    //     'orion/orion_vol5_philosophy_problems',
+    //     'orion/orion_vol6_developer_tools',
+    //     'orion/orion_vol7_problems_solutions',
+    //     'orion/orion_vol8_os_landscape_analysis',
+    //     'orion/orion_vol9_research_innovation_hub',
+    //     {type: 'category', label: 'Future Volumes', items: [
+    //       'orion/orion_vol10_roadmap'
+    //     ]}
+    //   ],
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Analysis & Reports',
+    //   items: [
+    //     'orion/orion_analysis_feedback_report',
+    //     'orion/orion_master_flaw_register',
+    //     'orion/orion_project_tools_spec',
+    //   ],
+    // },
   ],
 
   // But you can create a sidebar manually

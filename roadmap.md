@@ -166,47 +166,149 @@
 ```text
 orion-docs/
 ├── about/
-│   ├── index.md                     # Main about page
+│   ├── index.md                     # Main about page (use your about.md)
 │   ├── comparison-matrix.md         # Feature & philosophy comparison
 │   ├── philosophy.md                # Core principles
-│   └── roadmap.md                   # Version roadmap
+│   └── roadmap.md                   # Version roadmap (use your roadmap.md)
 │
 ├── phases/
 │   ├── 0-foundation/                # Phase 0: Cosmic Dawn
 │   │   ├── index.md                 # Phase overview + philosophy
 │   │   ├── resources.md              # Learning materials
 │   │   ├── tasks/
-│   │   │   ├── bootloader.md
+│   │   │   ├── bootloader
 │   │   │   │   ├── index.md         # Main task page
 │   │   │   │   ├── implementation.md # Step-by-step guide
 │   │   │   │   ├── testing.md       # Test cases
 │   │   │   │   └── troubleshooting.md # Common issues
-│   │   │   ├── kernel-entry.md
-│   │   │   └── ...
+│   │   │   ├── kernel-entry
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── memory-management
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
 │   │   └── summary.md                # Phase completion checklist
 │   │
 │   ├── 1-essence/                   # Phase 1: Core Being
 │   │   ├── index.md
 │   │   ├── resources.md
 │   │   ├── tasks/
+│   │   │   ├── process-management
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── scheduling.md
+│   │   │   └── interrupts.md
 │   │   └── summary.md
 │   │
 │   ├── 2-harmony/                   # Phase 2: System Symphony
+│   │   ├── index.md
+│   │   ├── resources.md
+│   │   ├── tasks/
+│   │   │   ├── device-drivers.md
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── filesystem.md
+│   │   │   └── networking.md
+│   │   └── summary.md
+│   │
 │   ├── 3-awakening/                 # Phase 3: User Enlightenment
+│   │   ├── index.md
+│   │   ├── resources.md
+│   │   ├── tasks/
+│   │   │   ├── shell.md
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── syscalls.md
+│   │   │   └── user-libraries.md
+│   │   └── summary.md
+│   │
 │   ├── 4-unification/               # Phase 4: Hardware Transcendence
+│   │   ├── index.md
+│   │   ├── resources.md
+│   │   ├── tasks/
+│   │   │   ├── multiarch-support.md
+│   │   │   │   ├── index.md
+│   │   │   │   ├── x86.md
+│   │   │   │   ├── arm64.md
+│   │   │   │   ├── riscv.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── hardware-abstraction.md
+│   │   └── summary.md
+│   │
 │   ├── 5-evolution/                 # Phase 5: Self-Realization
+│   │   ├── index.md                 # Overview of self-hosting goal
+│   │   ├── resources.md              # Learning materials for B1–B7
+│   │   ├── bootstrap/               # B1–B7: Bootstrap sequence
+│   │   │   ├── b1-host-rust-llvm.md # B1: Host Rust + LLVM compiles Cosmos
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b2-cosmos-assembler.md # B2: Cosmos Assembler replaces NASM
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b3-cosmos-linker.md   # B3: Cosmos Linker replaces LLD
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b4-cosmos-compiler-x86.md # B4: Cosmos Compiler (x86-64)
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b5-cosmos-compiler-arm64.md # B5: Cosmos Compiler (ARM64)
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b6-cosmos-compiler-riscv.md # B6: Cosmos Compiler (RISC-V)
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── b7-llvm-deleted.md    # B7: LLVM deleted. Fully self-hosting.
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
+│   │   └── summary.md                # Phase 5 completion checklist
+│   │
 │   └── 6-cosmos/                    # Phase 6: Universal Harmony
+│       ├── index.md
+│       ├── resources.md
+│       ├── tasks/
+│       │   ├── ecosystem
+│       │   │   ├── index.md
+│       │   │   ├── implementation.md
+│       │   │   ├── testing.md
+│       │   │   └── troubleshooting.md
+│       │   ├── packaging.md
+│       │   └── community.md
+│       └── summary.md
 │
 ├── architecture/
 │   ├── ddrs/                        # All DDRs
 │   │   ├── ddr-001.md
-│   │   ├── ddr-002.md
 │   │   └── ...
 │   ├── diagrams/                    # Mermaid/Excalidraw
 │   │   ├── boot-process.mmd
 │   │   ├── memory-layout.mmd
 │   │   └── capability-model.mmd
-│   └── problem-solution.md          # Living dashboard
+│   └── problem-solution.md          # Living dashboard (use your problem-solution.md)
 │
 ├── develop/
 │   ├── workflow.md                  # Team processes
@@ -238,7 +340,6 @@ orion-docs/
     │   └── custom.css              # Custom styles
     └── js/
         └── progress.js              # Progress tracker script
-
 ```
 
 **Key Takeaways from the Matrix:**
@@ -926,3 +1027,399 @@ graph TD
 **Target Release Date:** Q1 2032
 **Next Step:** **Orion OS 1.0.0 Stable Release!** 🎉
 :::
+
+
+
+
+
+orion-docs/
+│
+├── index.md                              # Site root — links to all sections
+│
+├── about/
+│   ├── index.md                          # about.md — full project reference
+│   ├── getting-started.md                # Quick Start from Vol 0 §2 (QEMU boot)
+│   ├── personas.md                       # Vol 0 §1 — 5 user personas
+│   ├── philosophy.md                     # Vol 1 + Vol 5 — core principles
+│   ├── eco-advantage.md                  # Vol 1 §1.2 — sustainability story
+│   ├── comparison-matrix.md              # Vol 1 + Vol 8 — OS comparison tables
+│   ├── space-naming.md                   # about.md §11 — naming system (Cosmos, Vega, Aurora…)
+│   ├── version-guide.md                  # about.md §13 — version system + stability
+│   └── roadmap.md                        # roadmap.md — 7-phase Gantt + exit criteria
+│
+├── phases/
+│   │
+│   ├── 0-cosmic-dawn/                    # Phase 0: Cosmic Dawn (0.0.x, Q3 2026–Q2 2027)
+│   │   ├── index.md                      # Phase overview + philosophy ("The Big Bang")
+│   │   ├── resources.md                  # Vol 4 Phase 0 resources: CS:APP, K&R, OSTEP
+│   │   ├── tasks/
+│   │   │   ├── bootloader/               # UEFI + legacy BIOS bootloader
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── kernel-entry/             # Assembly trampoline → Rust kernel_main()
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── physical-memory-manager/  # Buddy allocator, UEFI memory map
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── virtual-memory-manager/   # 4-level PML4, DDR-003
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── capability-system/        # Cap table, DDR-002, DDR-020
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── ipc-fast-path/            # Synchronous message passing, DDR-006
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── scheduler-core/           # 5 classes, tickless, DDR-005
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── cosmos-assembler/         # Replace NASM — first self-hosted tool
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
+│   │   └── summary.md                    # Phase 0 exit criteria checklist
+│   │
+│   ├── 1-core-being/                     # Phase 1: Core Being (0.1.x, Q2–Q4 2027)
+│   │   ├── index.md
+│   │   ├── resources.md                  # Vol 4 Phase 1: Rust Embedded, OSTEP, Rust for Rustaceans
+│   │   ├── tasks/
+│   │   │   ├── process-model/            # spawn(), no fork(), DDR-004
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── userspace-drivers/        # DDR-007, orion-devmgr, IOMMU
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── vega-fs/                  # B+ tree, BLAKE3, CoW, DDR-009 / DDR-VFS
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── networking/               # orion-net, DDR-011, DDR-PF
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── pulsar-shell/             # CLI shell, pipe composability
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── comit-package-manager/    # DDR-007, DDR-COMIT, Nebula Hub
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
+│   │   └── summary.md
+│   │
+│   ├── 2-system-symphony/                # Phase 2: System Symphony (0.2.x, Q1–Q4 2028)
+│   │   ├── index.md
+│   │   ├── resources.md                  # Vol 4 Phase 2: Linux Kernel Dev, UNP, FS forensics
+│   │   ├── tasks/
+│   │   │   ├── aurora-compositor/        # Wayland-compatible, DDR-012, DDR-COMPOSITOR
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── gpu-npu-tpu-drivers/      # DDR-015, ComputePeer model
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── security-hardening/       # FDE, TPM, post-quantum, DDR-009/011/022–029
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── quasar-ai-runtime/        # DDR-017, DDR-018, DDR-019, orion-mld
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── void-audio-server/        # DDR-AUDIO
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
+│   │   └── summary.md
+│   │
+│   ├── 3-user-enlightenment/             # Phase 3: User Enlightenment (0.3.x, Q4 2028–Q3 2029)
+│   │   ├── index.md
+│   │   ├── resources.md
+│   │   ├── tasks/
+│   │   │   ├── cosmic-desktop/           # Full GUI desktop environment
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── wasm-app-runtime/         # WebAssembly app sandbox
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── accessibility/            # a11y, i18n from Vol 3 supplement
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── posix-sandbox/            # DDR-POSIX compatibility layer
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
+│   │   └── summary.md
+│   │
+│   ├── 4-hardware-transcendence/         # Phase 4: Hardware Transcendence (0.4.x, Q3 2029–Q2 2030)
+│   │   ├── index.md
+│   │   ├── resources.md
+│   │   ├── tasks/
+│   │   │   ├── arm64-port/               # DDR-003, DDR-HAL (hal-arm64)
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── riscv-port/               # DDR-003, DDR-HAL (hal-riscv)
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── powerpc-loongarch-port/   # Roadmap stretch targets
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── hardware-abstraction/     # DDR-HAL, CosmosHal Rust trait
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
+│   │   └── summary.md
+│   │
+│   ├── 5-self-realization/               # Phase 5: Self-Realization (0.5.x, Q2 2030–Q1 2031)
+│   │   ├── index.md                      # Overview: LLVM deleted, fully self-hosting
+│   │   ├── resources.md                  # Vol 4 Phase 3: Engineering a Compiler, Crafting Interpreters
+│   │   ├── bootstrap/
+│   │   │   ├── b1-host-rust-llvm/        # B1: Host Rust + LLVM compiles Cosmos
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b2-cosmos-assembler/      # B2: Cosmos Assembler replaces NASM
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b3-cosmos-linker/         # B3: Cosmos Linker replaces LLD
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b4-cosmos-compiler-x86/   # B4: Cosmos Compiler (x86-64), DDR-IR
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b5-cosmos-compiler-arm64/ # B5: Cosmos Compiler (ARM64)
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   ├── b6-cosmos-compiler-riscv/ # B6: Cosmos Compiler (RISC-V)
+│   │   │   │   ├── index.md
+│   │   │   │   ├── implementation.md
+│   │   │   │   ├── testing.md
+│   │   │   │   └── troubleshooting.md
+│   │   │   └── b7-llvm-deleted/          # B7: LLVM deleted — fully self-hosting
+│   │   │       ├── index.md
+│   │   │       ├── implementation.md
+│   │   │       ├── testing.md
+│   │   │       └── troubleshooting.md
+│   │   └── summary.md
+│   │
+│   └── 6-universal-harmony/              # Phase 6: Universal Harmony (1.0.0, Q1 2032)
+│       ├── index.md
+│       ├── resources.md
+│       ├── tasks/
+│       │   ├── security-audit/           # Final audit before 1.0.0
+│       │   │   ├── index.md
+│       │   │   ├── implementation.md
+│       │   │   ├── testing.md
+│       │   │   └── troubleshooting.md
+│       │   ├── packaging-ecosystem/      # Nebula Hub, Comit stable ABI
+│       │   │   ├── index.md
+│       │   │   ├── implementation.md
+│       │   │   ├── testing.md
+│       │   │   └── troubleshooting.md
+│       │   └── community-release/        # Release process, DDR-023 multi-sig
+│       │       ├── index.md
+│       │       ├── implementation.md
+│       │       ├── testing.md
+│       │       └── troubleshooting.md
+│       └── summary.md
+│
+├── architecture/
+│   ├── index.md                          # Architecture entry point — links to all DDRs
+│   ├── overview.md                       # High-level stack diagram from README
+│   │
+│   ├── ddrs/                             # All 39 DDRs — sourced from Vol 2 (canonical)
+│   │   ├── index.md                      # DDR index table (all 39 with status)
+│   │   │
+│   │   │   # Part 1 — Foundational (Vol 2 Part 1)
+│   │   ├── ddr-001.md                    # Hybrid Microkernel Architecture
+│   │   ├── ddr-002.md                    # Capability-Based Security + TOCTOU Amendment
+│   │   ├── ddr-003.md                    # Memory Management (PML4 / PML5)
+│   │   ├── ddr-004.md                    # IPC Architecture (spawn, zero-copy)
+│   │   ├── ddr-005.md                    # Scheduling (5 classes, heterogeneous)
+│   │   ├── ddr-006.md                    # Filesystem Architecture (Vega FS)
+│   │   ├── ddr-007.md                    # Package Management (Comit + Nebula Hub)
+│   │   ├── ddr-008.md                    # Boot Architecture (measured boot)
+│   │   ├── ddr-009.md                    # Security Architecture (threat model)
+│   │   ├── ddr-010.md                    # Driver Model (userspace, IOMMU)
+│   │   ├── ddr-011.md                    # Networking Architecture
+│   │   ├── ddr-012.md                    # Display Architecture (Aurora)
+│   │   ├── ddr-013.md                    # Language & Compiler Strategy (Kani)
+│   │   ├── ddr-014.md                    # Performance Targets (13 syscalls)
+│   │   │
+│   │   │   # Part 2 — Extended (Vol 2 Part 2)
+│   │   ├── ddr-015.md                    # GPU/NPU/TPU Abstraction + VRAM Quotas
+│   │   ├── ddr-016.md                    # Hardware Privacy & ID Randomisation
+│   │   ├── ddr-017.md                    # Quasar Runtime (AI Inference)
+│   │   ├── ddr-018.md                    # Kernel ML Integration
+│   │   ├── ddr-019.md                    # orion-mld ML Daemon
+│   │   ├── ddr-020.md                    # Capability Quotas & Rate Limiting
+│   │   │
+│   │   │   # Part 3 — Security (Vol 2 Part 3)
+│   │   ├── ddr-021.md                    # Confused Deputy Prevention
+│   │   ├── ddr-022.md                    # Hardware Memory Safety (MTE/CET/MPK)
+│   │   ├── ddr-023.md                    # Secure Build Pipeline (HSM + cargo vet)
+│   │   ├── ddr-024.md                    # Capability Revocation (cap_revoke)
+│   │   ├── ddr-025.md                    # Hardware Enclaves (SGX/TrustZone)
+│   │   ├── ddr-026.md                    # User Data Protection (Anti-Ransomware)
+│   │   ├── ddr-027.md                    # Userspace Side-Channel Mitigations
+│   │   ├── ddr-028.md                    # Firmware Verification & Supply Chain
+│   │   ├── ddr-029.md                    # Social Engineering Defences
+│   │   │
+│   │   │   # Part 4 — Subsystems (Vol 2 Part 4)
+│   │   ├── ddr-hal.md                    # Hardware Abstraction Layer
+│   │   ├── ddr-ir.md                     # Cosmos Intermediate Representation
+│   │   ├── ddr-init.md                   # orion-init Service Manager
+│   │   ├── ddr-vfs.md                    # Virtual Filesystem Layer
+│   │   ├── ddr-pf.md                     # Firewall Architecture
+│   │   ├── ddr-compositor.md             # Aurora Compositor Protocol
+│   │   ├── ddr-audio.md                  # Void Audio Server
+│   │   ├── ddr-comit.md                  # Comit Package Manager
+│   │   │
+│   │   │   # Part 5/6 — Extended Security & Compat
+│   │   ├── ddr-posix.md                  # POSIX Compatibility Sandbox
+│   │   └── ddr-fde.md                    # Full Disk Encryption (TPM + Argon2id)
+│   │
+│   ├── diagrams/                         # Mermaid / Excalidraw source files
+│   │   ├── boot-process.mmd              # From Vol 3 §1.1
+│   │   ├── memory-layout.mmd             # PML4 structure, ZRAM, swap tiers
+│   │   ├── capability-model.mmd          # Cap table, delegation chain, DDR-002
+│   │   ├── scheduler-dispatch.mmd        # 5 classes + CPU/GPU/NPU/TPU dispatch
+│   │   ├── ipc-fast-path.mmd             # Synchronous message + zero-copy remap
+│   │   ├── driver-model.mmd              # Userspace drivers, IOMMU, orion-devmgr
+│   │   ├── system-stack.mmd              # Full ASCII diagram from README
+│   │   ├── cosmos-compiler-bootstrap.mmd # B1→B7 self-hosting sequence
+│   │   └── vega-fs-structure.mmd         # B+ tree, CoW, BLAKE3 write path
+│   │
+│   └── problem-solution.md               # problems_and_solutions.md — living tracker (86 items)
+│
+├── develop/
+│   ├── index.md                          # Developer hub — links to everything below
+│   ├── workflow.md                       # From CONTRIBUTING.md — full workflow guide
+│   ├── first-30-days.md                  # CONTRIBUTING.md "First 30 Days Plan"
+│   ├── glossary.md                       # Vol 0 §5 — canonical terminology
+│   │
+│   ├── best-practices/
+│   │   ├── coding.md                     # Rust standards, clippy, fmt, doc comments
+│   │   ├── security.md                   # Capability model, no raw handles, CAP_LOCK
+│   │   ├── testing.md                    # CI gate table from CONTRIBUTING.md
+│   │   └── error-handling.md             # OrionError, no unwrap(), Result<T,E>
+│   │
+│   └── tools/
+│       ├── index.md                      # Vol 6 overview — all tools categorised
+│       ├── environment-setup.md          # Vol 6 §1 — exact first-day command sequence
+│       ├── qemu.md                       # QEMU setup, -s -S flags, serial stdio
+│       ├── gdb.md                        # GDB, KGDB, .gdbinit scripts, cap table dumps
+│       ├── kani.md                       # Vol 6 §2, DDR-013 — Kani harness guide
+│       ├── miri.md                       # Undefined behaviour detection
+│       ├── cargo-fuzz.md                 # Fuzzing Vega FS, packet parsers
+│       ├── cargo-deny.md                 # Dependency audit
+│       ├── raspberry-pi-4.md             # Vol 6 — RPi 4 hardware debugging
+│       └── perf-flamegraph.md            # Performance profiling + flame charts
+│
+├── reference/
+│   ├── api/
+│   │   ├── syscalls.md                   # 13 syscalls + vDSO (DDR-014)
+│   │   ├── capability-api.md             # cap_create, cap_revoke, CAP_LOCK (DDR-002, DDR-024)
+│   │   ├── userspace.md                  # Userspace service APIs
+│   │   └── drivers.md                   # Driver interface contracts (DDR-007, DDR-HAL)
+│   │
+│   ├── security/
+│   │   ├── threat-model.md               # DDR-012 — 5 adversaries, 7-layer defence
+│   │   ├── capability-model.md           # DDR-002, DDR-021 — intent-based caps
+│   │   ├── mitigations.md                # DDR-022, DDR-027 — MTE/CET/MPK/Spectre
+│   │   ├── crypto.md                     # Kyber + Dilithium3, ChaCha20-Poly1305
+│   │   └── supply-chain.md               # DDR-023 — HSM signing, cargo vet
+│   │
+│   └── hardware/
+│       ├── x86-64.md                     # x86-64 specifics, CET, AES-NI, Intel VT-d
+│       ├── arm64.md                      # ARM64, MTE, TrustZone, Raspberry Pi 4
+│       └── riscv.md                      # RISC-V Sv48, RISC-V ISA specifics
+│
+├── community/
+│   ├── index.md                          # Community hub
+│   ├── contributing.md                   # CONTRIBUTING.md — full guide
+│   ├── maintainers.md                    # MAINTAINERS.md — DDR ownership table
+│   ├── security-policy.md                # SECURITY.md — vulnerability reporting
+│   ├── code-of-conduct.md                # (referenced in CONTRIBUTING, add content)
+│   ├── cla.md                            # CLA requirements (referenced in CONTRIBUTING)
+│   │
+│   ├── templates/
+│   │   ├── bug-report.md                 # bug_report.md — issue template
+│   │   ├── pull-request.md               # PULL_REQUEST_TEMPLATE.md
+│   │   └── rfc.md                        # rfc.md — RFC discussion template
+│   │
+│   └── good-first-issues.md              # Curated entry points for new contributors
+│
+├── learn/
+│   ├── index.md                          # Vol 4 — learning hub entry point
+│   ├── stage-0-programming.md            # Vol 4 §0 — learn to program first
+│   ├── books/
+│   │   ├── phase-0.md                    # CS:APP, K&R, COD, Rust Book, Programming Rust
+│   │   ├── phase-1.md                    # OSTEP, Tanenbaum, Rust for Rustaceans
+│   │   ├── phase-2.md                    # Linux Kernel Dev, UNP, FS Forensics
+│   │   └── phase-3.md                    # Engineering a Compiler, Crafting Interpreters
+│   │
+│   └── tutorials/
+│       ├── write-a-virtio-driver.md      # Vol 4 — virtio-input / virtio-rng tutorial
+│       ├── kani-harness-guide.md         # Vol 4 — write your first Kani harness
+│       ├── x86-assembly-primer.md        # Vol 4 — assembly for kernel developers
+│       └── os-comparison-lessons.md      # Vol 8 — what every OS got right/wrong
+│
+└── assets/
+    ├── css/
+    │   └── custom.css
+    └── js/
+        └── progress.js                   # Phase progress tracker

@@ -26,6 +26,9 @@ const config: Config = {
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+    markdown: {
+    mermaid: true,
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -82,7 +85,7 @@ const config: Config = {
     ],
   ],
 
-  themes: ['@docusaurus/theme-search-algolia'],
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
     algolia: {
@@ -108,18 +111,12 @@ const config: Config = {
           position: 'left',
           items: [
             {
-              type: 'dropdown',
-              label: 'Guides',
-              items: [
-                {
-                  label: 'Beginner',
-                  to: '/docs/beginner',
-                },
-                {
-                  label: 'Advanced',
-                  to: '/docs/advanced',
-                },
-              ],
+              label: 'Beginner Guide',
+              to: '/docs/beginner',
+            },
+            {
+              label: 'Advanced Guide',
+              to: '/docs/advanced',
             },
             {
               label: 'API',

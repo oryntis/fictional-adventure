@@ -4,6 +4,16 @@
  * work well for content-centric websites.
  */
 
+ /* Wider docs content */
+.theme-doc-markdown {
+  max-width: 95% !important;
+}
+
+/* Wider main container */
+.container {
+  max-width: 1800px !important;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
