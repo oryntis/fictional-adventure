@@ -20,9 +20,11 @@ const sidebars: SidebarsConfig = {
       label: 'About',
       items: [
         'about/index',
+        'about/folder-structure',
         'about/getting-started',
         'about/personas',
         'about/philosophy',
+        'about/market-gap',
         'about/eco-advantage',
         'about/comparison-matrix',
         'about/space-naming',

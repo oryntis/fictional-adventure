@@ -1,5 +1,27 @@
 # About Orion OS
 
+&gt; **A capability-based, microkernel operating system written in Rust — built for security, correctness, and modern hardware.**
+
+*"An operating system is not built — it evolves through stages of consciousness."*
+*From bare metal to cosmic harmony — a philosophical journey in 7 phases.*
+
+---
+
+## What is Orion OS?
+
+Orion OS is a from-scratch operating system that treats **security as a first-class design constraint**, not an afterthought. Every resource — files, network sockets, GPU time, IPC channels — is accessed through an unforgeable **capability token** validated by the Cosmos microkernel. No ambient authority. No confused deputy attacks. No privilege escalation via path traversal.
+
+| Property | Decision |
+|----------|----------|
+| **Kernel** | Cosmos — hybrid microkernel in Rust, ≤5K lines for Phase 1 |
+| **Security model** | Capability-based (DDR-002) — zero ambient authority |
+| **Drivers** | 100% userspace — no driver code in kernel |
+| **Filesystem** | Vega FS — CoW, atomic writes, BLAKE3 checksums |
+| **Crypto** | Post-quantum (CRYSTALS-Kyber + CRYSTALS-Dilithium) |
+| **Display** | Aurora — Wayland-compatible compositor |
+| **Package manager** | Comit + Nebula Hub — capability-scoped installs |
+| **Targets** | x86-64 (Phase 1) → ARM64, RISC-V, PowerPC, LoongArch |
+
 **Orion OS** is a next-generation, **capability-based operating system** designed to be **lightweight, secure, fast, and universally compatible**—reviving old hardware, empowering AI/ML workloads, and prioritizing user privacy and control.
 
 Built from scratch in **Rust**, Orion OS reimagines the OS architecture with:
@@ -32,6 +54,23 @@ Orion OS aims to fill a **gap no other OS addresses simultaneously**:
 | **Comit** | Package manager with **WASM apps**, **Dilithium signatures**, and **atomic updates**. | ⚠️ Phase 1 |
 | **Pulsar Shell** | System shell with **pipelines**, **job control**, and **tab completion**. | ⚠️ Phase 1 |
 | **Nebula Hub** | Community ecosystem for **extensions**, **packages**, and **config profiles**. | ⬜ Future |
+
+---
+
+## Current Phase: Phase B (Pre-kernel)
+
+| Phase | Status | Description |
+|-------|--------|-------------|
+| **Phase A** | ✅ Done | Architecture locked (39 DDRs), documentation complete |
+| **Phase B** | 🔄 Active | Cosmos IR, HAL, assembler bootstrap |
+| **Phase 0** | ⬜ Planned | Cosmic Dawn — bootable kernel on QEMU x86-64 |
+| **Phase 1** | ⬜ Planned | Core Being — drivers, Vega FS, shell |
+| **Phase 2** | ⬜ Planned | System Symphony — GUI, AI runtime, FDE |
+| **Phase 3** | ⬜ Planned | User Enlightenment — desktop, WASM, accessibility |
+| **Phase 4** | ⬜ Planned | Hardware Transcendence — ARM64, RISC-V, PowerPC |
+| **Phase 5** | ⬜ Planned | Self-Realization — Cosmos Compiler replaces LLVM |
+| **Phase 6** | ⬜ Planned | Universal Harmony — 1.0.0 stable release |
+
 
 ---
 
