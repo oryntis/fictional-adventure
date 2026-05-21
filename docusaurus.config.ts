@@ -12,7 +12,7 @@ const config: Config = {
   },
 
   url: "https://oryntis.github.io",
-  baseUrl: "/frictional-advanture/",
+  baseUrl: "fictional-adventure-gules.vercel.app/",
 
   organizationName: "oryntis",
   projectName: "frictional-advanture",
