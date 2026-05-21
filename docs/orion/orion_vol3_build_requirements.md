@@ -31,7 +31,7 @@ For old hardware without UEFI. 512-byte MBR stage 1 + larger stage 2. Pure Assem
 
 **Kernel Entry Point**
 
-Assembly trampoline: sets up stack, enables SSE/AVX, switches to long mode, calls Rust kernel\_main().
+Assembly trampoline: sets up stack, enables SSE/AVX, switches to long mode, calls Rust kernel_main().
 
 **GDT Setup**
 
@@ -199,7 +199,7 @@ Capability-gated shared memory regions. Both processes must hold compatible capa
 
 **Pipes**
 
-Unidirectional byte stream. Kernel buffer. Blocking read/write. O\_NONBLOCK support.
+Unidirectional byte stream. Kernel buffer. Blocking read/write. O_NONBLOCK support.
 
 **Unix Sockets**
 
@@ -215,7 +215,7 @@ Fast userspace mutexes. Kernel involvement only on contention. Basis for all thr
 
 **Event Queues**
 
-io\_uring-style async event submission and completion. Zero syscall overhead for batched I/O operations.
+io_uring-style async event submission and completion. Zero syscall overhead for batched I/O operations.
 
 # **2\. Device Drivers**
 
@@ -505,7 +505,7 @@ stdlib
 
 **memcmp**
 
-Compare n bytes. Returns &lt;0, 0, >0.
+Compare n bytes. Returns &lt;0, 0, &gt;0.
 
 stdlib
 
@@ -533,13 +533,13 @@ Release allocation. No double-free (Rust ownership tracks this).
 
 stdlib
 
-**aligned\_alloc**
+**aligned_alloc**
 
 Allocate with specific alignment. Required for SIMD buffers.
 
 stdlib
 
-**posix\_memalign**
+**posix_memalign**
 
 POSIX-compatible aligned allocation.
 
@@ -589,7 +589,7 @@ Find character in string (first/last).
 
 string.h
 
-**strtok / strtok\_r**
+**strtok / strtok_r**
 
 Tokenise string by delimiter. \_r is reentrant.
 
@@ -793,61 +793,61 @@ math.h
 
 **Header**
 
-**orion\_thread\_create**
+**orion_thread_create**
 
 Create thread with stack size, priority, affinity.
 
 nova/thread.h
 
-**orion\_thread\_join**
+**orion_thread_join**
 
 Wait for thread completion, get return value.
 
 nova/thread.h
 
-**orion\_thread\_detach**
+**orion_thread_detach**
 
 Detach thread. Resources freed on exit.
 
 nova/thread.h
 
-**orion\_mutex\_init/lock/unlock/destroy**
+**orion_mutex_init/lock/unlock/destroy**
 
 Mutual exclusion. Futex-based. Priority inheritance.
 
 nova/sync.h
 
-**orion\_rwlock\_\***
+**orion_rwlock\_\***
 
 Reader-writer lock. Multiple readers or one writer.
 
 nova/sync.h
 
-**orion\_cond\_wait/signal/broadcast**
+**orion_cond_wait/signal/broadcast**
 
 Condition variables. Atomically release mutex and wait.
 
 nova/sync.h
 
-**orion\_sem\_\***
+**orion_sem\_\***
 
 Semaphore. Counting synchronization primitive.
 
 nova/sync.h
 
-**orion\_atomic\_\***
+**orion_atomic\_\***
 
 Atomic operations: load, store, add, CAS, exchange.
 
 nova/atomic.h
 
-**orion\_barrier\_\***
+**orion_barrier\_\***
 
 Thread barrier. All threads wait until all arrive.
 
 nova/sync.h
 
-**orion\_tls\_create/get/set**
+**orion_tls_create/get/set**
 
 Thread-local storage key management.
 
@@ -871,7 +871,7 @@ cmd1 | cmd2 | cmd3. Connect stdout to stdin. Parallel execution. Pipe buffer man
 
 **Redirections**
 
-&lt; input, > output, >> append, 2> stderr, 2>&1, /dev/null.
+&lt; input, &gt; output, &gt;&gt; append, 2&gt; stderr, 2&gt;&1, /dev/null.
 
 **Variables**
 
@@ -1917,12 +1917,12 @@ Detected hardware, driver status, nova hardware detect button.
 
 ## **9.5 Orion Text Editor (orion-edit)**
 
-*   Nano-equivalent for terminal. Keyboard shortcuts shown at bottom. No learning curve.
-*   Syntax highlighting: Rust, C, Python, shell, TOML, NCL (Orion Config Language), JSON, Markdown.
-*   Search and replace with regex support.
-*   Line numbers. Auto-indent. Bracket matching.
-*   Multiple files open (tabs). Split view.
-*   Can edit system config files with orion-su elevation prompt.
+- Nano-equivalent for terminal. Keyboard shortcuts shown at bottom. No learning curve.
+- Syntax highlighting: Rust, C, Python, shell, TOML, NCL (Orion Config Language), JSON, Markdown.
+- Search and replace with regex support.
+- Line numbers. Auto-indent. Bracket matching.
+- Multiple files open (tabs). Split view.
+- Can edit system config files with orion-su elevation prompt.
 
 ## **9.6 Void Cryptography Library**
 
@@ -2760,7 +2760,7 @@ Every kernel component gets tests before it is considered done. OS bugs are sile
 
 **Unit test framework**
 
-Custom no\_std test framework for kernel code. No std::test — write a minimal test runner that runs in bare-metal kernel context. Each subsystem has its own test module.
+Custom no_std test framework for kernel code. No std::test — write a minimal test runner that runs in bare-metal kernel context. Each subsystem has its own test module.
 
 **QEMU-based integration tests**
 
@@ -2776,7 +2776,7 @@ Instruments unsafe Rust blocks and C interop. Detects use-after-free and buffer 
 
 **Performance benchmarks**
 
-Boot time, context switch latency (target: &lt; 1 microsecond), memory allocator throughput, file read/write speed, network round-trip. Run on every PR. Regression > 5% = block merge.
+Boot time, context switch latency (target: &lt; 1 microsecond), memory allocator throughput, file read/write speed, network round-trip. Run on every PR. Regression &gt; 5% = block merge.
 
 **CI/CD pipeline (GitHub Actions)**
 
@@ -2812,7 +2812,7 @@ Rust + Assembly. UEFI GOP, memory map, ACPI, kernel load.
 
 **Kernel Entry (ASM)**
 
-GDT, IDT, long mode, SSE enable, call kernel\_main.
+GDT, IDT, long mode, SSE enable, call kernel_main.
 
 \[ \]
 

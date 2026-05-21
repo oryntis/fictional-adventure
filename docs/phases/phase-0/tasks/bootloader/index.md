@@ -15,7 +15,7 @@ The **bootloader** is the **first piece of code** that runs when a computer star
 ---
 ## **📌 Prerequisites**
 Before starting this task, ensure you have:
-1. **Installed all tools** from [`resources.md`](../resources.md).
+1. **Installed all tools** from [`resources.md`](../../resources.md).
 2. **Read**:
    - OSDev Wiki: [Bootloader](https://wiki.osdev.org/Bootloader)
    - Intel SDM Vol. 3, Chapter 2 (Real Mode) and Chapter 3 (Protected Mode).
@@ -40,8 +40,8 @@ Before starting this task, ensure you have:
 
 ---
 ## **🔗 Related Tasks**
-- Next: **[Kernel Entry](kernel-entry.md)** (Transition to 32-bit/64-bit mode).
-- Later: **[UEFI Bootloader](bootloader.md/uefi.md)** (Phase 0.2).
+- Next: **[Kernel Entry](../kernel-entry/index.md)** (Transition to 32-bit/64-bit mode).
+- Later: **UEFI Bootloader** (Phase 0.2).
 
 ---
 ## **📚 Additional Resources**

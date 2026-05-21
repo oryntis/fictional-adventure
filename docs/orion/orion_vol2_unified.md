@@ -61,7 +61,7 @@ DDR-003
 
 4-level or 5-level page tables?
 
-4-level (PML4) by default on x86-64. 5-level (PML5) opt-in at boot for workloads requiring >128TB address space. ARM64: 4-level (48-bit VA). RISC-V: Sv48 (4-level).
+4-level (PML4) by default on x86-64. 5-level (PML5) opt-in at boot for workloads requiring &gt;128TB address space. ARM64: 4-level (48-bit VA). RISC-V: Sv48 (4-level).
 
 Memory management implementation
 
@@ -69,7 +69,7 @@ DDR-004
 
 fork() or spawn()?
 
-No fork(). spawn() only. Child process receives an explicit capability set from the parent. No implicit address space copying. No pthread\_atfork complexity.
+No fork(). spawn() only. Child process receives an explicit capability set from the parent. No implicit address space copying. No pthread_atfork complexity.
 
 Process model, all userspace apps
 
@@ -77,7 +77,7 @@ DDR-005
 
 Scheduler design?
 
-Five scheduling classes: RealTime, Interactive, Normal, Batch, Idle. Heterogeneous dispatch: CPU + GPU + NPU + TPU as compute peers. Tickless kernel (NO\_HZ\_FULL). Topology-aware on P/E-core CPUs.
+Five scheduling classes: RealTime, Interactive, Normal, Batch, Idle. Heterogeneous dispatch: CPU + GPU + NPU + TPU as compute peers. Tickless kernel (NO_HZ_FULL). Topology-aware on P/E-core CPUs.
 
 All scheduling, power management, gaming
 
@@ -197,7 +197,7 @@ NPUCapability
 
 Intel VPU, Apple ANE, Qualcomm Hexagon, MediaTek APU
 
-INFER | TRAIN\_LITE | MODEL\_LOAD
+INFER | TRAIN_LITE | MODEL_LOAD
 
 Quasar Runtime, orion-mld
 
@@ -205,7 +205,7 @@ TPUCapability
 
 Google Edge TPU, future custom silicon
 
-INFER | BATCH\_INFER
+INFER | BATCH_INFER
 
 Quasar Runtime only (privileged)
 
@@ -227,10 +227,10 @@ Aurora compositor only
 
 ### **ComputeScheduler Rules**
 
-*   GPU context switch every 16ms (one display frame). Gaming processes: 33ms slices.
-*   Preemption via hardware GPU preemption (Intel Gen12+, AMD GFX10+). Polling fallback for older GPUs.
-*   IOMMU enforcement: GPU DMA outside granted MemoryCapability → fault → driver restart, not kernel panic.
-*   Unified memory (Apple M / AMD APU): MemoryCapability:UNIFIED flag — same physical pages for CPU+GPU.
+- GPU context switch every 16ms (one display frame). Gaming processes: 33ms slices.
+- Preemption via hardware GPU preemption (Intel Gen12+, AMD GFX10+). Polling fallback for older GPUs.
+- IOMMU enforcement: GPU DMA outside granted MemoryCapability → fault → driver restart, not kernel panic.
+- Unified memory (Apple M / AMD APU): MemoryCapability:UNIFIED flag — same physical pages for CPU+GPU.
 
 ## **DDR-016 — Hardware Privacy & ID Randomisation**
 
@@ -264,7 +264,7 @@ MAC Address
 
 Random per network association
 
-HardwareIDCapability:MAC\_REAL
+HardwareIDCapability:MAC_REAL
 
 CSPRNG 48-bit, valid unicast bits
 
@@ -272,7 +272,7 @@ CPU Serial/CPUID
 
 Randomised vendor string per boot
 
-HardwareIDCapability:CPU\_REAL
+HardwareIDCapability:CPU_REAL
 
 Deterministic from boot seed
 
@@ -280,7 +280,7 @@ GPU PCI Device ID
 
 Fake VID/DID per session
 
-HardwareIDCapability:GPU\_REAL
+HardwareIDCapability:GPU_REAL
 
 PCI config space intercept
 
@@ -288,7 +288,7 @@ NVMe Serial Number
 
 CSPRNG 20-char per boot
 
-HardwareIDCapability:DISK\_REAL
+HardwareIDCapability:DISK_REAL
 
 NVMe IDENTIFY intercept
 
@@ -296,15 +296,15 @@ USB Serial Number
 
 CSPRNG hex per session
 
-HardwareIDCapability:USB\_REAL
+HardwareIDCapability:USB_REAL
 
-USB GET\_DESCRIPTOR intercept
+USB GET_DESCRIPTOR intercept
 
 Bluetooth MAC
 
 Random per pairing session
 
-HardwareIDCapability:BT\_REAL
+HardwareIDCapability:BT_REAL
 
 HCI command intercept
 
@@ -312,7 +312,7 @@ TPM Endorsement Key
 
 Never exposed to apps
 
-HardwareIDCapability:TPM\_REAL (kernel only)
+HardwareIDCapability:TPM_REAL (kernel only)
 
 orion-cryptod gatekeeper
 
@@ -340,15 +340,15 @@ Quasar Runtime is a privileged userspace daemon holding NPUCapability and GPUCap
 
 interface QuasarRuntime &#123;
 
-fn load\_model(model\_id: String, quantisation: Quantisation) -> Result&lt;ModelHandle, QuasarError>;
+fn load_model(model_id: String, quantisation: Quantisation) -&gt; Result&lt;ModelHandle, QuasarError&gt;;
 
 fn infer(model: ModelHandle, input: InferInput, priority: Priority,
 
-completion\_port: IpcPort) -> Result&lt;InferenceHandle, QuasarError>;
+completion_port: IpcPort) -&gt; Result&lt;InferenceHandle, QuasarError&gt;;
 
-fn cancel(handle: InferenceHandle) -> Result&lt;(), QuasarError>;
+fn cancel(handle: InferenceHandle) -&gt; Result&lt;(), QuasarError&gt;;
 
-fn hardware\_info() -> HardwareInfo; // &#123;npu: bool, gpu: bool, unified\_mem: bool&#125;
+fn hardware_info() -&gt; HardwareInfo; // &#123;npu: bool, gpu: bool, unified_mem: bool&#125;
 
 &#125;
 
@@ -424,13 +424,13 @@ Every kernel ML inference call MUST have a non-ML fallback. If the model returns
 
 Workload Classifier
 
-Decision Tree (ONNX, tract no\_std)
+Decision Tree (ONNX, tract no_std)
 
 ≤50KB
 
 &lt;50µs
 
-classify\_heuristic() — io\_wait/cpu/gpu heuristic
+classify_heuristic() — io_wait/cpu/gpu heuristic
 
 Anomaly Detector
 
@@ -450,7 +450,7 @@ Linear Regression (ONNX)
 
 &lt;20µs
 
-Use degradation\_level=5 (medium — safe default)
+Use degradation_level=5 (medium — safe default)
 
 Power Predictor
 
@@ -460,9 +460,9 @@ Tiny LSTM (ONNX)
 
 &lt;100µs
 
-Use current\_power\_mw (no prediction)
+Use current_power_mw (no prediction)
 
-_Total Tier 1 ML memory budget: ≤512KB kernel memory. No dynamic model loading. All models embedded via include\_bytes!() at compile time._
+_Total Tier 1 ML memory budget: ≤512KB kernel memory. No dynamic model loading. All models embedded via include_bytes!() at compile time._
 
 ## **DDR-019 — orion-mld ML Daemon (Tier 2)**
 
@@ -582,7 +582,7 @@ IPC message send
 
 5,000
 
-RATE\_EXCEEDED — throttled 10ms
+RATE_EXCEEDED — throttled 10ms
 
 Capability invocation
 
@@ -590,7 +590,7 @@ Capability invocation
 
 200
 
-RATE\_EXCEEDED — capability throttled
+RATE_EXCEEDED — capability throttled
 
 NetworkCapability: new connections
 
@@ -614,7 +614,7 @@ Capability delegation
 
 5
 
-EDELEGATE\_LIMIT — logged + blocked
+EDELEGATE_LIMIT — logged + blocked
 
 Capability creation
 
@@ -644,55 +644,55 @@ Multi-arch support, ARM64 port, RISC-V port
 
 **DDR-HAL**
 
-Two-layer HAL: (1) arch-specific boot shim puts CPU in known state before kernel\_main(). (2) CosmosHal Rust trait — every arch implements it. Kernel calls only the trait. Arch selected at compile time via Cargo features. Zero runtime overhead — monomorphised.
+Two-layer HAL: (1) arch-specific boot shim puts CPU in known state before kernel_main(). (2) CosmosHal Rust trait — every arch implements it. Kernel calls only the trait. Arch selected at compile time via Cargo features. Zero runtime overhead — monomorphised.
 
 pub trait CosmosHal: Send + Sync + 'static &#123;
 
 // Timer
 
-fn time\_now\_ns() -> u64;
+fn time_now_ns() -&gt; u64;
 
-fn timer\_set\_next\_ns(ns: u64);
+fn timer_set_next_ns(ns: u64);
 
 // Interrupts
 
-fn irq\_disable() -> IrqState;
+fn irq_disable() -&gt; IrqState;
 
-fn irq\_restore(state: IrqState);
+fn irq_restore(state: IrqState);
 
-fn irq\_register(vector: u8, handler: IrqHandler);
+fn irq_register(vector: u8, handler: IrqHandler);
 
-fn irq\_eoi(vector: u8);
+fn irq_eoi(vector: u8);
 
 // MMU
 
-fn mmu\_new\_table() -> PhysAddr;
+fn mmu_new_table() -&gt; PhysAddr;
 
-fn mmu\_map(table: PhysAddr, virt: VirtAddr, phys: PhysAddr, flags: PageFlags);
+fn mmu_map(table: PhysAddr, virt: VirtAddr, phys: PhysAddr, flags: PageFlags);
 
-fn mmu\_switch\_table(table: PhysAddr);
+fn mmu_switch_table(table: PhysAddr);
 
-fn mmu\_tlb\_flush(virt: VirtAddr);
+fn mmu_tlb_flush(virt: VirtAddr);
 
 // CPU
 
-fn cpu\_halt();
+fn cpu_halt();
 
-fn cpu\_id() -> u32;
+fn cpu_id() -&gt; u32;
 
-fn cpu\_features\_init();
+fn cpu_features_init();
 
-unsafe fn cpu\_context\_switch(current: \*mut TaskContext, next: \*const TaskContext);
+unsafe fn cpu_context_switch(current: \*mut TaskContext, next: \*const TaskContext);
 
 // Serial (early console)
 
-fn serial\_write\_byte(byte: u8);
+fn serial_write_byte(byte: u8);
 
 // SMP
 
-fn smp\_send\_ipi(cpu: u32, vector: u8);
+fn smp_send_ipi(cpu: u32, vector: u8);
 
-fn smp\_core\_count() -> u32;
+fn smp_core_count() -&gt; u32;
 
 &#125;
 
@@ -704,23 +704,23 @@ fn smp\_core\_count() -> u32;
 
 **RISC-V**
 
-time\_now\_ns()
+time_now_ns()
 
 RDTSC + TSC/HPET calibration
 
-CNTVCT\_EL0 virtual counter
+CNTVCT_EL0 virtual counter
 
 rdtime instruction
 
-timer\_set\_next\_ns()
+timer_set_next_ns()
 
 LAPIC one-shot timer
 
-CNTP\_TVAL\_EL0 generic timer
+CNTP_TVAL_EL0 generic timer
 
 SBI timer extension (ecall)
 
-irq\_disable/restore()
+irq_disable/restore()
 
 CLI/STI + RFLAGS.IF
 
@@ -728,15 +728,15 @@ MSR DAIF register
 
 csrci/csrsi STATUS.MIE
 
-mmu\_switch\_table()
+mmu_switch_table()
 
-MOV CR3, phys\_addr
+MOV CR3, phys_addr
 
-MSR TTBR0\_EL1
+MSR TTBR0_EL1
 
 csrw satp, (MODE|PPN)
 
-serial\_write\_byte()
+serial_write_byte()
 
 Port 0x3F8 OUT
 
@@ -744,7 +744,7 @@ PL011 UART DR register
 
 SBI console putchar
 
-smp\_send\_ipi()
+smp_send_ipi()
 
 LAPIC ICR write
 
@@ -770,29 +770,29 @@ Phase B4 linker, B5 compiler, Cosmos Assembler
 
 **DDR-IR**
 
-Cosmos IR: typed SSA form with first-class cap&lt;R> capability type and capability intrinsics. Inspired by LLVM IR, adds: capability type tracked by type system (cannot be forged), capability intrinsics (lower to the 13 kernel syscalls), simpler type system tuned for systems programming. LLVM used during bootstrap B1–B4, replaced in B5.
+Cosmos IR: typed SSA form with first-class cap&lt;R&gt; capability type and capability intrinsics. Inspired by LLVM IR, adds: capability type tracked by type system (cannot be forged), capability intrinsics (lower to the 13 kernel syscalls), simpler type system tuned for systems programming. LLVM used during bootstrap B1–B4, replaced in B5.
 
 ; Cosmos IR — capability-gated file read example
 
-define i64 @read\_file(cap&lt;FileRead> %file\_cap, ptr&lt;u8> %buf, i64 %len) &#123;
+define i64 @read_file(cap&lt;FileRead&gt; %file_cap, ptr&lt;u8&gt; %buf, i64 %len) &#123;
 
 entry:
 
-%valid = call i1 @cosmos.cap.check(cap&lt;FileRead> %file\_cap)
+%valid = call i1 @cosmos.cap.check(cap&lt;FileRead&gt; %file_cap)
 
-br i1 %valid, label %do\_read, label %cap\_error
+br i1 %valid, label %do_read, label %cap_error
 
-do\_read:
+do_read:
 
 %result = call i64 @cosmos.cap.invoke(
 
-cap&lt;FileRead> %file\_cap, i64 SYSCALL\_READ, ptr&lt;u8> %buf, i64 %len
+cap&lt;FileRead&gt; %file_cap, i64 SYSCALL_READ, ptr&lt;u8&gt; %buf, i64 %len
 
 )
 
 ret i64 %result
 
-cap\_error:
+cap_error:
 
 ret i64 -1 ; ECAPINVAL
 
@@ -800,17 +800,17 @@ ret i64 -1 ; ECAPINVAL
 
 ; Attenuation: remove rights (cannot add rights)
 
-define cap&lt;FileRead> @make\_readonly(cap&lt;FileRead|FileWrite> %full) &#123;
+define cap&lt;FileRead&gt; @make_readonly(cap&lt;FileRead|FileWrite&gt; %full) &#123;
 
 entry:
 
-%ro = call cap&lt;FileRead> @cosmos.cap.attenuate(
+%ro = call cap&lt;FileRead&gt; @cosmos.cap.attenuate(
 
-cap&lt;FileRead|FileWrite> %full, i64 RIGHTS\_FILE\_READ
+cap&lt;FileRead|FileWrite&gt; %full, i64 RIGHTS_FILE_READ
 
 )
 
-ret cap&lt;FileRead> %ro
+ret cap&lt;FileRead&gt; %ro
 
 &#125;
 
@@ -906,19 +906,19 @@ before = \["orion-dnsd", "orion-wifid"\]
 
 policy = "always"
 
-delay\_ms = 1000
+delay_ms = 1000
 
-max\_retries = 5
+max_retries = 5
 
-\[socket\_activation\]
+\[socket_activation\]
 
 sockets = \["/run/ether-d.sock"\]
 
 \[resources\]
 
-memory\_limit\_mb = 64
+memory_limit_mb = 64
 
-cpu\_weight = 100
+cpu_weight = 100
 
 **Boot Stage**
 
@@ -1078,10 +1078,10 @@ FileCapability:/mnt + consent
 
 ### **Path Resolution Algorithm**
 
-*   All resolution starts from the calling process's namespace root — not the global root.
-*   Split path by '/', resolve each component. Check FileCapability at each mount boundary crossing.
-*   Symlinks: resolved at VFS level. Maximum 8 levels of indirection. Circular → ELOOP.
-*   Cross-filesystem copy: vega-vfsd coordinates. Always materialise-then-copy — never zero-copy across FS boundary.
+- All resolution starts from the calling process's namespace root — not the global root.
+- Split path by '/', resolve each component. Check FileCapability at each mount boundary crossing.
+- Symlinks: resolved at VFS level. Maximum 8 levels of indirection. Circular → ELOOP.
+- Cross-filesystem copy: vega-vfsd coordinates. Always materialise-then-copy — never zero-copy across FS boundary.
 
 ## **DDR-PF — orion-pf Firewall & Network Policy**
 
@@ -1105,7 +1105,7 @@ All inbound blocked. All outbound blocked. Loopback always allowed. Apps need Ne
 
 \# /system/config/orion-pf.toml — default ruleset (applied at boot)
 
-\[default\_policy\]
+\[default_policy\]
 
 inbound = "deny"
 
@@ -1115,9 +1115,9 @@ forward = "deny"
 
 \[loopback\]
 
-allow\_all = true # 127.0.0.1/::1 always allowed
+allow_all = true # 127.0.0.1/::1 always allowed
 
-\[\[capability\_rules.network\]\]
+\[\[capability_rules.network\]\]
 
 capability = "NetworkCapability"
 
@@ -1125,7 +1125,7 @@ inbound = "deny"
 
 outbound = \["tcp:80", "tcp:443", "udp:53"\] # HTTP, HTTPS, DNS
 
-\[\[capability\_rules.network\_server\]\]
+\[\[capability_rules.network_server\]\]
 
 capability = "NetworkCapability:server"
 
@@ -1137,9 +1137,9 @@ outbound = "allow"
 
 resolver = "dns-over-tls"
 
-dnssec\_validation = true
+dnssec_validation = true
 
-fallback\_resolver = "1.1.1.1:853" # user-overrideable
+fallback_resolver = "1.1.1.1:853" # user-overrideable
 
 ## **DDR-COMPOSITOR — Aurora Wayland Compositor**
 
@@ -1363,7 +1363,7 @@ Request &lt;1ms real-time latency class
 
 Known pro audio apps only
 
-AudioCapability:BT\_AUDIO
+AudioCapability:BT_AUDIO
 
 Access Bluetooth audio profiles (A2DP, HFP)
 
@@ -1401,7 +1401,7 @@ package.cpkg/
 
 ├── native/ # optional native shims
 
-│ ├── x86\_64.so
+│ ├── x86_64.so
 
 │ └── aarch64.so
 
@@ -1429,7 +1429,7 @@ Resume via HTTP range request
 
 Dilithium3 + all BLAKE3 checksums
 
-Abort — ESIG\_INVALID
+Abort — ESIG_INVALID
 
 3\. Capability check
 

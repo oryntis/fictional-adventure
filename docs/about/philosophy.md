@@ -5,8 +5,8 @@ Orion OS is built on a **set of non-negotiable principles** that guide every tec
 ---
 
 ## **🌟 The North Star**
-> **"Every CPU instruction executed when running Orion OS was written by us — not borrowed from any external toolchain."**
-> — **Phase B7 (Self-Realization)**
+&gt; **"Every CPU instruction executed when running Orion OS was written by us — not borrowed from any external toolchain."**
+&gt; — **Phase B7 (Self-Realization)**
 
 This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
 - The **Cosmos Compiler** compiles the **Cosmos kernel**.
@@ -24,7 +24,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
 *(Non-negotiable rules that define the project)*
 
 ### **1. Speed First**
-> *"Every subsystem must be measurably faster than Linux equivalents on the same hardware. No exceptions."*
+&gt; *"Every subsystem must be measurably faster than Linux equivalents on the same hardware. No exceptions."*
 
 - **Why**: Performance is the **#1 user-perceived quality** of an OS.
 - **How**:
@@ -34,7 +34,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **Predictive pre-loading** (learns user patterns to reduce latency).
 
 ### **2. Memory Respect**
-> *"The OS must run fully functional on 1GB RAM. Idle RAM usage target: **&lt;150MB**."*
+&gt; *"The OS must run fully functional on 1GB RAM. Idle RAM usage target: **&lt;150MB**."*
 
 - **Why**: Old hardware revival is a **core mission** (600M+ PCs at risk of obsolescence).
 - **How**:
@@ -44,7 +44,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **Shared libraries** (one copy of each library in memory).
 
 ### **3. Security by Default**
-> *"Secure behavior is the DEFAULT — users must opt OUT of security, not opt IN."*
+&gt; *"Secure behavior is the DEFAULT — users must opt OUT of security, not opt IN."*
 
 - **Why**: Most security breaches happen because **security is an afterthought**.
 - **How**:
@@ -55,7 +55,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **Mandatory IOMMU** (DMA attacks impossible).
 
 ### **4. Hardware Universality**
-> *"Must support **x86-64, ARM64, and RISC-V** from day one. No proprietary hardware lock-in."*
+&gt; *"Must support **x86-64, ARM64, and RISC-V** from day one. No proprietary hardware lock-in."*
 
 - **Why**: Orion OS is for **everyone**, not just one vendor’s hardware.
 - **How**:
@@ -64,7 +64,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **Driver priority matrix** (Vol 3 §2: P0–P3 for critical hardware).
 
 ### **5. Future Compute Ready**
-> *"First-class support for **CPU + GPU + NPU + TPU** as equal compute citizens."*
+&gt; *"First-class support for **CPU + GPU + NPU + TPU** as equal compute citizens."*
 
 - **Why**: AI/ML workloads are the **fastest-growing use case** for OSes.
 - **How**:
@@ -73,7 +73,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **Quasar Runtime** (OS-level AI inference engine with shared model weights).
 
 ### **6. Zero Trust Networking**
-> *"Network stack built on **zero-trust principles**. No open ports by default."*
+&gt; *"Network stack built on **zero-trust principles**. No open ports by default."*
 
 - **Why**: The internet is **hostile by default**.
 - **How**:
@@ -83,7 +83,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **No ambient network access** (apps must declare NetworkCapability).
 
 ### **7. Eco Accountability**
-> *"Power usage must be **measurable, reportable, and minimizable** at every layer."*
+&gt; *"Power usage must be **measurable, reportable, and minimizable** at every layer."*
 
 - **Why**: **53 million tonnes of e-waste** per year. Orion OS can **reduce this** by reviving old hardware.
 - **How**:
@@ -92,7 +92,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **Hardware aging compensation** (adapts to degraded SSDs, thermal throttling).
 
 ### **8. Driver Safety**
-> *"All drivers run in **isolated userspace**. A bad driver cannot crash the kernel."*
+&gt; *"All drivers run in **isolated userspace**. A bad driver cannot crash the kernel."*
 
 - **Why**: **70% of kernel CVEs** are in drivers (Linux/Windows).
 - **How**:
@@ -101,7 +101,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
   - **Rust drivers** (memory-safe by construction).
 
 ### **9. Clean ABI**
-> *"No 30-year-old syscall baggage. **Capability-based interface** from day one."*
+&gt; *"No 30-year-old syscall baggage. **Capability-based interface** from day one."*
 
 - **Why**: Linux’s **fork()**, **signals**, and **file descriptor model** are **eternal technical debt**.
 - **How**:
@@ -179,7 +179,7 @@ This is the **ultimate goal** of Orion OS: **full self-hosting**. It means:
 ---
 ---
 ## **📚 Further Reading**
-- **[Vol 1: Vision & Strategy](orion_vol1_vision_strategy.docx)** – The "why" behind Orion OS.
-- **[Vol 2: Technical Architecture](orion_vol2_unified.docx)** – All 39 **DDRs** (Design Decision Records).
-- **[Vol 5: Philosophy & Problems](orion_vol5_philosophy_problems.docx)** – Deep analysis of every problem Orion OS solves.
-- **[The North Star (Phase B7)](orion_00_master_index_v9.docx#the-north-star---phase-b7)** – The ultimate goal of full self-hosting.
+- **[Vol 1: Vision & Strategy](../orion/orion_vol1_vision_strategy.md)** – The "why" behind Orion OS.
+- **[Vol 2: Technical Architecture](../orion/orion_vol2_unified.md)** – All 39 **DDRs** (Design Decision Records).
+- **[Vol 5: Philosophy & Problems](../orion/orion_vol5_philosophy_problems.md)** – Deep analysis of every problem Orion OS solves.
+- **[The North Star (Phase B7)](../orion/dummyitem/orion_00_master_index_v9.md#the-north-star---phase-b7)** – The ultimate goal of full self-hosting.

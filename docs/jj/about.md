@@ -1,7 +1,7 @@
 # 🌌 About Orion OS
 
-> *"An operating system is not built — it evolves through stages of consciousness."*
-> **From bare metal to cosmic harmony — a philosophical journey in 7 phases.**
+&gt; *"An operating system is not built — it evolves through stages of consciousness."*
+&gt; **From bare metal to cosmic harmony — a philosophical journey in 7 phases.**
 
 ---
 
@@ -27,7 +27,7 @@
 
 ## 1. The Mission
 
-> **Build an operating system that is lighter, faster, more secure, and more future-ready than anything that exists — one that runs beautifully on old hardware, serves every type of user, and helps reduce global e-waste and energy consumption.**
+&gt; **Build an operating system that is lighter, faster, more secure, and more future-ready than anything that exists — one that runs beautifully on old hardware, serves every type of user, and helps reduce global e-waste and energy consumption.**
 
 Orion OS is a capability-based, microkernel operating system written entirely in Rust. It treats security as a first-class design constraint, not an afterthought. Every resource — files, network sockets, GPU time, IPC channels — is accessed through an unforgeable **capability token** validated by the Cosmos microkernel. No ambient authority. No confused deputy attacks. No privilege escalation via path traversal.
 
@@ -63,7 +63,7 @@ Orion OS is designed to serve **ALL users** — not a niche. This is a critical 
 
 ## 3. The Eco-Advantage
 
-> There are ~53 million tonnes of e-waste generated globally per year. A massive portion comes from "obsolete" PCs and laptops that are slow **not because of hardware failure** — but because their OS grew too heavy.
+&gt; There are ~53 million tonnes of e-waste generated globally per year. A massive portion comes from "obsolete" PCs and laptops that are slow **not because of hardware failure** — but because their OS grew too heavy.
 
 If Orion OS can breathe life into machines from 2012–2018, it could keep hundreds of millions of devices out of landfills.
 
@@ -239,7 +239,7 @@ These are **non-negotiable rules** that guide every technical decision. If a fea
 |---------|----------------------|
 | **DDR-001** | Hybrid microkernel. Cosmos = scheduler + MM + IPC + capability system only. All drivers run in userspace. Hardware isolation via IOMMU. Kernel target: &lt;5K lines / ~500KB Phase 1; &lt;15K lines / ~200KB stretch goal Phase 3. |
 | **DDR-002** | Kernel-managed capability tables. Processes hold opaque integer handles. Kernel validates every syscall against the caller's capability table. Processes cannot forge or inspect raw capability tokens. Atomic check-and-use (TOCTOU amendment: CAP_LOCK flag, reference counting, CLOCK_MONOTONIC for all security checks). |
-| **DDR-003** | 4-level PML4 page tables by default. 5-level opt-in for address spaces >128TB. ASLR with modern entropy. Per-process page table isolation. |
+| **DDR-003** | 4-level PML4 page tables by default. 5-level opt-in for address spaces &gt;128TB. ASLR with modern entropy. Per-process page table isolation. |
 | **DDR-004** | No fork(). spawn() only. Every new process receives an explicit, minimal capability set. Copy-on-write semantics for data sharing. |
 | **DDR-005** | 5 scheduling classes: interactive, batch, real-time, AI inference, gaming. Heterogeneous dispatch (CPU / GPU / NPU / TPU). Tickless. P/E core topology aware. SCHED_DEADLINE for hard real-time. |
 | **DDR-006** | Zero-copy page remap for large IPC payloads. Synchronous fast-path &lt;500ns for small messages. Every IPC message carries a verified caller PID + capability proof token. |
@@ -277,7 +277,7 @@ These are **non-negotiable rules** that guide every technical decision. If a fea
 | **DDR** | **Decision Summary** |
 |---------|----------------------|
 | **DDR-HAL** | CosmosHal Rust trait with arch-specific implementations. Cargo feature arch selection: hal-x86, hal-arm64, hal-riscv. Zero runtime dispatch cost (monomorphisation). Provides: timer, IRQ, MMU, CPU, serial, power per architecture. |
-| **DDR-IR** | Cosmos Intermediate Representation: SSA form, cap\&lt;R\> type for capability values, capability intrinsics. Bootstrap sequence B1→B7: rustc+LLVM → Cosmos Assembler → Cosmos Linker → Cosmos Compiler (x86-64) → Cosmos Compiler (ARM64, RISC-V) → delete LLVM. |
+| **DDR-IR** | Cosmos Intermediate Representation: SSA form, cap\&lt;R\&gt; type for capability values, capability intrinsics. Bootstrap sequence B1→B7: rustc+LLVM → Cosmos Assembler → Cosmos Linker → Cosmos Compiler (x86-64) → Cosmos Compiler (ARM64, RISC-V) → delete LLVM. |
 | **DDR-INIT** | orion-init: TOML .orion-service format. Kahn's algorithm for DAG dependency ordering. Socket activation. 6 boot stages. Parallel startup. Boot target: &lt;2 seconds to userspace. |
 | **DDR-VFS** | vega-vfsd: userspace daemon. Per-process filesystem namespaces. 8-mount point structure. FUSE-equivalent IPC interface via Cosmos typed messages. |
 | **DDR-PF** | orion-pf: Default deny-all firewall. NetworkCapability classes (LAN / Internet / Service). DNS-over-TLS by default. WireGuard bypass for VPN traffic. Capability-based rule management. |
@@ -363,13 +363,13 @@ Every component in Orion OS has a consistent space-themed name. This is the cano
 | **orion-mld** | ML daemon | Tier 2 ML hint daemon (hints only, not commands). |
 | **orion-init** | Service manager | DAG-ordered parallel service startup. |
 | **Cosmos Compiler** | Self-hosting compiler | Phase 5 north star: replaces LLVM entirely. |
-| **Cosmos IR** | Intermediate representation | SSA-form IR with cap\&lt;R\> type for capabilities. |
+| **Cosmos IR** | Intermediate representation | SSA-form IR with cap\&lt;R\&gt; type for capabilities. |
 
 ---
 
 ## 12. The North Star — Phase B7
 
-> **"Cosmos Compiler compiles Cosmos kernel. LLVM is deleted from the build system. Every CPU instruction executed when running Orion OS was written by us — not borrowed from any external toolchain. No other OS in widespread use can say this. Every phase exists to make this one moment possible."**
+&gt; **"Cosmos Compiler compiles Cosmos kernel. LLVM is deleted from the build system. Every CPU instruction executed when running Orion OS was written by us — not borrowed from any external toolchain. No other OS in widespread use can say this. Every phase exists to make this one moment possible."**
 
 The bootstrap sequence:
 
@@ -457,7 +457,7 @@ The canonical 16 documents. Always use these — archive all older `nova_*` file
 5. Before coding any subsystem: find its DDR in Vol 2 and read it first
 
 ### Rule Before Any Code
-> *Open orion_vol2_unified.docx. Find the DDR for your subsystem. All 39 DDRs are in one file, all locked. If a DDR needs changing: open an RFC using the template in CONTRIBUTING.md. Do not write code that deviates from a locked DDR without an accepted RFC.*
+&gt; *Open orion_vol2_unified.docx. Find the DDR for your subsystem. All 39 DDRs are in one file, all locked. If a DDR needs changing: open an RFC using the template in CONTRIBUTING.md. Do not write code that deviates from a locked DDR without an accepted RFC.*
 
 ### Quick Build Commands
 ```bash
@@ -481,7 +481,7 @@ cargo deny check           # license + CVE
 cargo nextest run --all    # unit tests
 just qemu-test             # QEMU boot (prints ORION OK)
 cargo kani                 # formal verification
-cargo bench (no >5% regression) # performance
+cargo bench (no &gt;5% regression) # performance
 ```
 
 ---

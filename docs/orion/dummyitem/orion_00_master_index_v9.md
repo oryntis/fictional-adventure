@@ -211,7 +211,7 @@ Kernel-managed cap tables. Integer handles. Atomic checks at use time. CAP\_LOCK
 
 DDR-003
 
-4-level PML4 default. 5-level opt-in for >128TB address space.
+4-level PML4 default. 5-level opt-in for &gt;128TB address space.
 
 ✅ LOCKED
 
@@ -349,7 +349,7 @@ CosmosHal Rust trait. Cargo feature arch selection (hal-x86, hal-arm64, hal-risc
 
 DDR-IR
 
-SSA + cap&lt;R> type + intrinsics. Bootstrap B1→B7: rustc+LLVM → Cosmos Assembler → Linker → Compiler → delete LLVM.
+SSA + cap&lt;R&gt; type + intrinsics. Bootstrap B1→B7: rustc+LLVM → Cosmos Assembler → Linker → Compiler → delete LLVM.
 
 ✅ LOCKED
 

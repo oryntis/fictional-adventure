@@ -255,7 +255,7 @@ Code coverage
 
 Track what percentage of kernel code is tested
 
-CI gate: require >80% test coverage on core
+CI gate: require &gt;80% test coverage on core
 
 cargo-nextest
 
@@ -717,7 +717,7 @@ Code coverage
 
 .cargo/config.toml
 
-CI gate: require >80% on core kernel code
+CI gate: require &gt;80% on core kernel code
 
 cargo-deny
 
@@ -837,7 +837,7 @@ Benchmark
 
 cargo bench
 
-No >10% regression vs main
+No &gt;10% regression vs main
 
 Comment on PR
 
@@ -1355,7 +1355,7 @@ Work — Verify
 
 If touching DDR-013 targets: run Kani on changed code.
 
-kani --function &lt;fn\_name>
+kani --function &lt;fn\_name&gt;
 
 As needed
 

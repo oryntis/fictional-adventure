@@ -69,10 +69,10 @@ Security-first culture trend
 
 There are ~53 million tonnes of e-waste generated globally per year. A massive portion comes from 'obsolete' PCs and laptops that are slow not because of hardware failure — but because their OS grew too heavy. If Orion OS can breathe life into machines from 2012-2018, it could keep hundreds of millions of devices out of landfills. This is a story no major OS company is telling — and it resonates deeply with the current generation.
 
-*   Lower idle CPU/RAM usage = less power draw = lower electricity bills and carbon footprint
-*   Legacy hardware revival means less manufacturing demand = less mining, less pollution
-*   A measurable stat to market: 'Orion OS uses X% less power than Windows 11 on the same machine'
-*   Potential partnership angle: schools, NGOs, developing markets, refurbished hardware companies
+- Lower idle CPU/RAM usage = less power draw = lower electricity bills and carbon footprint
+- Legacy hardware revival means less manufacturing demand = less mining, less pollution
+- A measurable stat to market: 'Orion OS uses X% less power than Windows 11 on the same machine'
+- Potential partnership angle: schools, NGOs, developing markets, refurbished hardware companies
 
 # **2\. Current OS Landscape & Where the Gaps Are**
 
@@ -166,11 +166,11 @@ No 30-year-old syscall baggage. Clean, capability-based interface from day one.
 
 The single most important architectural decision. Linux is a monolithic kernel — one bad driver can crash the entire system. Orion OS uses a hybrid microkernel approach:
 
-*   Kernel handles ONLY: memory management, scheduling, IPC, basic security policy
-*   Drivers run in isolated userspace processes — a GPU driver crash = that process dies, OS lives
-*   Filesystems run in userspace (like FUSE but first-class)
-*   Network stack in userspace for security isolation
-*   Inspired by: Fuchsia's Zircon, Minix 3, seL4 (formally verified microkernel)
+- Kernel handles ONLY: memory management, scheduling, IPC, basic security policy
+- Drivers run in isolated userspace processes — a GPU driver crash = that process dies, OS lives
+- Filesystems run in userspace (like FUSE but first-class)
+- Network stack in userspace for security isolation
+- Inspired by: Fuchsia's Zircon, Minix 3, seL4 (formally verified microkernel)
 
 **Language Choice**
 
@@ -180,62 +180,62 @@ Use Rust as the primary implementation language. It provides memory safety witho
 
 Linux's CFS (Completely Fair Scheduler) was designed in 2007. It has no concept of AI workloads, GPU compute bursts, or heterogeneous cores. Orion OS scheduler goals:
 
-*   Workload classification: automatically detect if a task is interactive, batch compute, AI inference, or real-time
-*   Heterogeneous scheduling: assign tasks intelligently across CPU cores, GPU shaders, NPU engines, TPU pods
-*   Thermal-aware: reduce clock speeds gracefully on constrained/old hardware to avoid throttling
-*   Latency targets: sub-100 microsecond scheduling latency for real-time and gaming workloads
-*   Power profiles: Eco mode / Balanced / Performance / AI Burst — user-selectable
+- Workload classification: automatically detect if a task is interactive, batch compute, AI inference, or real-time
+- Heterogeneous scheduling: assign tasks intelligently across CPU cores, GPU shaders, NPU engines, TPU pods
+- Thermal-aware: reduce clock speeds gracefully on constrained/old hardware to avoid throttling
+- Latency targets: sub-100 microsecond scheduling latency for real-time and gaming workloads
+- Power profiles: Eco mode / Balanced / Performance / AI Burst — user-selectable
 
 ## **4.3 Memory Management — Smarter Allocation**
 
 Modern OSes use general-purpose allocators that waste memory. Orion OS approach:
 
-*   Tiered allocator: small objects, page-size objects, huge pages (2MB/1GB), and tensor buffers are separate
-*   AI Tensor Allocator: contiguous huge-page allocations for GPU/NPU tensor operations — avoids costly memory fragmentation
-*   ASLR by default with modern entropy levels (Linux's is too weak)
-*   Transparent huge pages for AI workloads, standard pages for user apps
-*   Memory pressure signals: apps receive early warning before OOM, can gracefully release
+- Tiered allocator: small objects, page-size objects, huge pages (2MB/1GB), and tensor buffers are separate
+- AI Tensor Allocator: contiguous huge-page allocations for GPU/NPU tensor operations — avoids costly memory fragmentation
+- ASLR by default with modern entropy levels (Linux's is too weak)
+- Transparent huge pages for AI workloads, standard pages for user apps
+- Memory pressure signals: apps receive early warning before OOM, can gracefully release
 
 ## **4.4 Filesystem — One Modern FS**
 
 Linux has ext4, btrfs, xfs, f2fs, zfs... this fragmentation is a weakness. Orion OS uses ONE purpose-built filesystem:
 
-*   Copy-on-Write (CoW) — like btrfs/ZFS — instant snapshots, safe writes
-*   Built-in checksums on all data and metadata — silent corruption is impossible
-*   Transparent compression (LZ4 default, Zstd optional) — files take less space
-*   Native encryption — encrypted at rest by default
-*   AI-workload optimization: large sequential read/write paths for model files and datasets
-*   SSD/NVMe native (TRIM, wear leveling awareness) AND HDD-friendly (for old hardware)
+- Copy-on-Write (CoW) — like btrfs/ZFS — instant snapshots, safe writes
+- Built-in checksums on all data and metadata — silent corruption is impossible
+- Transparent compression (LZ4 default, Zstd optional) — files take less space
+- Native encryption — encrypted at rest by default
+- AI-workload optimization: large sequential read/write paths for model files and datasets
+- SSD/NVMe native (TRIM, wear leveling awareness) AND HDD-friendly (for old hardware)
 
 ## **4.5 Security Architecture**
 
 Linux security was bolted on over decades. Orion OS is secure from the foundation:
 
-*   Capability-based security model: every process gets only the exact permissions it needs — nothing more
-*   No SUID binaries — the classic Linux privilege escalation vector is eliminated
-*   Verified boot chain: cryptographically signed bootloader → kernel → userspace
-*   Mandatory Access Control (MAC) by default — not optional like SELinux
-*   Seccomp-style syscall filtering on all processes automatically
-*   Memory-safe kernel code (Rust) eliminates entire classes of CVEs
-*   Zero open ports on fresh install — network services must be explicitly enabled
+- Capability-based security model: every process gets only the exact permissions it needs — nothing more
+- No SUID binaries — the classic Linux privilege escalation vector is eliminated
+- Verified boot chain: cryptographically signed bootloader → kernel → userspace
+- Mandatory Access Control (MAC) by default — not optional like SELinux
+- Seccomp-style syscall filtering on all processes automatically
+- Memory-safe kernel code (Rust) eliminates entire classes of CVEs
+- Zero open ports on fresh install — network services must be explicitly enabled
 
 ## **4.6 GPU / NPU / TPU Compute — First Class**
 
 This is where Orion OS has a massive opportunity. Current state: Linux manages GPUs as display/compute devices bolted on. Orion OS treats all compute units as equals:
 
-*   Unified compute scheduler: CPU + GPU + NPU + TPU all visible to the kernel as schedulable compute units
-*   Compute tasks are dispatched to the most efficient unit automatically (or with user hints)
-*   GPU memory and system memory are treated as a unified pool where hardware allows (CUDA/ROCm/Metal-like unified memory)
-*   Direct hardware access APIs for AI frameworks — no bloated driver stacks
-*   NPU scheduling for inference on edge devices — huge for AI-on-device trend
+- Unified compute scheduler: CPU + GPU + NPU + TPU all visible to the kernel as schedulable compute units
+- Compute tasks are dispatched to the most efficient unit automatically (or with user hints)
+- GPU memory and system memory are treated as a unified pool where hardware allows (CUDA/ROCm/Metal-like unified memory)
+- Direct hardware access APIs for AI frameworks — no bloated driver stacks
+- NPU scheduling for inference on edge devices — huge for AI-on-device trend
 
 ## **4.7 Networking Stack**
 
-*   io\_uring-inspired async I/O from ground up — not retrofitted
-*   Zero-copy networking: data goes from NIC directly to user buffer without kernel copy
-*   Built-in WireGuard equivalent (VPN/secure tunneling as a kernel primitive)
-*   QUIC/HTTP3 support in the kernel network stack
-*   Firewall-by-default: deny all inbound, allow outbound — flipped from Linux default
+- io_uring-inspired async I/O from ground up — not retrofitted
+- Zero-copy networking: data goes from NIC directly to user buffer without kernel copy
+- Built-in WireGuard equivalent (VPN/secure tunneling as a kernel primitive)
+- QUIC/HTTP3 support in the kernel network stack
+- Firewall-by-default: deny all inbound, allow outbound — flipped from Linux default
 
 # **5\. Unique Competitive Advantages**
 
@@ -311,9 +311,9 @@ You mentioned ternary processors (-1, 0, 1). Here is the honest picture:
 
 No commercial ternary CPU exists yet. Research-phase only. Timeline to commercial viability: likely 10-20 years. However: designing Orion OS with a clean Hardware Abstraction Layer (HAL) from day one means porting to ternary architecture is POSSIBLE without a kernel rewrite. Design for portability now, and ternary support becomes a future feature.
 
-*   Design the HAL to be ISA-agnostic from day one
-*   Primary targets: x86-64 (existing hardware), ARM64 (mobile/server), RISC-V (future/open)
-*   When ternary chips arrive, Orion OS is positioned to be the FIRST OS to support them
+- Design the HAL to be ISA-agnostic from day one
+- Primary targets: x86-64 (existing hardware), ARM64 (mobile/server), RISC-V (future/open)
+- When ternary chips arrive, Orion OS is positioned to be the FIRST OS to support them
 
 ## **6.2 Emerging Hardware to Plan For**
 
@@ -383,7 +383,7 @@ Cache-friendly layouts, when O(1) loses to O(n) due to cache misses
 
 **Rust Language**
 
-Ownership, lifetimes, unsafe, zero-cost abstractions, embedded Rust (no\_std)
+Ownership, lifetimes, unsafe, zero-cost abstractions, embedded Rust (no_std)
 
 \[ \] In Progress
 
@@ -471,7 +471,7 @@ GPU/NPU scheduling, PCIe topology, DMA engines, unified memory
 
 **Async I/O**
 
-io\_uring design, zero-copy networking, DPDK concepts
+io_uring design, zero-copy networking, DPDK concepts
 
 \[ \]
 
@@ -573,15 +573,15 @@ Open source everything. Find contributors. Pick one vertical (AI edge or secure 
 
 These mistakes have killed more OS projects than technical difficulty. Memorize them.
 
-*   Starting with the GUI — the wrong end. Kernel first. Always. A GUI on an unstable kernel is a beautiful corpse.
-*   POSIX compatibility trap — trying to be Linux-compatible early traps you in 1970s design. Define your own clean ABI first.
-*   Underestimating drivers — drivers are 70%+ of the Linux codebase. Respect this.
-*   Solo forever — you need 3-5 deeply committed collaborators eventually. Start building community early.
-*   No tests — OS code without rigorous testing is unshippable. Test from day one.
-*   Skipping boring fundamentals — wanting to write schedulers while not fully understanding the MMU. Don't.
-*   Feature creep — shipping nothing perfectly is worse than shipping something well. Focus is survival.
-*   Not documenting — your future self and future contributors will hate you. Document everything.
-*   Ignoring power management early — retrofitting power management is extremely painful. Design it in from the start.
+- Starting with the GUI — the wrong end. Kernel first. Always. A GUI on an unstable kernel is a beautiful corpse.
+- POSIX compatibility trap — trying to be Linux-compatible early traps you in 1970s design. Define your own clean ABI first.
+- Underestimating drivers — drivers are 70%+ of the Linux codebase. Respect this.
+- Solo forever — you need 3-5 deeply committed collaborators eventually. Start building community early.
+- No tests — OS code without rigorous testing is unshippable. Test from day one.
+- Skipping boring fundamentals — wanting to write schedulers while not fully understanding the MMU. Don't.
+- Feature creep — shipping nothing perfectly is worse than shipping something well. Focus is survival.
+- Not documenting — your future self and future contributors will hate you. Document everything.
+- Ignoring power management early — retrofitting power management is extremely painful. Design it in from the start.
 
 # **10\. Market Demand & Opportunity**
 
@@ -637,10 +637,10 @@ These are features that NO currently shipping OS is actively pursuing together. 
 
 The OS learns your usage patterns entirely on-device — no cloud. It knows you open your browser and IDE every morning. By the time you log in, those apps are already warm in memory. Apps appear instant — not because they are fast, but because the OS started the work before you asked. On old hardware this is transformative.
 
-*   On-device only — no data leaves the machine, no cloud dependency
-*   Adapts to each user's unique patterns over time
-*   App launch latency was the #1 complaint on old hardware — this eliminates it
-*   No current OS does this intelligently at the kernel scheduler level
+- On-device only — no data leaves the machine, no cloud dependency
+- Adapts to each user's unique patterns over time
+- App launch latency was the #1 complaint on old hardware — this eliminates it
+- No current OS does this intelligently at the kernel scheduler level
 
 ## **11.2 Hardware Aging Compensation**
 
@@ -648,10 +648,10 @@ The OS learns your usage patterns entirely on-device — no cloud. It knows you 
 
 Old machines get slower partly because the OS treats a 5-year-old SSD the same as a new one. Orion OS detects hardware aging — worn SSD cells, thermally throttling CPUs, degraded HDD heads — and changes I/O patterns, memory layout, and scheduling to compensate. A 2014 laptop running Orion OS in 2030 should outperform the same laptop on Windows 11 today.
 
-*   SSD wear-level monitoring built into the filesystem — avoids writing to degraded blocks
-*   CPU thermal history awareness — pre-empts throttling by pacing workloads before the limit
-*   HDD-aware I/O scheduler — reduces seek distance on aging spinning disks
-*   Story: 'Your machine gets smarter as it ages, not slower'
+- SSD wear-level monitoring built into the filesystem — avoids writing to degraded blocks
+- CPU thermal history awareness — pre-empts throttling by pacing workloads before the limit
+- HDD-aware I/O scheduler — reduces seek distance on aging spinning disks
+- Story: 'Your machine gets smarter as it ages, not slower'
 
 ## **11.3 Transparent Compute Offloading**
 
@@ -659,10 +659,10 @@ Old machines get slower partly because the OS treats a 5-year-old SSD the same a
 
 If your old laptop struggles with a heavy task AND you have another machine on the local network, Orion OS silently offloads that computation — the app has no idea. It calls a function, Orion OS decides locally or remote, returns the result. This is what Bell Labs' Plan 9 attempted in the 1990s. Orion OS finishes it for modern AI, video, and compile workloads.
 
-*   Local network compute mesh — zero configuration, auto-discovery
-*   Transparent to all applications — no app changes needed
-*   Security: tasks are signed, results are verified, compute nodes are sandboxed
-*   Three old computers in a home become a small compute cluster automatically
+- Local network compute mesh — zero configuration, auto-discovery
+- Transparent to all applications — no app changes needed
+- Security: tasks are signed, results are verified, compute nodes are sandboxed
+- Three old computers in a home become a small compute cluster automatically
 
 ## **11.4 OS-Level AI Inference Runtime**
 
@@ -670,10 +670,10 @@ If your old laptop struggles with a heavy task AND you have another machine on t
 
 Every app that uses AI today ships its own TensorFlow/PyTorch (200-500MB each). Orion OS provides ONE system-level inference runtime shared by all apps — hardware-optimized, always current. Apps call it like a syscall. 10 AI apps share 1 runtime. This enables AI on machines that today cannot run any AI at all.
 
-*   Dramatic storage savings: shared runtime instead of per-app copies
-*   Hardware-aware: automatically routes to NPU > GPU > CPU in priority order
-*   Model caching: a model loaded for one app stays warm for others
-*   4-bit and 8-bit quantization built-in for small model inference on old hardware
+- Dramatic storage savings: shared runtime instead of per-app copies
+- Hardware-aware: automatically routes to NPU &gt; GPU &gt; CPU in priority order
+- Model caching: a model loaded for one app stays warm for others
+- 4-bit and 8-bit quantization built-in for small model inference on old hardware
 
 ## **11.5 Immutable System Core + Atomic Updates**
 
@@ -681,10 +681,10 @@ Every app that uses AI today ships its own TensorFlow/PyTorch (200-500MB each). 
 
 The core OS is cryptographically read-only. Updates are atomic transactions — either the whole update applies or none of it does. If an update breaks something, you boot the previous snapshot in 3 seconds. Malware cannot persist across reboots. Users can experiment freely — break anything, reboot, back to perfect state.
 
-*   Eliminates the #1 cause of OS reinstalls: partially-applied updates corrupting files
-*   Malware cannot write to the system partition — survives reboot clean
-*   Servers: zero-downtime atomic updates with instant rollback
-*   NixOS does something similar but complex. Orion OS makes it simple and default.
+- Eliminates the #1 cause of OS reinstalls: partially-applied updates corrupting files
+- Malware cannot write to the system partition — survives reboot clean
+- Servers: zero-downtime atomic updates with instant rollback
+- NixOS does something similar but complex. Orion OS makes it simple and default.
 
 ## **11.6 Per-App Energy Accounting Dashboard**
 
@@ -692,10 +692,10 @@ The core OS is cryptographically read-only. Updates are atomic transactions — 
 
 Every process, driver, and background service — Orion OS tracks real-time power consumption in milliwatts. Users see exactly which app is draining battery, set power budgets per app, and get accurate remaining battery predictions based on actual current draw — not guesses.
 
-*   Per-process CPU, RAM, disk I/O, and network usage converted to estimated milliwatts
-*   Battery prediction: 'At current usage: 2h 14m. Kill background apps: 3h 40m.'
-*   Server billing: charge by actual watt-hours, not arbitrary CPU time units
-*   Marketing stat: 'Orion OS used 31% less power than Windows on the same hardware' — measurable, citable
+- Per-process CPU, RAM, disk I/O, and network usage converted to estimated milliwatts
+- Battery prediction: 'At current usage: 2h 14m. Kill background apps: 3h 40m.'
+- Server billing: charge by actual watt-hours, not arbitrary CPU time units
+- Marketing stat: 'Orion OS used 31% less power than Windows on the same hardware' — measurable, citable
 
 ## **11.7 Formally Verified Security Core**
 
@@ -703,10 +703,10 @@ Every process, driver, and background service — Orion OS tracks real-time powe
 
 The memory manager, IPC system, and capability model are formally verified — meaning certain classes of bugs are provably impossible, not just well-tested. seL4 showed this is achievable. Orion OS applies this to its critical paths. This wins government, defense, medical, and financial contracts that no other OS can compete for.
 
-*   Kernel memory safety bugs: provably impossible (Rust + formal proofs)
-*   Capability escalation: mathematically proven a sandboxed process cannot exceed permissions
-*   Only seL4 has achieved this. No shipping commercial OS can make this claim.
-*   Certification path: DO-178C (aviation), IEC 62443 (industrial), Common Criteria EAL6+
+- Kernel memory safety bugs: provably impossible (Rust + formal proofs)
+- Capability escalation: mathematically proven a sandboxed process cannot exceed permissions
+- Only seL4 has achieved this. No shipping commercial OS can make this claim.
+- Certification path: DO-178C (aviation), IEC 62443 (industrial), Common Criteria EAL6+
 
 ## **11.8 Zero-Install Cryptographically Signed App Bundles**
 
@@ -714,10 +714,10 @@ The memory manager, IPC system, and capability model are formally verified — m
 
 Apps are single self-contained signed files. Download, click, runs in automatic sandbox with only declared permissions. No installation, no registry, no leftover files on delete. The OS verifies the developer signature before every launch. Malware impersonating a known app is cryptographically impossible.
 
-*   Like Flatpak/AppImage but OS-native — zero overhead, no compatibility layer
-*   Permissions declared at package level, shown to user before first run
-*   Developer story: compile once, sign once, runs on any Orion OS hardware (x86, ARM, RISC-V)
-*   Deletion is complete and guaranteed — no orphaned files or registry rot ever
+- Like Flatpak/AppImage but OS-native — zero overhead, no compatibility layer
+- Permissions declared at package level, shown to user before first run
+- Developer story: compile once, sign once, runs on any Orion OS hardware (x86, ARM, RISC-V)
+- Deletion is complete and guaranteed — no orphaned files or registry rot ever
 
 ## **11.9 Process Checkpoint and Resume**
 
@@ -725,10 +725,10 @@ Apps are single self-contained signed files. Download, click, runs in automatic 
 
 Freeze any running app or game — save its complete memory, file handles, and CPU state to disk. Restore it instantly later, even on different hardware. Low battery? Checkpoint everything, shutdown, resume tomorrow perfectly. Server migration? Move a running database to a new machine with zero downtime.
 
-*   Laptop use: low battery = checkpoint all running apps, hard shutdown, resume tomorrow
-*   Gaming: save game state at any moment regardless of whether the game supports saves
-*   Server: migrate live workloads between machines with zero downtime
-*   CRIU exists for Linux but is fragile and complex. Orion OS makes this first-class.
+- Laptop use: low battery = checkpoint all running apps, hard shutdown, resume tomorrow
+- Gaming: save game state at any moment regardless of whether the game supports saves
+- Server: migrate live workloads between machines with zero downtime
+- CRIU exists for Linux but is fragile and complex. Orion OS makes this first-class.
 
 ## **11.10 Hardware Privacy Layer**
 
@@ -736,22 +736,22 @@ Freeze any running app or game — save its complete memory, file handles, and C
 
 Every piece of hardware has identifiers — CPU serial, MAC address, GPU device ID, disk serial. Websites and apps use these to fingerprint and track you even in incognito mode. Orion OS presents randomized, abstracted hardware identifiers to all apps by default. The first OS with hardware-level tracking protection.
 
-*   MAC address randomization per network connection — standard on mobile, ignored on desktop
-*   CPU, GPU, disk identifiers abstracted behind OS-controlled virtual IDs
-*   Apps function correctly but cannot fingerprint you across sessions or apps
-*   Users grant 'real hardware ID' permission only to explicitly trusted apps
-*   Marketing story: 'The only OS where your hardware cannot identify you to anyone'
+- MAC address randomization per network connection — standard on mobile, ignored on desktop
+- CPU, GPU, disk identifiers abstracted behind OS-controlled virtual IDs
+- Apps function correctly but cannot fingerprint you across sessions or apps
+- Users grant 'real hardware ID' permission only to explicitly trusted apps
+- Marketing story: 'The only OS where your hardware cannot identify you to anyone'
 
 ## **11.11 Real-Time Kernel Paths by Design**
 
 **What It Is**
 
-Linux real-time support (PREEMPT\_RT) was retrofitted as a patch after 20 years. Orion OS designs real-time scheduling in from day one. Audio never glitches. Game frames are delivered with microsecond timing consistency. Robotics and medical devices work without special kernel builds. One kernel, real-time capable everywhere.
+Linux real-time support (PREEMPT_RT) was retrofitted as a patch after 20 years. Orion OS designs real-time scheduling in from day one. Audio never glitches. Game frames are delivered with microsecond timing consistency. Robotics and medical devices work without special kernel builds. One kernel, real-time capable everywhere.
 
-*   Audio professionals: zero-latency audio, no xruns even under maximum CPU load
-*   Gamers: frame timing consistency — not just high FPS but EVEN frame delivery, eliminating stutter
-*   Robotics/industrial/medical: hard real-time guarantees for microsecond-deadline sensor responses
-*   Wins the pro audio market that Linux has always struggled to serve
+- Audio professionals: zero-latency audio, no xruns even under maximum CPU load
+- Gamers: frame timing consistency — not just high FPS but EVEN frame delivery, eliminating stutter
+- Robotics/industrial/medical: hard real-time guarantees for microsecond-deadline sensor responses
+- Wins the pro audio market that Linux has always struggled to serve
 
 # **12\. Feasibility — Can This Actually Be Built?**
 
@@ -837,10 +837,10 @@ In 1984, Ken Thompson (co-creator of Unix) gave a famous Turing Award lecture ca
 
 This is the bootstrapping problem. It goes all the way down:
 
-*   To compile your kernel, you need a compiler
-*   To compile your compiler, you need a compiler
-*   To compile that compiler, you need a compiler
-*   Eventually you hit raw machine code — the only thing that needs no compiler
+- To compile your kernel, you need a compiler
+- To compile your compiler, you need a compiler
+- To compile that compiler, you need a compiler
+- Eventually you hit raw machine code — the only thing that needs no compiler
 
 The solution is not to give up. The solution is to start from the smallest possible trusted seed and build upward — replacing each layer with your own until nothing from the outside remains. This is exactly what you will do with Orion OS.
 
@@ -922,11 +922,11 @@ What you BORROW: LLVM compiler, musl libc, NASM assembler. All permissive licens
 
 Write Orion Libc — your own C standard library built specifically on top of Orion OS syscalls. This is one of the biggest milestones. Once done, musl is gone forever.
 
-*   Orion Libc is written in C and Rust, targeting only Orion OS syscalls — no POSIX compatibility baggage
-*   Start with the smallest needed subset: memory functions (malloc/free/memcpy), string functions (strlen/strcpy/strcmp), basic I/O (read/write/open/close)
-*   Expand incrementally: math library, threading primitives, file I/O, network sockets
-*   Orion Libc is co-designed with the kernel — the syscall interface is YOURS, so the libc can be optimal in ways musl never could be
-*   Once Orion Libc compiles cleanly and passes your test suite, delete musl from the source tree
+- Orion Libc is written in C and Rust, targeting only Orion OS syscalls — no POSIX compatibility baggage
+- Start with the smallest needed subset: memory functions (malloc/free/memcpy), string functions (strlen/strcpy/strcmp), basic I/O (read/write/open/close)
+- Expand incrementally: math library, threading primitives, file I/O, network sockets
+- Orion Libc is co-designed with the kernel — the syscall interface is YOURS, so the libc can be optimal in ways musl never could be
+- Once Orion Libc compiles cleanly and passes your test suite, delete musl from the source tree
 
 What you OWN at end of Phase B2: Bootloader, kernel, Orion Libc, filesystem, scheduler, memory manager, IPC system.
 
@@ -938,11 +938,11 @@ What you BORROW: LLVM compiler, NASM assembler. Nothing else.
 
 Write Cosmos Assembler — your own x86-64/ARM64/RISC-V assembler. This tool converts your handwritten assembly into machine code. Once done, NASM is gone.
 
-*   An assembler is much simpler than a compiler — it is a direct 1:1 translation of human-readable mnemonics to binary opcodes
-*   x86-64 assembler: about 20,000-50,000 lines of well-structured code
-*   Start with only the instructions Orion OS actually uses — you do not need to support every obscure x86 edge case
-*   Expand to ARM64 and RISC-V as you target those architectures
-*   Cosmos Assembler is written in Rust using Orion Libc — so it runs on Orion OS itself
+- An assembler is much simpler than a compiler — it is a direct 1:1 translation of human-readable mnemonics to binary opcodes
+- x86-64 assembler: about 20,000-50,000 lines of well-structured code
+- Start with only the instructions Orion OS actually uses — you do not need to support every obscure x86 edge case
+- Expand to ARM64 and RISC-V as you target those architectures
+- Cosmos Assembler is written in Rust using Orion Libc — so it runs on Orion OS itself
 
 What you OWN at end of Phase B3: Bootloader, kernel, Orion Libc, filesystem, scheduler, Nova assembler.
 
@@ -954,10 +954,10 @@ What you BORROW: LLVM compiler only.
 
 Write Cosmos Linker — the tool that takes compiled object files and links them into a final executable. This is the last tool between your compiler and a running program.
 
-*   The linker reads .o object files, resolves symbol references, applies relocations, and produces an ELF/Orion executable
-*   Orion executable format: you can define your own binary format — you do not have to use ELF (though ELF compatibility helps early on)
-*   A basic linker for your own format is about 15,000-40,000 lines of Rust
-*   The linker is written using Orion Libc and compiled by LLVM — until Phase B5
+- The linker reads .o object files, resolves symbol references, applies relocations, and produces an ELF/Orion executable
+- Orion executable format: you can define your own binary format — you do not have to use ELF (though ELF compatibility helps early on)
+- A basic linker for your own format is about 15,000-40,000 lines of Rust
+- The linker is written using Orion Libc and compiled by LLVM — until Phase B5
 
 What you OWN at end of Phase B4: Bootloader, kernel, Orion Libc, filesystem, Nova assembler, Nova linker.
 
@@ -969,12 +969,12 @@ What you BORROW: LLVM compiler only — and this is the last piece.
 
 Write Cosmos Compiler. This is the crown jewel. Once Cosmos Compiler can compile itself, LLVM is gone forever. Orion OS compiles Orion OS. You own every single line of code in your system. This is called 'self-hosting' and it is the moment the project truly belongs entirely to you.
 
-*   Cosmos Compiler is written in Rust initially — compiled by LLVM one last time to produce the first Cosmos Compiler binary
-*   That first Cosmos Compiler binary is then used to recompile Cosmos Compiler from source — this is the bootstrap moment
-*   From this point, LLVM is deleted from the build system. Orion OS builds itself entirely using Cosmos Compiler.
-*   Cosmos Compiler does NOT need to be GCC-quality on day one. It needs to compile Orion OS code correctly and produce working binaries. Optimisation comes later.
-*   Start with a C and Rust frontend targeting your own IR (Intermediate Representation), then emit Cosmos Assembler output
-*   Over years, improve optimisation passes: inlining, dead code elimination, register allocation, loop unrolling
+- Cosmos Compiler is written in Rust initially — compiled by LLVM one last time to produce the first Cosmos Compiler binary
+- That first Cosmos Compiler binary is then used to recompile Cosmos Compiler from source — this is the bootstrap moment
+- From this point, LLVM is deleted from the build system. Orion OS builds itself entirely using Cosmos Compiler.
+- Cosmos Compiler does NOT need to be GCC-quality on day one. It needs to compile Orion OS code correctly and produce working binaries. Optimisation comes later.
+- Start with a C and Rust frontend targeting your own IR (Intermediate Representation), then emit Cosmos Assembler output
+- Over years, improve optimisation passes: inlining, dead code elimination, register allocation, loop unrolling
 
 What you OWN at end of Phase B5: Everything. Bootloader, kernel, libc, assembler, linker, compiler, filesystem, scheduler, IPC, security model, build system.
 
@@ -1176,9 +1176,9 @@ Shell, utilities, package manager, compositor — all Rust
 
 Rust — small, fast, no dynamic allocation needed
 
-**Key Rust Feature for OS Dev: no\_std**
+**Key Rust Feature for OS Dev: no_std**
 
-In normal programs, Rust links against the standard library which requires an OS underneath it. For kernel code, you use #!\[no\_std\] — Rust without the standard library. You get the language, the type system, the borrow checker, zero-cost abstractions — but no OS dependency. This is how you write the kernel itself in Rust.
+In normal programs, Rust links against the standard library which requires an OS underneath it. For kernel code, you use #!\[no_std\] — Rust without the standard library. You get the language, the type system, the borrow checker, zero-cost abstractions — but no OS dependency. This is how you write the kernel itself in Rust.
 
 ## **14.2 Assembly — Only Where You Must**
 
@@ -1216,10 +1216,10 @@ Reading CPU features and model-specific registers requires specific instructions
 
 C is used minimally and temporarily. It disappears entirely by Phase B5.
 
-*   During Phase B1: some hardware init code that interfaces with UEFI firmware (which has a C-based API) may use thin C wrappers
-*   Temporary libc shims: a few C-compatible header files so that bootstrap tools (LLVM, musl) can interface with your kernel during early phases
-*   C completely disappears when Orion Libc and Cosmos Compiler are complete — replaced entirely by Rust
-*   You never write C application code. You never write C kernel logic. C only appears at the seams between your code and borrowed bootstrap tools.
+- During Phase B1: some hardware init code that interfaces with UEFI firmware (which has a C-based API) may use thin C wrappers
+- Temporary libc shims: a few C-compatible header files so that bootstrap tools (LLVM, musl) can interface with your kernel during early phases
+- C completely disappears when Orion Libc and Cosmos Compiler are complete — replaced entirely by Rust
+- You never write C application code. You never write C kernel logic. C only appears at the seams between your code and borrowed bootstrap tools.
 
 ## **14.4 Language Rules — The Constitution**
 
@@ -1255,11 +1255,11 @@ Kernel global state is accessed only through explicit locks or atomic operations
 
 Instead of apps being compiled to x86 or ARM binaries, Orion OS apps are compiled to WebAssembly (WASM). The OS JIT-compiles them to native code at install time. One app binary runs on x86-64, ARM64, and RISC-V with zero changes. Security is automatic — WASM cannot access memory outside its sandbox. No general-purpose OS uses WASM as its primary app model. This could define Orion OS more than anything else.
 
-*   Solves the universal binary problem: one file, every architecture
-*   Security by design: WASM has no raw memory access, no arbitrary syscalls, no escape from sandbox
-*   Performance: modern WASM JITs (Cranelift, Wasmtime) achieve 80-95% of native code speed
-*   Developer story: write in Rust, C, Go, Python, or any WASM-targeting language — runs on Orion OS
-*   Even older hardware benefits: WASM JIT can generate code optimised for the specific CPU it runs on
+- Solves the universal binary problem: one file, every architecture
+- Security by design: WASM has no raw memory access, no arbitrary syscalls, no escape from sandbox
+- Performance: modern WASM JITs (Cranelift, Wasmtime) achieve 80-95% of native code speed
+- Developer story: write in Rust, C, Go, Python, or any WASM-targeting language — runs on Orion OS
+- Even older hardware benefits: WASM JIT can generate code optimised for the specific CPU it runs on
 
 ## **15.2 Compressed RAM (ZRAM) — Default On**
 
@@ -1267,11 +1267,11 @@ Instead of apps being compiled to x86 or ARM binaries, Orion OS apps are compile
 
 ZRAM compresses least-recently-used RAM pages in real time using LZ4 (nanosecond-speed compression). A machine with 2GB physical RAM effectively gets 4-6GB of usable RAM. For old hardware revival, this single feature is transformative. Linux has it as an optional module. Orion OS ships it on by default, deeply integrated with the memory manager.
 
-*   LZ4 compression: typically 2:1 to 3:1 ratio on mixed memory contents
-*   Compression runs on a dedicated low-priority kernel thread — does not interrupt foreground tasks
-*   Decompression is faster than a RAM access on modern CPUs — near-zero latency penalty
-*   Combined with predictive pre-loading: pages are decompressed before the app needs them
-*   On a 2GB machine this genuinely changes what software can run — multiple browser tabs, AI models, games
+- LZ4 compression: typically 2:1 to 3:1 ratio on mixed memory contents
+- Compression runs on a dedicated low-priority kernel thread — does not interrupt foreground tasks
+- Decompression is faster than a RAM access on modern CPUs — near-zero latency penalty
+- Combined with predictive pre-loading: pages are decompressed before the app needs them
+- On a 2GB machine this genuinely changes what software can run — multiple browser tabs, AI models, games
 
 ## **15.3 Safe Kernel Extensions (Orion eBPF)**
 
@@ -1279,11 +1279,11 @@ ZRAM compresses least-recently-used RAM pages in real time using LZ4 (nanosecond
 
 Linux added eBPF — small verified programs that run inside the kernel for networking, tracing, and monitoring. It became one of the most powerful Linux features in 20 years. Orion OS has a safer, Rust-based version from day one: Nebula Extensions. Write a small Rust program, the kernel formally verifies it terminates and cannot crash, then loads it into the kernel to intercept any data path.
 
-*   Use cases: custom packet filtering, performance tracing, security monitoring, custom schedulers
-*   Safety guarantee: Nebula Extensions are formally verified to be: memory safe, terminating, and non-escaping
-*   Written in safe Rust — no assembly, no unsafe, no raw pointers
-*   Replaces the need for kernel modules entirely — no more loading untrusted kernel code
-*   Cloud/server killer feature: operators can install custom network policies without rebooting
+- Use cases: custom packet filtering, performance tracing, security monitoring, custom schedulers
+- Safety guarantee: Nebula Extensions are formally verified to be: memory safe, terminating, and non-escaping
+- Written in safe Rust — no assembly, no unsafe, no raw pointers
+- Replaces the need for kernel modules entirely — no more loading untrusted kernel code
+- Cloud/server killer feature: operators can install custom network policies without rebooting
 
 ## **15.4 Unikernel Mode for Servers**
 
@@ -1291,11 +1291,11 @@ Linux added eBPF — small verified programs that run inside the kernel for netw
 
 In Unikernel Mode, your application and the Orion OS kernel compile into a single binary image. No user/kernel boundary, no context switches for syscalls, no process isolation overhead — the app IS the kernel. For single-purpose servers (database, web server, AI inference) this is 3-5x faster than a normal OS. Deploy it in a VM for isolation. Orion OS is both a full general-purpose OS and an ultra-fast server unikernel.
 
-*   Syscalls become direct function calls — zero overhead
-*   No process separation means no page table switches — massive TLB efficiency gain
-*   Ideal for: database engines, HTTP servers, AI inference endpoints, DNS servers
-*   Security model: isolation is at the VM/container level, not the process level
-*   Build: orion build --unikernel myapp → single bootable image containing app + kernel
+- Syscalls become direct function calls — zero overhead
+- No process separation means no page table switches — massive TLB efficiency gain
+- Ideal for: database engines, HTTP servers, AI inference endpoints, DNS servers
+- Security model: isolation is at the VM/container level, not the process level
+- Build: orion build --unikernel myapp → single bootable image containing app + kernel
 
 ## **15.5 Hardware Memory Tagging (ARM MTE)**
 
@@ -1303,11 +1303,11 @@ In Unikernel Mode, your application and the Orion OS kernel compile into a singl
 
 ARM's Memory Tagging Extension (MTE) gives every memory allocation a 4-bit hardware tag. Every pointer to that allocation carries the matching tag. If you access memory with the wrong tag (use-after-free, buffer overflow), the CPU raises a hardware fault instantly — before any damage is done. Near-zero performance overhead. Orion OS exposes this as the default allocator on ARM hardware.
 
-*   Catches use-after-free and buffer overflows in hardware — not in software, in silicon
-*   Performance overhead: ~1-3% — essentially free compared to software sanitizers
-*   Rust + MTE = double protection: Rust prevents most memory bugs at compile time, MTE catches any that slip through at runtime
-*   Available on: ARM Cortex-A510, A710, A715, and all modern Apple Silicon (foundation for future support)
-*   Intel equivalent: coming in future CPUs. Design Orion OS memory allocator to support both.
+- Catches use-after-free and buffer overflows in hardware — not in software, in silicon
+- Performance overhead: ~1-3% — essentially free compared to software sanitizers
+- Rust + MTE = double protection: Rust prevents most memory bugs at compile time, MTE catches any that slip through at runtime
+- Available on: ARM Cortex-A510, A710, A715, and all modern Apple Silicon (foundation for future support)
+- Intel equivalent: coming in future CPUs. Design Orion OS memory allocator to support both.
 
 ## **15.6 Live Kernel Patching**
 
@@ -1315,10 +1315,10 @@ ARM's Memory Tagging Extension (MTE) gives every memory allocation a 4-bit hardw
 
 When a critical kernel vulnerability is discovered, you patch the running kernel without rebooting. The function containing the bug is atomically replaced with the fixed version while all other threads keep running. Servers achieve 100% uptime. Linux has kpatch/livepatch. Orion OS designs live patching into the kernel architecture from the start — not bolted on later.
 
-*   Security patches applied in milliseconds — no downtime, no maintenance windows
-*   The kernel hot-patch mechanism is itself formally verified — a bad patch cannot crash the system
-*   Patch history is logged and reversible — any live patch can be rolled back without rebooting
-*   For enterprise and server sales, this feature alone justifies migration from Linux
+- Security patches applied in milliseconds — no downtime, no maintenance windows
+- The kernel hot-patch mechanism is itself formally verified — a bad patch cannot crash the system
+- Patch history is logged and reversible — any live patch can be rolled back without rebooting
+- For enterprise and server sales, this feature alone justifies migration from Linux
 
 ## **15.7 Deterministic Builds**
 
@@ -1326,10 +1326,10 @@ When a critical kernel vulnerability is discovered, you patch the running kernel
 
 Given identical source code and build inputs, Orion OS always produces a bit-for-bit identical binary. Anyone can download the source, build it, and verify the binary they got matches the official release exactly. No hidden modifications, no backdoors, no compiler-inserted code. This directly addresses Ken Thompson's Trusting Trust problem. Your OS is the first OS that can be fully verified by anyone.
 
-*   All timestamps, random seeds, and non-deterministic inputs are eliminated from the build
-*   Third-party auditors can verify official binaries without trusting Anthropic, Canonical, or any other company
-*   Government and enterprise procurement: reproducible builds are now a requirement in some security standards
-*   Combined with formally verified kernel: the most trustworthy OS ever shipped to the public
+- All timestamps, random seeds, and non-deterministic inputs are eliminated from the build
+- Third-party auditors can verify official binaries without trusting Anthropic, Canonical, or any other company
+- Government and enterprise procurement: reproducible builds are now a requirement in some security standards
+- Combined with formally verified kernel: the most trustworthy OS ever shipped to the public
 
 ## **15.8 Intelligent Three-Tier Memory**
 
@@ -1349,9 +1349,9 @@ Fast SSD swap for pages that cannot be compressed further. Transparent. ~100 mic
 
 Last resort. Slow, but managed intelligently — large sequential blocks only, prefetched before needed. ~10ms access.
 
-*   Predictive prefetching: the memory manager predicts what you will need next and pre-warms it from lower tiers before you ask
-*   The result: a machine that never feels like it is swapping, even when it technically is
-*   Old 2GB HDD machine: feels smoother than a 4GB machine running Windows 11
+- Predictive prefetching: the memory manager predicts what you will need next and pre-warms it from lower tiers before you ask
+- The result: a machine that never feels like it is swapping, even when it technically is
+- Old 2GB HDD machine: feels smoother than a 4GB machine running Windows 11
 
 ## **15.9 Type-Safe Capability Syscall Interface**
 
@@ -1359,10 +1359,10 @@ Last resort. Slow, but managed intelligently — large sequential blocks only, p
 
 Traditional syscalls are integer codes with untyped buffers: write(1, buf, 100) — three integers, no type checking. Pass the wrong number and you have a vulnerability. Orion OS syscalls are strongly typed capability operations. You do not pass integers — you pass typed capability tokens. The compiler and kernel both verify types. A network socket cannot be accidentally used as a file. A closed file handle cannot be reused.
 
-*   Every resource has a typed capability: FileCapability, NetworkCapability, MemoryCapability, DeviceCapability
-*   Capabilities are unforgeable — you cannot construct one without the kernel granting it explicitly
-*   Type mismatches are caught at compile time — a class of vulnerabilities that does not exist
-*   Capability revocation: any capability can be revoked instantly — all references to that resource become invalid
+- Every resource has a typed capability: FileCapability, NetworkCapability, MemoryCapability, DeviceCapability
+- Capabilities are unforgeable — you cannot construct one without the kernel granting it explicitly
+- Type mismatches are caught at compile time — a class of vulnerabilities that does not exist
+- Capability revocation: any capability can be revoked instantly — all references to that resource become invalid
 
 # **16\. Development Setup on Your Mac — Start Here**
 
@@ -1396,11 +1396,11 @@ Assembler for your bootloader. Run: brew install nasm
 
 **Bare metal target**
 
-Tells Rust to compile for x86-64 with no OS underneath. Run: rustup target add x86\_64-unknown-none
+Tells Rust to compile for x86-64 with no OS underneath. Run: rustup target add x86_64-unknown-none
 
 **Cross compiler**
 
-GCC configured to produce x86-64 code from your Mac. Run: brew install x86\_64-elf-gcc
+GCC configured to produce x86-64 code from your Mac. Run: brew install x86_64-elf-gcc
 
 **GDB**
 
@@ -1432,7 +1432,7 @@ nasm -f bin bootloader.asm -o bootloader.bin
 
 **Step 3: Compile kernel**
 
-cargo build --target x86\_64-unknown-none --release
+cargo build --target x86_64-unknown-none --release
 
 **Step 4: Create disk image**
 
@@ -1440,7 +1440,7 @@ dd if=/dev/zero of=nova.img bs=512 count=2880 && dd if=bootloader.bin of=nova.im
 
 **Step 5: Boot in QEMU**
 
-qemu-system-x86\_64 -drive format=raw,file=nova.img -m 128M
+qemu-system-x86_64 -drive format=raw,file=nova.img -m 128M
 
 **Step 6: See crash or output**
 
@@ -1484,7 +1484,7 @@ Switch from 32-bit protected mode to 64-bit long mode. Goal: CPU is now in 64-bi
 
 **Month 4**
 
-Jump from Assembly into your first Rust kernel function. Goal: Rust code is running on bare metal. Learn: no\_std Rust, cross-compilation, linker scripts, the calling convention between Assembly and Rust.
+Jump from Assembly into your first Rust kernel function. Goal: Rust code is running on bare metal. Learn: no_std Rust, cross-compilation, linker scripts, the calling convention between Assembly and Rust.
 
 \[ \] Done
 
@@ -1512,7 +1512,7 @@ In the first few months, your kernel runs before any printing infrastructure exi
 
 **Start QEMU in debug mode**
 
-qemu-system-x86\_64 -drive format=raw,file=nova.img -m 128M -s -S The -s flag opens a GDB server on port 1234. The -S flag pauses before running.
+qemu-system-x86_64 -drive format=raw,file=nova.img -m 128M -s -S The -s flag opens a GDB server on port 1234. The -S flag pauses before running.
 
 **Connect GDB from Terminal**
 
@@ -1558,7 +1558,7 @@ Intel 64 and IA-32 Architectures Software Developer's Manual — the definitive 
 
 **Rust Embedded Book**
 
-docs.rust-embedded.org/book — Teaches no\_std Rust for bare metal. Essential.
+docs.rust-embedded.org/book — Teaches no_std Rust for bare metal. Essential.
 
 **NASM Documentation**
 
@@ -1580,7 +1580,7 @@ forum.osdev.org — Active community. Search before posting — most questions h
 
 **Wrong architecture**
 
-Your Mac is ARM64 (Apple Silicon) or x86-64. You are targeting x86-64 bare metal. Always use --target x86\_64-unknown-none. Never compile without the target flag.
+Your Mac is ARM64 (Apple Silicon) or x86-64. You are targeting x86-64 bare metal. Always use --target x86_64-unknown-none. Never compile without the target flag.
 
 **Forgetting -m 128M in QEMU**
 
@@ -1594,9 +1594,9 @@ A BIOS bootloader must be exactly 512 bytes ending in 0x55 0xAA. Use NASM's padd
 
 Rust kernel code needs a custom linker script telling it where in memory to load. Start with Phil Opp's linker script and modify it.
 
-**Panicking on no\_std**
+**Panicking on no_std**
 
-In no\_std Rust you must define your own panic handler. Add: #\[panic\_handler\] fn panic(\_: &PanicInfo) -> ! &#123; loop &#123;&#125; &#125;
+In no_std Rust you must define your own panic handler. Add: #\[panic_handler\] fn panic(\_: &PanicInfo) -&gt; ! &#123; loop &#123;&#125; &#125;
 
 **GDB not connecting**
 
@@ -1638,12 +1638,12 @@ Design fine-grained locking from day one. No global locks anywhere. Every subsys
 
 ## **17.2 Orion OS Multithreading Design — From Day One**
 
-*   Every kernel subsystem has its own independent fine-grained lock — never a global lock
-*   Lock ordering is formally documented from day one — prevents deadlocks by design
-*   RCU (Read-Copy-Update): for frequently-read data, readers proceed with zero locking overhead
-*   Lock-free algorithms for the hottest paths: scheduler run queues, memory allocator free lists
-*   Per-CPU data structures: data that only one CPU accesses needs no lock at all
-*   NUMA-aware locking: locks for memory on NUMA node 0 are different from locks for NUMA node 1
+- Every kernel subsystem has its own independent fine-grained lock — never a global lock
+- Lock ordering is formally documented from day one — prevents deadlocks by design
+- RCU (Read-Copy-Update): for frequently-read data, readers proceed with zero locking overhead
+- Lock-free algorithms for the hottest paths: scheduler run queues, memory allocator free lists
+- Per-CPU data structures: data that only one CPU accesses needs no lock at all
+- NUMA-aware locking: locks for memory on NUMA node 0 are different from locks for NUMA node 1
 
 # **18\. OS History — What to Copy, What to Avoid**
 
@@ -1795,12 +1795,12 @@ Orion OS: capability security is the foundation everything is built on, not a fe
 
 In 2024, NIST finalised the first post-quantum cryptographic standards: CRYSTALS-Kyber (key exchange) and CRYSTALS-Dilithium (digital signatures). Current public-key crypto (RSA, ECC) — used in TLS, SSH, disk encryption, package signing — will be broken by quantum computers. 'Harvest now, decrypt later' attacks are happening TODAY: adversaries store encrypted traffic now to decrypt once quantum computers arrive. Orion OS builds post-quantum crypto into every primitive from day one.
 
-*   Verified boot signatures: CRYSTALS-Dilithium instead of RSA or ECDSA
-*   Filesystem encryption: hybrid classical + post-quantum key exchange
-*   IPC authentication: post-quantum signed capability tokens
-*   Network encryption: CRYSTALS-Kyber key exchange in Nova's network stack
-*   Package manager: post-quantum signed packages — cannot be tampered with even by quantum adversaries
-*   10-year advantage over Linux which is still debating how to migrate its crypto primitives
+- Verified boot signatures: CRYSTALS-Dilithium instead of RSA or ECDSA
+- Filesystem encryption: hybrid classical + post-quantum key exchange
+- IPC authentication: post-quantum signed capability tokens
+- Network encryption: CRYSTALS-Kyber key exchange in Nova's network stack
+- Package manager: post-quantum signed packages — cannot be tampered with even by quantum adversaries
+- 10-year advantage over Linux which is still debating how to migrate its crypto primitives
 
 ## **19.2 Processing-in-Memory (PIM) Support**
 
@@ -1808,11 +1808,11 @@ In 2024, NIST finalised the first post-quantum cryptographic standards: CRYSTALS
 
 Samsung, SK Hynix, and Micron are shipping RAM chips with compute units built inside them. Instead of moving data from RAM to CPU (which consumes enormous energy and bandwidth), computation happens inside the memory chip itself. For AI inference — which is largely memory-bandwidth limited — this is transformative. Orion OS's memory manager needs to be PIM-aware.
 
-*   PIM-aware allocator: place tensor data in PIM-capable memory regions automatically
-*   Dispatch interface: applications can request PIM execution — kernel schedules it
-*   Fallback: if PIM hardware not present, falls back to CPU execution transparently
-*   Massive energy saving for AI inference: computation happens where the data lives
-*   No current OS has any concept of PIM scheduling
+- PIM-aware allocator: place tensor data in PIM-capable memory regions automatically
+- Dispatch interface: applications can request PIM execution — kernel schedules it
+- Fallback: if PIM hardware not present, falls back to CPU execution transparently
+- Massive energy saving for AI inference: computation happens where the data lives
+- No current OS has any concept of PIM scheduling
 
 ## **19.3 Adaptive Kernel — Compile-Time Specialisation**
 
@@ -1820,11 +1820,11 @@ Samsung, SK Hynix, and Micron are shipping RAM chips with compute units built in
 
 Inspired by Unikraft research: Orion OS compiles differently for different deployment targets. A gaming build includes the real-time scheduler, GPU subsystem, and audio stack. A server build excludes GUI and audio, includes unikernel mode. An edge AI build includes NPU scheduler and WASM runtime, nothing else. Each specialised build is smaller and faster than any general-purpose kernel.
 
-*   orion build --profile gaming → real-time kernel, GPU priority scheduler, audio stack
-*   orion build --profile server → minimal kernel, network-optimised, unikernel support
-*   orion build --profile edge-ai → NPU scheduler, WASM runtime, power-optimised
-*   orion build --profile desktop → full feature kernel, balanced for all workloads
-*   Each profile: different kernel size, different subsystems compiled in, different default configuration
+- orion build --profile gaming → real-time kernel, GPU priority scheduler, audio stack
+- orion build --profile server → minimal kernel, network-optimised, unikernel support
+- orion build --profile edge-ai → NPU scheduler, WASM runtime, power-optimised
+- orion build --profile desktop → full feature kernel, balanced for all workloads
+- Each profile: different kernel size, different subsystems compiled in, different default configuration
 
 ## **19.4 Predictive Security — Behavioural AI**
 
@@ -1832,11 +1832,11 @@ Inspired by Unikraft research: Orion OS compiles differently for different deplo
 
 A tiny on-device ML model trained on what 'normal' looks like for each process on your specific machine. If your browser suddenly starts reading SSH keys or writing to system directories — anomalous. The kernel flags it, pauses the process, notifies the user. Fundamentally different from signature-based antivirus or policy-based MAC. It learns YOUR system's normal and detects deviations.
 
-*   Per-process behavioural baseline: syscall patterns, file access patterns, network patterns
-*   On-device only: the model runs in a privileged kernel thread, no data leaves the machine
-*   Anomaly score: every process action gets a score. High score = alert and optionally pause.
-*   Self-updating: the model updates as your usage patterns legitimately change
-*   Apple TCC is a primitive static version of this — Orion OS makes it intelligent and universal
+- Per-process behavioural baseline: syscall patterns, file access patterns, network patterns
+- On-device only: the model runs in a privileged kernel thread, no data leaves the machine
+- Anomaly score: every process action gets a score. High score = alert and optionally pause.
+- Self-updating: the model updates as your usage patterns legitimately change
+- Apple TCC is a primitive static version of this — Orion OS makes it intelligent and universal
 
 ## **19.5 Zero-Trust Hardware Attestation**
 
@@ -1844,11 +1844,11 @@ A tiny on-device ML model trained on what 'normal' looks like for each process o
 
 Every boot, Orion OS generates a cryptographic proof that the bootloader, kernel, and all loaded drivers are unmodified and authorised. This proof can be sent to a remote server before the server shares sensitive data. If your machine was tampered with, attestation fails and the server refuses. Makes Orion OS the most trustworthy remote computing platform available.
 
-*   Boot measurement chain: each stage measures and signs the next before transferring control
-*   Attestation report: signed proof of exact software stack running, verifiable by anyone
-*   Remote verification: a server can verify your Orion OS install before trusting it with data
-*   Hardware support: ARM TrustZone, Intel TXT, AMD SEV — all supported
-*   Use case: healthcare, finance, government — 'prove your system is compliant before accessing this data'
+- Boot measurement chain: each stage measures and signs the next before transferring control
+- Attestation report: signed proof of exact software stack running, verifiable by anyone
+- Remote verification: a server can verify your Orion OS install before trusting it with data
+- Hardware support: ARM TrustZone, Intel TXT, AMD SEV — all supported
+- Use case: healthcare, finance, government — 'prove your system is compliant before accessing this data'
 
 ## **19.6 Intelligent Swap — Swapless Feel**
 
@@ -1910,18 +1910,18 @@ Every cryptographic interface in Orion OS accepts an algorithm parameter. When b
 
 Compute Express Link 3.0 (ratified 2022) allows multiple servers to share a single pool of memory over a fabric — with latency similar to local NUMA. A machine with 64GB RAM can access another machine's 256GB as if it were local memory. This fundamentally changes what 'a computer' is. Orion OS's memory manager must understand CXL topology.
 
-*   CXL memory appears as a NUMA node in Orion OS — same programming model, different latency tier
-*   Hot data stays in local RAM, cold data migrates to CXL pool automatically
-*   AI inference: model weights in CXL pool, activations in local RAM — terabyte-scale models on commodity hardware
-*   Transparent to applications: they see one large address space, Orion OS manages placement
+- CXL memory appears as a NUMA node in Orion OS — same programming model, different latency tier
+- Hot data stays in local RAM, cold data migrates to CXL pool automatically
+- AI inference: model weights in CXL pool, activations in local RAM — terabyte-scale models on commodity hardware
+- Transparent to applications: they see one large address space, Orion OS manages placement
 
 ## **20.3 Processing-in-Memory (PIM) — Compute Inside RAM**
 
-*   Samsung AQUABOLT-XL, SK Hynix AiM: GPU-like compute units built into HBM memory chips
-*   For AI: matrix-vector operations execute inside the RAM chip — no data movement to CPU/GPU
-*   Orion OS memory allocator: PIM-capable regions are first-class allocation targets for AI tensors
-*   Cosmos Scheduler: PIM operations are scheduled alongside CPU/GPU/NPU operations
-*   Timeline: Available in HPC accelerators now. Consumer hardware: 3-7 years.
+- Samsung AQUABOLT-XL, SK Hynix AiM: GPU-like compute units built into HBM memory chips
+- For AI: matrix-vector operations execute inside the RAM chip — no data movement to CPU/GPU
+- Orion OS memory allocator: PIM-capable regions are first-class allocation targets for AI tensors
+- Cosmos Scheduler: PIM operations are scheduled alongside CPU/GPU/NPU operations
+- Timeline: Available in HPC accelerators now. Consumer hardware: 3-7 years.
 
 ## **20.4 Photonic Interconnects**
 
@@ -1929,9 +1929,9 @@ Compute Express Link 3.0 (ratified 2022) allows multiple servers to share a sing
 
 Intel, Ayar Labs, and others are shipping photonic (light-based) chip-to-chip connections for data centres. Data between CPU and memory, or between chips, moves at the speed of light with dramatically lower energy than copper. Changes memory latency and bandwidth assumptions Orion OS is built on.
 
-*   Design memory manager with pluggable latency models — photonics is a configuration, not a redesign
-*   Cache hierarchy assumptions change: photonic memory may have similar latency to on-package HBM
-*   Timeline: Data centre interconnects: now. On-package photonics: 5-10 years.
+- Design memory manager with pluggable latency models — photonics is a configuration, not a redesign
+- Cache hierarchy assumptions change: photonic memory may have similar latency to on-package HBM
+- Timeline: Data centre interconnects: now. On-package photonics: 5-10 years.
 
 ## **20.5 RISC-V Going Mainstream**
 
@@ -1961,11 +1961,11 @@ RISC-V server mainstream: 2026-2028. Consumer device mainstream: 2028-2032.
 
 ## **20.6 Wi-Fi 7 and Deterministic Networking**
 
-*   Wi-Fi 7 (802.11be): 46 Gbps peak, multi-link operation, dramatically reduced latency
-*   TSN (Time-Sensitive Networking): deterministic sub-microsecond latency over standard Ethernet
-*   Orion OS real-time network stack: TSN support from day one — enables robotics, industrial automation, pro audio over Ethernet
-*   Multi-link: Orion OS network manager coordinates simultaneous use of 2.4GHz + 5GHz + 6GHz links
-*   Timeline: Wi-Fi 7 hardware shipping now. TSN in enterprise Ethernet: shipping now.
+- Wi-Fi 7 (802.11be): 46 Gbps peak, multi-link operation, dramatically reduced latency
+- TSN (Time-Sensitive Networking): deterministic sub-microsecond latency over standard Ethernet
+- Orion OS real-time network stack: TSN support from day one — enables robotics, industrial automation, pro audio over Ethernet
+- Multi-link: Orion OS network manager coordinates simultaneous use of 2.4GHz + 5GHz + 6GHz links
+- Timeline: Wi-Fi 7 hardware shipping now. TSN in enterprise Ethernet: shipping now.
 
 ## **20.7 Confidential Computing Becoming Standard**
 
@@ -1999,17 +1999,17 @@ Healthcare, finance, legal — run sensitive workloads in the cloud without trus
 
 Intel Loihi 2 and IBM NorthPole use spike-based neural computation — fundamentally different from von Neumann architecture. Instead of clock-driven fetch-decode-execute, computation happens via asynchronous spikes propagating through a neural network in silicon. Extremely energy-efficient for certain AI tasks (pattern recognition, sensor processing).
 
-*   Orion OS compute abstraction: neuromorphic chips appear as schedulable compute units alongside CPU/GPU/NPU
-*   Ideal workloads: always-on sensor monitoring, voice wake word detection, anomaly detection — at microwatt power levels
-*   Timeline: research and specialised hardware now. Broader availability: 5-10 years.
+- Orion OS compute abstraction: neuromorphic chips appear as schedulable compute units alongside CPU/GPU/NPU
+- Ideal workloads: always-on sensor monitoring, voice wake word detection, anomaly detection — at microwatt power levels
+- Timeline: research and specialised hardware now. Broader availability: 5-10 years.
 
 ## **20.9 In-Package HBM Memory**
 
-*   HBM (High Bandwidth Memory) stacked on or next to the processor die — already in AMD MI300X and NVIDIA H100
-*   Latency dramatically lower and bandwidth dramatically higher than external DDR5
-*   Orion OS memory allocator: detect HBM topology and prefer it for hot data, AI tensor buffers, kernel data structures
-*   Design implication: the distinction between 'CPU memory' and 'GPU memory' collapses — unified HBM pool shared by all compute units
-*   Timeline: HPC accelerators now. Consumer mainstream: 3-5 years.
+- HBM (High Bandwidth Memory) stacked on or next to the processor die — already in AMD MI300X and NVIDIA H100
+- Latency dramatically lower and bandwidth dramatically higher than external DDR5
+- Orion OS memory allocator: detect HBM topology and prefer it for hot data, AI tensor buffers, kernel data structures
+- Design implication: the distinction between 'CPU memory' and 'GPU memory' collapses — unified HBM pool shared by all compute units
+- Timeline: HPC accelerators now. Consumer mainstream: 3-5 years.
 
 ## **20.10 Ternary Processors — Revisited**
 
@@ -2017,10 +2017,10 @@ Intel Loihi 2 and IBM NorthPole use spike-based neural computation — fundament
 
 Ternary computing (-1, 0, 1) offers theoretical advantages: 1 trit stores log2(3) ≈ 1.58 bits of information — 58% more than a binary bit. A ternary processor could theoretically be 58% more information-dense. Research institutions (Eindhoven University of Technology) have demonstrated ternary transistors. Commercial timeline remains 15-20 years. Orion OS strategy: HAL-agnostic design means ternary support is a future driver, not a redesign.
 
-*   Design the ISA abstraction layer so adding a ternary ISA requires writing a new backend — not touching the kernel
-*   Cosmos Compiler's IR (Intermediate Representation) should be architecture-agnostic — compiling to ternary ISA is a new backend
-*   Cosmos Assembler: designed to support multiple ISAs from the start
-*   When ternary chips arrive, Orion OS is uniquely positioned — the only OS with a clean ternary migration path
+- Design the ISA abstraction layer so adding a ternary ISA requires writing a new backend — not touching the kernel
+- Cosmos Compiler's IR (Intermediate Representation) should be architecture-agnostic — compiling to ternary ISA is a new backend
+- Cosmos Assembler: designed to support multiple ISAs from the start
+- When ternary chips arrive, Orion OS is uniquely positioned — the only OS with a clean ternary migration path
 
 ## **20.11 Future Tech Preparation Summary**
 
@@ -2178,7 +2178,7 @@ Every Orion OS configuration is expressed in one consistent declarative format. 
 
 **Example Orion Config File**
 
-\[kernel\] scheduler.profile = "gaming" scheduler.latency\_target\_us = 100 memory.zram.enabled = true memory.zram.compression = "lz4" memory.huge\_pages = "transparent" \[security\] capability.default\_deny = true verified\_boot = true hardware\_attestation = true \[power\] profile = "balanced" cpu.idle\_governor = "menu" gpu.idle\_timeout\_ms = 500 per\_app\_budget.enabled = true \[network\] firewall.default\_inbound = "deny" firewall.default\_outbound = "allow" dns.resolver = "orion-dns" wifi.mac\_randomise = true \[extensions\] loaded = \["orion-gaming-scheduler", "orion-power-monitor"\]
+\[kernel\] scheduler.profile = "gaming" scheduler.latency_target_us = 100 memory.zram.enabled = true memory.zram.compression = "lz4" memory.huge_pages = "transparent" \[security\] capability.default_deny = true verified_boot = true hardware_attestation = true \[power\] profile = "balanced" cpu.idle_governor = "menu" gpu.idle_timeout_ms = 500 per_app_budget.enabled = true \[network\] firewall.default_inbound = "deny" firewall.default_outbound = "allow" dns.resolver = "orion-dns" wifi.mac_randomise = true \[extensions\] loaded = \["orion-gaming-scheduler", "orion-power-monitor"\]
 
 ## **21.4 Configuration Profiles — Instant Environment Switching**
 
@@ -2262,13 +2262,13 @@ Your configuration
 
 Your entire Orion OS installation can be described in a single file. This file specifies: which packages are installed, kernel configuration, user accounts, services, network rules, extensions, and UI preferences. Feed this file to any Orion OS installation and it becomes your exact system. Perfect for: developers who want the same environment on every machine, sysadmins managing fleets of servers, anyone who wants a disaster-recovery-ready system.
 
-*   nova system apply system.ncl — applies a complete system specification file
-*   nova system generate — generates a system.ncl from current running system
-*   nova system diff system.ncl — shows what would change if you applied this spec
-*   nova system check system.ncl — validates the spec without applying it
-*   Put your system.ncl in a git repo — your entire computer is now version-controlled
-*   CI/CD for your personal computer: push a commit, your system updates automatically
-*   Fleet management: one system.ncl drives 10,000 servers identically
+- nova system apply system.ncl — applies a complete system specification file
+- nova system generate — generates a system.ncl from current running system
+- nova system diff system.ncl — shows what would change if you applied this spec
+- nova system check system.ncl — validates the spec without applying it
+- Put your system.ncl in a git repo — your entire computer is now version-controlled
+- CI/CD for your personal computer: push a commit, your system updates automatically
+- Fleet management: one system.ncl drives 10,000 servers identically
 
 ## **21.6 Nebula Extensions — Kernel Customisation Without Recompiling**
 
@@ -2304,11 +2304,11 @@ Define which memory regions are prioritised for which allocation types. Tune ZRA
 
 Zero-overhead probes on any kernel function. Collect performance data in production without slowing anything down when probes are not active.
 
-*   nova extension install NAME — install from the Nebula Hub
-*   nova extension load PATH — load a local extension you wrote
-*   nova extension unload NAME — unload instantly, no restart
-*   nova extension list — see all loaded and available extensions
-*   nova extension verify PATH — formally verify an extension before loading
+- nova extension install NAME — install from the Nebula Hub
+- nova extension load PATH — load a local extension you wrote
+- nova extension unload NAME — unload instantly, no restart
+- nova extension list — see all loaded and available extensions
+- nova extension verify PATH — formally verify an extension before loading
 
 ## **21.7 Compile-Time Kernel Customisation**
 
@@ -2382,11 +2382,11 @@ Every panel element is a widget plugin. Add, remove, reorder. Write custom widge
 
 On Linux, most kernel tuning requires root. This means either running as root (dangerous) or asking the sysadmin. Orion OS gives every user a personal kernel namespace — their own isolated view of the system — where they can tune parameters that only affect themselves. No root needed. No effect on other users.
 
-*   Per-user scheduler priority: a user can mark their own processes as high-priority within their namespace
-*   Per-user memory limits: opt into lower memory limits voluntarily to ensure fair sharing
-*   Per-user network namespace: full control over your own network routing, VPN, firewall rules
-*   Per-user extensions: load Nebula Extensions that only affect processes in your namespace
-*   Per-user filesystem view: mount additional filesystems, rearrange directory structure — only visible to you
+- Per-user scheduler priority: a user can mark their own processes as high-priority within their namespace
+- Per-user memory limits: opt into lower memory limits voluntarily to ensure fair sharing
+- Per-user network namespace: full control over your own network routing, VPN, firewall rules
+- Per-user extensions: load Nebula Extensions that only affect processes in your namespace
+- Per-user filesystem view: mount additional filesystems, rearrange directory structure — only visible to you
 
 # **22\. Open Source Philosophy — Building a Project That Lasts**
 
@@ -2508,7 +2508,7 @@ Anyone who engages
 
 **DCO (Developer Certificate of Origin)**
 
-Every commit includes 'Signed-off-by: Name &lt;email>'. This legally certifies the contributor has the right to submit the code under the project licence. Simple, legally sound, low friction. Used by Linux kernel.
+Every commit includes 'Signed-off-by: Name &lt;email&gt;'. This legally certifies the contributor has the right to submit the code under the project licence. Simple, legally sound, low friction. Used by Linux kernel.
 
 **Code review requirement**
 
@@ -2570,12 +2570,12 @@ Community members can vote on roadmap priorities. Votes are advisory — core te
 
 A public, searchable repository of Nebula Extensions, configuration profiles, and build recipes contributed by the community. Like AUR (Arch User Repository) for custom extensions and system configurations. Everything is cryptographically signed by the author. The kernel verifies signatures before loading. Community ratings, download counts, and security audits are visible.
 
-*   nebula hub search QUERY — search for extensions by name or functionality
-*   nebula hub install EXTENSION — download, verify signature, install
-*   nebula hub publish — publish your extension after signing it with your Nebula Hub key
-*   nebula hub audit EXTENSION — see community security audit status
-*   nebula hub profiles — browse community-contributed configuration profiles
-*   Extensions are sandboxed and formally verified regardless of source — malicious extensions cannot harm the kernel
+- nebula hub search QUERY — search for extensions by name or functionality
+- nebula hub install EXTENSION — download, verify signature, install
+- nebula hub publish — publish your extension after signing it with your Nebula Hub key
+- nebula hub audit EXTENSION — see community security audit status
+- nebula hub profiles — browse community-contributed configuration profiles
+- Extensions are sandboxed and formally verified regardless of source — malicious extensions cannot harm the kernel
 
 ## **22.7 Distribution Model — Nova-Based Distributions**
 
@@ -2663,13 +2663,13 @@ Hard limits on review queue depth. Rotation of maintainer duties. No single poin
 
 Do not wait until the OS is impressive to make it public. The first commit, the first bootloader, the first printed character on screen — publish it. Write about it. Explain the vision. The community that forms around a project in its earliest stages becomes the most invested and loyal. The worst thing you can do is build in private for three years and then try to attract attention.
 
-*   Create a public GitHub/GitLab repository on day one — even if it only has a README
-*   Write a VISION.md that explains the project mission, values, and long-term goals — this document is that
-*   Write a CONTRIBUTING.md before anyone asks — lower the barrier to first contribution
-*   Set up a public forum (Discourse, Matrix, IRC) for community discussion
-*   Post weekly or monthly progress updates — even when progress is small — consistency builds trust
-*   Respond to every issue and PR within 48 hours — responsiveness is the #1 factor in contributor retention
-*   Write about your decisions — not just what you decided but WHY — this becomes the project's institutional memory
+- Create a public GitHub/GitLab repository on day one — even if it only has a README
+- Write a VISION.md that explains the project mission, values, and long-term goals — this document is that
+- Write a CONTRIBUTING.md before anyone asks — lower the barrier to first contribution
+- Set up a public forum (Discourse, Matrix, IRC) for community discussion
+- Post weekly or monthly progress updates — even when progress is small — consistency builds trust
+- Respond to every issue and PR within 48 hours — responsiveness is the #1 factor in contributor retention
+- Write about your decisions — not just what you decided but WHY — this becomes the project's institutional memory
 
 # **23\. Linux Distro Inspiration — The Best Ideas, Collected**
 
@@ -2957,12 +2957,12 @@ For comparison: Windows 11 = 27,000MB installed. Ubuntu 24.04 = 8,000MB. macOS S
 
 This is counterintuitive but true. Traditional security is added as layers on top of an insecure base — firewalls on top of open ports, antivirus on top of unverified code, SELinux policy on top of DAC permissions. Each layer adds weight. Orion OS's capability security model means: processes only have access to what they are granted. Nothing else runs on their behalf. No background scanning needed. No firewall rules needed on closed ports that do not exist. Security as foundation is lighter than security as addition.
 
-*   Capability model: no process has ambient authority. Antivirus is unnecessary — apps cannot access what they were not granted.
-*   Immutable core: no background integrity scanner needed. The OS cannot be modified, so nothing needs to check if it was.
-*   Formally verified memory manager: no memory safety monitoring overhead. Bugs are proven impossible, not detected at runtime.
-*   No open ports by default: no firewall rules needed for ports that never open. The attack surface that does not exist needs no defence.
-*   WASM sandboxing: apps are isolated by the runtime — no per-app sandboxing daemon needed.
-*   Result: Orion OS's security architecture reduces running processes, reduces background CPU use, reduces RAM overhead — compared to security bolted on top of an insecure base.
+- Capability model: no process has ambient authority. Antivirus is unnecessary — apps cannot access what they were not granted.
+- Immutable core: no background integrity scanner needed. The OS cannot be modified, so nothing needs to check if it was.
+- Formally verified memory manager: no memory safety monitoring overhead. Bugs are proven impossible, not detected at runtime.
+- No open ports by default: no firewall rules needed for ports that never open. The attack surface that does not exist needs no defence.
+- WASM sandboxing: apps are isolated by the runtime — no per-app sandboxing daemon needed.
+- Result: Orion OS's security architecture reduces running processes, reduces background CPU use, reduces RAM overhead — compared to security bolted on top of an insecure base.
 
 ## **24.5 Lightweight Rules — The Constitution**
 
@@ -3010,11 +3010,11 @@ Default Orion OS install has the minimum set of running services. Every addition
 
 Retro game developers produced extraordinary work under extreme constraints: Doom in 4MB, Quake in 8MB, entire Game Boy games in 256KB. The constraint forced creativity that abundance never does. Orion OS development culture borrows this: developers test every feature on a machine with 512MB RAM and a spinning HDD. If it feels slow on that machine, it is not done. The constraint is not a limitation — it is a quality bar.
 
-*   Every Orion OS developer runs a low-spec test VM: 512MB RAM, 2-core CPU, spinning HDD image, integrated GPU only
-*   CI/CD runs performance benchmarks on this low-spec config for every PR — a regression on low-end hardware blocks the merge
-*   Memory usage is a first-class metric in every PR description — what does this feature add to idle RAM?
-*   The Doom test: if Doom can run beautifully on a 4MB machine, Orion OS should run beautifully on a 512MB machine
-*   Public benchmark page: Orion OS idle RAM, boot time, and responsiveness on specific old hardware models, updated with every release
+- Every Orion OS developer runs a low-spec test VM: 512MB RAM, 2-core CPU, spinning HDD image, integrated GPU only
+- CI/CD runs performance benchmarks on this low-spec config for every PR — a regression on low-end hardware blocks the merge
+- Memory usage is a first-class metric in every PR description — what does this feature add to idle RAM?
+- The Doom test: if Doom can run beautifully on a 4MB machine, Orion OS should run beautifully on a 512MB machine
+- Public benchmark page: Orion OS idle RAM, boot time, and responsiveness on specific old hardware models, updated with every release
 
 # **25\. SteamOS & Gaming Strategy — Learn, Then Beat It**
 
@@ -3060,7 +3060,7 @@ SteamOS CANNOT do this. Linux kernel integrity is unprovable. Orion OS's verifie
 
 **Real-time scheduler by design**
 
-SteamOS patches PREEMPT\_RT on top of Linux — a retrofit. Orion OS has real-time scheduling designed in from day one. Better frame timing consistency. Lower scheduling jitter.
+SteamOS patches PREEMPT_RT on top of Linux — a retrofit. Orion OS has real-time scheduling designed in from day one. Better frame timing consistency. Lower scheduling jitter.
 
 **Gaming compositor built into Nova**
 
@@ -3682,7 +3682,7 @@ Kernel Address Sanitizer: instruments memory accesses to detect use-after-free a
 
 **Performance regression tests**
 
-Automated benchmark: boot time, context switch latency, memory allocator throughput, file read speed. A commit that regresses any metric by > 5% blocks the merge.
+Automated benchmark: boot time, context switch latency, memory allocator throughput, file read speed. A commit that regresses any metric by &gt; 5% blocks the merge.
 
 **CI/CD pipeline**
 
@@ -4058,17 +4058,17 @@ Capability system is the foundation. POSIX ACL compatibility provided as a trans
 
 read(fd, buf, n) blocks until data is available. Simple to understand. Easy to write correct programs. Performance: each thread can only do one I/O at a time. One thread per connection — expensive for high concurrency.
 
-**Asynchronous I/O (io\_uring, Orion OS)**
+**Asynchronous I/O (io_uring, Orion OS)**
 
 Submit I/O requests without blocking. Get completions later. One thread can manage thousands of concurrent I/O operations. More complex programming model but dramatically better throughput and latency.
 
 **The C10K problem**
 
-A web server serving 10,000 concurrent connections using blocking I/O needs 10,000 threads (expensive). With async I/O: one thread handles 10,000 connections. This is why nginx beats Apache, and why io\_uring was added to Linux.
+A web server serving 10,000 concurrent connections using blocking I/O needs 10,000 threads (expensive). With async I/O: one thread handles 10,000 connections. This is why nginx beats Apache, and why io_uring was added to Linux.
 
 **Orion OS position**
 
-Async I/O from the ground up. All I/O operations in the Orion OS kernel use an io\_uring-style submission/completion ring. Synchronous wrappers provided for POSIX compatibility but are implemented on top of async primitives — not the reverse.
+Async I/O from the ground up. All I/O operations in the Orion OS kernel use an io_uring-style submission/completion ring. Synchronous wrappers provided for POSIX compatibility but are implemented on top of async primitives — not the reverse.
 
 **The tradeoff**
 

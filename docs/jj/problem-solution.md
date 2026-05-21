@@ -1,9 +1,9 @@
 # 📋 Orion OS: Problems and Solutions
 
-> **A living document to track and resolve every identified flaw, gap, inconsistency, and risk in the Orion OS project.**
-> *Last Updated: May 2026*
-> *Owner: Narendra Samtani*
-> *Sources: Master Flaw Register · Analysis Feedback Report · Critical Flaws Tracker · Roadmap Feedback*
+&gt; **A living document to track and resolve every identified flaw, gap, inconsistency, and risk in the Orion OS project.**
+&gt; *Last Updated: May 2026*
+&gt; *Owner: Narendra Samtani*
+&gt; *Sources: Master Flaw Register · Analysis Feedback Report · Critical Flaws Tracker · Roadmap Feedback*
 
 ---
 
@@ -86,7 +86,7 @@
 | M-04 | **DDR-025: Hardware Enclaves (SGX/TrustZone)** | orion-cryptod security | orion-cryptod runs in SGX (Intel) / TrustZone (ARM). Keys never leave enclave in plaintext. Software-only fallback with explicit warning. | @Narendra | ✅ Done |
 | M-05 | **DDR-026: User Data Protection** | Ransomware/malicious package defence | /home snapshotted pre-install. 7-day hourly + 30-day daily retention. Immutable base profile. Signed credentials. Entropy monitoring for ransomware detection. | @Narendra | ✅ Done |
 | M-06 | **DDR-HAL: Hardware Abstraction Layer** | Multi-architecture support | CosmosHal Rust trait. Cargo feature arch selection (hal-x86, hal-arm64, hal-riscv). Zero runtime dispatch cost. | @Narendra | ✅ Done |
-| M-07 | **DDR-IR: Cosmos Intermediate Representation** | Compiler bootstrap (Phase 5) | SSA form, cap\&lt;R\> type, capability intrinsics. Bootstrap B1→B7: rustc+LLVM → Cosmos Compiler → delete LLVM. | @Narendra | ✅ Done |
+| M-07 | **DDR-IR: Cosmos Intermediate Representation** | Compiler bootstrap (Phase 5) | SSA form, cap\&lt;R\&gt; type, capability intrinsics. Bootstrap B1→B7: rustc+LLVM → Cosmos Compiler → delete LLVM. | @Narendra | ✅ Done |
 
 ---
 
@@ -112,7 +112,7 @@
 |-------|---------|---------|------------|-----------|------------|
 | T-01 | **No fuzzing in CI pipeline** | Add `cargo-fuzz` + `syzkaller` as **blocking** CI stages (not background). Target: all 13 syscalls + all parsers. | 1 day | @Kernel Team | ⬜ Not Started |
 | T-02 | **No end-to-end tests** | Add 5 critical E2E tests: comit install, POSIX binary, network capability, capability revocation, ransomware recovery snapshot. | 1 day | @Kernel Team | ⬜ Not Started |
-| T-03 | **No benchmark harness** | Define measurable targets for DDR-014 (boot time, IPC latency, context switch, cap lookup). Add criterion.rs benchmarks as CI gate (>5% regression = warn). | 1 day | @Kernel Team | ⬜ Not Started |
+| T-03 | **No benchmark harness** | Define measurable targets for DDR-014 (boot time, IPC latency, context switch, cap lookup). Add criterion.rs benchmarks as CI gate (&gt;5% regression = warn). | 1 day | @Kernel Team | ⬜ Not Started |
 | T-04 | **No Kani harnesses for kernel code** | Write Kani harnesses for: cap_alloc, cap_revoke, pmm_alloc, pmm_free, ipc_send, ipc_recv, sched_dispatch. Add to CI as blocking gate. | 2 days | @Kernel Team | ⬜ Not Started |
 | T-05 | **No hardware matrix testing** | Set up orion-hw-lab with 100 virtual HW configs via QEMU virtual HW. Run weekly + pre-release. | 3 days | @Kernel Team | ⬜ Not Started |
 | T-06 | **No dependency management for Rust crates** | Add `deny.toml` (reject GPL/CVEs) + `audit.toml` + `cargo-deny` CI gate + `cargo vet` mandatory. | 1 day | @Kernel Team | ⬜ Not Started |
@@ -325,4 +325,4 @@
 ---
 
 *📌 Note: This document is a living resource. Update it as issues are resolved or new ones are discovered.*
-*🔗 Related: [about.md](about.md) · [roadmap.md](roadmap.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [SECURITY.md](SECURITY.md)*
+*🔗 Related: [about.md](about.md) · [roadmap.md](roadmap.md) · [CONTRIBUTING.md](../community/contributing.md) · [SECURITY.md](../community/security-policy.md)*

@@ -33,19 +33,19 @@ We pledge to make participation in the Orion OS community a harassment-free expe
 
 ### **Expected Behaviour**
 
-*   Show empathy and kindness toward other community members
-*   Respect differing opinions, viewpoints, and experience levels
-*   Give and gracefully accept constructive criticism — kernel code review can be direct, but never personal
-*   Accept responsibility for mistakes and learn from them
-*   Focus on what is best for the project and the community, not just for yourself
+- Show empathy and kindness toward other community members
+- Respect differing opinions, viewpoints, and experience levels
+- Give and gracefully accept constructive criticism — kernel code review can be direct, but never personal
+- Accept responsibility for mistakes and learn from them
+- Focus on what is best for the project and the community, not just for yourself
 
 ### **Unacceptable Behaviour**
 
-*   Sexualised language, imagery, or unwanted advances of any kind
-*   Trolling, insulting, derogatory comments, or personal attacks
-*   Public or private harassment of any community member
-*   Publishing others' private information without explicit permission (doxing)
-*   Conduct that would be considered inappropriate in a professional setting
+- Sexualised language, imagery, or unwanted advances of any kind
+- Trolling, insulting, derogatory comments, or personal attacks
+- Public or private harassment of any community member
+- Publishing others' private information without explicit permission (doxing)
+- Conduct that would be considered inappropriate in a professional setting
 
 ### **Enforcement**
 
@@ -307,10 +307,10 @@ Your contributions are licensed to the project under the same license that cover
 
 ### **How to Sign the CLA**
 
-*   Individual contributors: Add 'Signed-off-by: Your Name &lt;email>' to every commit (git commit -s)
-*   Corporate contributors: Email legal@orionos.dev with company name and list of authorised contributors
-*   The DCO (Developer Certificate of Origin) Signed-off-by line is the CLA signature for individual contributors
-*   GitHub Actions will automatically check that all commits have a Signed-off-by line
+- Individual contributors: Add 'Signed-off-by: Your Name &lt;email&gt;' to every commit (git commit -s)
+- Corporate contributors: Email legal@orionos.dev with company name and list of authorised contributors
+- The DCO (Developer Certificate of Origin) Signed-off-by line is the CLA signature for individual contributors
+- GitHub Actions will automatically check that all commits have a Signed-off-by line
 
 ## **§22.5 — Roadmap Voting Mechanism**
 
@@ -350,11 +350,11 @@ When funds are received
 
 ### **Roadmap Voting Rules**
 
-*   Voting is open to all GitHub users who have interacted with the Orion OS repository (starred, opened issue, or submitted PR)
-*   Results published within 48 hours of poll closing
-*   Core Team must respond to top-voted items within 2 weeks: either include in next sprint or explain why not
-*   Voting cannot override locked DDRs — the architecture is not up for popular vote
-*   Feature prioritisation is voted on. Security decisions are not voted on.
+- Voting is open to all GitHub users who have interacted with the Orion OS repository (starred, opened issue, or submitted PR)
+- Results published within 48 hours of poll closing
+- Core Team must respond to top-voted items within 2 weeks: either include in next sprint or explain why not
+- Voting cannot override locked DDRs — the architecture is not up for popular vote
+- Feature prioritisation is voted on. Security decisions are not voted on.
 
 # **§23–26 — Philosophy Deep Dives**
 
@@ -370,10 +370,10 @@ Because antivirus is a symptom of a broken security model. Orion OS's capability
 
 Traditional antivirus works like this: malware runs, does damage, antivirus detects the damage or matches a signature database, removes the malware. This model has three fundamental problems:
 
-*   It is reactive — malware must execute before it can be detected. Files may be encrypted, data exfiltrated, or credentials stolen before detection.
-*   It requires kernel-mode access — antivirus installs kernel hooks, minifilter drivers, and callback registrations. This is exactly how the CrowdStrike incident (July 2024) took down 8.5 million Windows machines: kernel-mode security software crashed the kernel.
-*   It is a signature arms race — each new piece of malware requires an updated signature. Zero-day malware is invisible until the signature is written.
-*   It creates a false sense of security — users believe antivirus protects them from anything. It only protects against known threats with written signatures.
+- It is reactive — malware must execute before it can be detected. Files may be encrypted, data exfiltrated, or credentials stolen before detection.
+- It requires kernel-mode access — antivirus installs kernel hooks, minifilter drivers, and callback registrations. This is exactly how the CrowdStrike incident (July 2024) took down 8.5 million Windows machines: kernel-mode security software crashed the kernel.
+- It is a signature arms race — each new piece of malware requires an updated signature. Zero-day malware is invisible until the signature is written.
+- It creates a false sense of security — users believe antivirus protects them from anything. It only protects against known threats with written signatures.
 
 ### **How Orion OS Makes Antivirus Unnecessary**
 
@@ -427,12 +427,12 @@ The kernel is immutable and verified by measured boot. A rootkit cannot persist 
 
 ### **What Orion OS Has Instead of Antivirus**
 
-*   Comit signature verification — every binary is Dilithium3-signed before execution
-*   Capability model — apps can only access what they were explicitly granted
-*   orion-mld anomaly detection — ML-based syscall pattern analysis (complement, not replacement)
-*   Measured boot — kernel integrity verified by TPM before every boot
-*   Vega FS snapshots — instant recovery from ransomware or corruption
-*   Formal verification of kernel core — certain classes of kernel exploit are mathematically impossible
+- Comit signature verification — every binary is Dilithium3-signed before execution
+- Capability model — apps can only access what they were explicitly granted
+- orion-mld anomaly detection — ML-based syscall pattern analysis (complement, not replacement)
+- Measured boot — kernel integrity verified by TPM before every boot
+- Vega FS snapshots — instant recovery from ransomware or corruption
+- Formal verification of kernel core — certain classes of kernel exploit are mathematically impossible
 
 **The Bottom Line**
 
@@ -460,7 +460,7 @@ fork() + threads = disaster
 
 fork() in a multi-threaded process copies only the calling thread. All other threads disappear. Mutexes held by dead threads are locked forever. The child is in an inconsistent state.
 
-pthread\_atfork() exists specifically to work around this. It is extremely difficult to use correctly. Almost all multi-threaded code cannot safely call fork().
+pthread_atfork() exists specifically to work around this. It is extremely difficult to use correctly. Almost all multi-threaded code cannot safely call fork().
 
 fork() copies everything — even things you don't need
 
@@ -472,7 +472,7 @@ fork() + capabilities = fork() leaks all capabilities
 
 In a capability system, fork() gives the child ALL parent capabilities by default. Every file descriptor, every capability handle. The child must manually close each one.
 
-POSIX requires O\_CLOEXEC on every file descriptor you don't want children to inherit. This is error-prone — one missed descriptor leaks a capability.
+POSIX requires O_CLOEXEC on every file descriptor you don't want children to inherit. This is error-prone — one missed descriptor leaks a capability.
 
 fork() makes security analysis impossible
 
@@ -488,9 +488,9 @@ PostgreSQL's fork-per-connection model limits scalability. Redis had to add a th
 
 fork() is unnecessary with good IPC
 
-The entire purpose of fork() is to create new processes. Modern systems have better primitives: posix\_spawn(), Zircon's process\_create(), Plan 9's rfork().
+The entire purpose of fork() is to create new processes. Modern systems have better primitives: posix_spawn(), Zircon's process_create(), Plan 9's rfork().
 
-Every modern OS design (Fuchsia, Plan 9, seL4) has moved away from fork(). Even Linux has posix\_spawn() in glibc as an alternative.
+Every modern OS design (Fuchsia, Plan 9, seL4) has moved away from fork(). Even Linux has posix_spawn() in glibc as an alternative.
 
 ### **spawn() — The Correct Alternative**
 
@@ -534,7 +534,7 @@ No copying — fresh mapping from ELF
 
 Multi-thread safety
 
-Fundamentally broken — pthread\_atfork hack
+Fundamentally broken — pthread_atfork hack
 
 Not applicable — fresh process
 
@@ -578,10 +578,10 @@ A/B updates: the update installs to the inactive partition. On reboot, it activa
 
 ChromeOS has shipped with an immutable root filesystem since 2011. Over 14 years and hundreds of millions of devices, the evidence is clear:
 
-*   ChromeOS has near-zero user-reported 'broken update' incidents — the A/B system works
-*   ChromeOS malware persistence is essentially zero — there is nowhere for malware to persist across a verified reboot
-*   ChromeOS enterprise management is dramatically simpler than Windows — the system state is predictable and known
-*   ChromeOS update adoption is near-instant — users cannot defer updates because the system doesn't ask, it just switches partitions
+- ChromeOS has near-zero user-reported 'broken update' incidents — the A/B system works
+- ChromeOS malware persistence is essentially zero — there is nowhere for malware to persist across a verified reboot
+- ChromeOS enterprise management is dramatically simpler than Windows — the system state is predictable and known
+- ChromeOS update adoption is near-instant — users cannot defer updates because the system doesn't ask, it just switches partitions
 
 **NixOS Lesson**
 
@@ -659,13 +659,13 @@ WASM modules declare their capabilities as imports. The Orion OS WASM runtime on
 
 **What the App Gets**
 
-(import "orion" "file\_read" (func ...))
+(import "orion" "file_read" (func ...))
 
 FileCapability:/path/to/dir
 
 Read access to declared path only
 
-(import "orion" "network\_connect" (func ...))
+(import "orion" "network_connect" (func ...))
 
 NetworkCapability
 
@@ -677,7 +677,7 @@ InferenceCapability (from Quasar)
 
 AI inference via Quasar Runtime
 
-(import "orion" "gpu\_render" (func ...))
+(import "orion" "gpu_render" (func ...))
 
 GPUCapability:RENDER
 
@@ -693,10 +693,10 @@ WASM computation only — completely sandboxed
 
 100% WASM is not always possible. Orion OS allows an optional native shim alongside the WASM module:
 
-*   The WASM module handles all app logic, UI, and I/O
-*   The native shim (.so per architecture) handles performance-critical inner loops (codecs, physics engines, ML kernels)
-*   The native shim is subject to all capability restrictions — it cannot bypass the WASM module's capability set
-*   Comit verifies both the WASM module and the native shim with Dilithium signatures
+- The WASM module handles all app logic, UI, and I/O
+- The native shim (.so per architecture) handles performance-critical inner loops (codecs, physics engines, ML kernels)
+- The native shim is subject to all capability restrictions — it cannot bypass the WASM module's capability set
+- Comit verifies both the WASM module and the native shim with Dilithium signatures
 
 # **§27 — Orion Micro — Embedded Build Configuration**
 
@@ -864,7 +864,7 @@ cargo build --target aarch64-unknown-none \\
 
 \# Orion Full — x86-64 desktop (16GB RAM)
 
-cargo build --target x86\_64-unknown-none # all features enabled by default
+cargo build --target x86_64-unknown-none # all features enabled by default
 
 ## **27.4 — Orion Watch (Wearable Reference Platform)**
 

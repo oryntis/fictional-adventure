@@ -142,7 +142,7 @@ const config: Config = {
           items: [
             {
               label: "Orion Docs",
-              to: "/docs/index.md",
+              to: "/docs/",
             },
           ],
         },

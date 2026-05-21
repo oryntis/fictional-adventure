@@ -175,9 +175,9 @@ Orion OS is built in **7 phases**, each with **clear milestones, exit criteria, 
 ---
 ---
 ## **🚀 How to Contribute**
-1. **Pick a task** from the **[Good First Issues](orion_vol0_quickstart_contributing_roadmap.docx#35---where-to-start-good-first-issues)**.
-2. **Follow the [RFC Process](rfc.md)** for major changes.
-3. **Submit a PR** using the **[Pull Request Template](PULL_REQUEST_TEMPLATE.md)**.
+1. **Pick a task** from the **[Good First Issues](../orion/orion_vol0_quickstart_contributing_roadmap.md#35---where-to-start-good-first-issues)**.
+2. **Follow the [RFC Process](../community/templates/rfc.md)** for major changes.
+3. **Submit a PR** using the **[Pull Request Template](../community/templates/pull-request.md)**.
 4. **Join the community** on [OSDev Forum](https://forum.osdev.org) or [Matrix](https://matrix.to/#/#orionos:matrix.org).
 
 ---

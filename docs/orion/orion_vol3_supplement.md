@@ -39,9 +39,9 @@ This is the authoritative testing spec. Vol 2B §16 is a duplicate — this Vol 
 
 **Status**
 
-1\. Unit (no\_std)
+1\. Unit (no_std)
 
-cargo nextest + cosmos\_test! macro
+cargo nextest + cosmos_test! macro
 
 Individual kernel functions in isolation
 
@@ -131,7 +131,7 @@ IPC latency, context switch, Vega FS IOPS
 
 Every PR
 
-No >5% regression
+No &gt;5% regression
 
 ⬜
 
@@ -227,7 +227,7 @@ QEMU boot test
 
 just qemu-test
 
-Boots, prints ORION\_OK, exits 0
+Boots, prints ORION_OK, exits 0
 
 Block PR
 
@@ -237,7 +237,7 @@ Block PR
 
 Kani formal check
 
-kani --harness cosmos\_core
+kani --harness cosmos_core
 
 No counterexample found
 
@@ -251,31 +251,31 @@ Benchmark check
 
 cargo bench -- --baseline main
 
-No benchmark >5% slower
+No benchmark &gt;5% slower
 
 Warning comment on PR
 
 &lt;5min
 
-## **16.3 — no\_std Kernel Test Harness**
+## **16.3 — no_std Kernel Test Harness**
 
-_Standard cargo test requires std. Cosmos uses a custom cosmos\_test! macro that runs tests as QEMU subprocesses:_
+_Standard cargo test requires std. Cosmos uses a custom cosmos_test! macro that runs tests as QEMU subprocesses:_
 
 // cosmos/src/lib.rs — test harness registration
 
-#!\[cfg\_attr(not(test), no\_std)\]
+#!\[cfg_attr(not(test), no_std)\]
 
-#!\[feature(custom\_test\_frameworks)\]
+#!\[feature(custom_test_frameworks)\]
 
-#!\[test\_runner(crate::test::cosmos\_test\_runner)\]
+#!\[test_runner(crate::test::cosmos_test_runner)\]
 
-#!\[reexport\_test\_harness\_main = "test\_main"\]
+#!\[reexport_test_harness_main = "test_main"\]
 
 // cosmos/src/test.rs
 
-pub fn cosmos\_test\_runner(tests: &\[&dyn Fn()\]) &#123;
+pub fn cosmos_test_runner(tests: &\[&dyn Fn()\]) &#123;
 
-serial\_println!("Running &#123;&#125; tests", tests.len());
+serial_println!("Running &#123;&#125; tests", tests.len());
 
 for test in tests &#123;
 
@@ -283,23 +283,23 @@ test();
 
 &#125;
 
-qemu\_exit(QemuExitCode::Success);
+qemu_exit(QemuExitCode::Success);
 
 &#125;
 
 // Example test — runs in QEMU
 
-#\[test\_case\]
+#\[test_case\]
 
-fn test\_capability\_no\_forge() &#123;
+fn test_capability_no_forge() &#123;
 
-let cap = CapTable::global().alloc(Rights::FILE\_READ);
+let cap = CapTable::global().alloc(Rights::FILE_READ);
 
 let fake = CapHandle(cap.0 + 99999);
 
-assert!(CapTable::global().lookup(fake).is\_err());
+assert!(CapTable::global().lookup(fake).is_err());
 
-serial\_println!("\[ok\] capability forge prevention");
+serial_println!("\[ok\] capability forge prevention");
 
 &#125;
 
@@ -309,7 +309,7 @@ serial\_println!("\[ok\] capability forge prevention");
 
 name: Cosmos CI
 
-on: \[push, pull\_request\]
+on: \[push, pull_request\]
 
 jobs:
 
@@ -325,7 +325,7 @@ steps:
 
 with:
 
-targets: x86\_64-unknown-none,aarch64-unknown-none
+targets: x86_64-unknown-none,aarch64-unknown-none
 
 components: rustfmt,clippy,llvm-tools-preview
 
@@ -387,7 +387,7 @@ Lock surface
 
 zwlr-layer-shell OVERLAY surface — covers everything
 
-DisplayCapability:LOCK\_LAYER
+DisplayCapability:LOCK_LAYER
 
 ⬜
 
@@ -427,7 +427,7 @@ Hibernation resume
 
 Show lock screen when resuming from S3/S4 suspend
 
-PowerCapability:WAKE\_LOCK
+PowerCapability:WAKE_LOCK
 
 ⬜
 
@@ -435,7 +435,7 @@ Emergency unlock
 
 TTY console unlock via orion-init (if Wayland dies)
 
-ConsoleCpability:ROOT\_SHELL
+ConsoleCpability:ROOT_SHELL
 
 ⬜
 
@@ -457,7 +457,7 @@ Basic clipboard
 
 wl-data-device-manager protocol — standard copy/paste
 
-ClipboardCapability:READ\_WRITE
+ClipboardCapability:READ_WRITE
 
 ⬜
 
@@ -473,7 +473,7 @@ Type-aware paste
 
 Detect clipboard content type (text, image, file, code) — offer format conversion
 
-ClipboardCapability:READ\_WRITE
+ClipboardCapability:READ_WRITE
 
 ⬜
 
@@ -481,7 +481,7 @@ Password protection
 
 Auto-clear clipboard after 60s if content looks like a password (entropy check)
 
-ClipboardCapability:READ\_WRITE
+ClipboardCapability:READ_WRITE
 
 ⬜
 
@@ -1415,7 +1415,7 @@ Kernel, Pulsar Shell, all daemons, Vega FS filenames — UTF-8 only. No Latin-1,
 
 Orion Libc Unicode
 
-Orion Libc exposes: strlen\_utf8(), strcat\_utf8(), strcmp\_utf8(), utf8\_validate()
+Orion Libc exposes: strlen_utf8(), strcat_utf8(), strcmp_utf8(), utf8_validate()
 
 ⬜
 
@@ -1645,7 +1645,7 @@ EnergyCapability:READ
 
 Optimisation suggestions
 
-If process uses >500mW idle: 'Firefox is using 600mW idle. Close to save 2h battery.'
+If process uses &gt;500mW idle: 'Firefox is using 600mW idle. Close to save 2h battery.'
 
 orion-energy daemon (built-in logic)
 
@@ -1673,7 +1673,7 @@ Time-travel file restoration using Vega FS O(1) snapshots. Restore any file or d
 
 Snapshot list API
 
-vega-vfsd IPC: list\_snapshots(path) → \[&#123;timestamp, size\_delta, label&#125;\]
+vega-vfsd IPC: list_snapshots(path) → \[&#123;timestamp, size_delta, label&#125;\]
 
 ⬜
 
@@ -1887,7 +1887,7 @@ Input data encrypted via WireGuard, transferred to server, result returned encry
 
 Progress reporting
 
-orion-offload shows progress: \[=====> \] 60% ETA 2min on server 192.168.1.100
+orion-offload shows progress: \[=====&gt; \] 60% ETA 2min on server 192.168.1.100
 
 ⬜
 

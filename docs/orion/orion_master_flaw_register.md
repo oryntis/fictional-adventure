@@ -445,7 +445,7 @@ Slow Loris on IPC
 
 Open IPC connection, send 1 byte/minute, keep it open indefinitely
 
-Kernel closes IPC connections with no activity for >30 seconds (configurable per service).
+Kernel closes IPC connections with no activity for &gt;30 seconds (configurable per service).
 
 🟡 P2
 

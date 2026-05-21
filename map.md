@@ -33,7 +33,7 @@
 | **Performance**      | Tickless Scheduler          | ✅ NO_HZ_FULL | ⚠️ Partial    | ⚠️ Partial         | ✅ Yes           | ❌ No        | ❌ No        | Nova (full)             | Maximum power savings        |
 |                      | Heterogeneous Scheduling    | ✅ P/E cores  | ❌ No         | ⚠️ Thread Director | ✅ Yes           | ❌ No        | ❌ No        | Nova (best)             | AI workload aware            |
 |                      | Zero-Copy IPC               | ✅ Yes        | ❌ No         | ❌ No              | ❌ No            | ✅ Yes       | ❌ No        | Qubes/Nova              | Shared memory mapping        |
-| **Hardware Support** | Old Hardware Revival        | ✅ Target     | ❌ No         | ❌ No              | ❌ No            | ❌ No        | ❌ No        | Nova (unique)           | <32MB RAM target             |
+| **Hardware Support** | Old Hardware Revival        | ✅ Target     | ❌ No         | ❌ No              | ❌ No            | ❌ No        | ❌ No        | Nova (unique)           | &lt;32MB RAM target          |
 |                      | RISC-V Support              | ✅ Day 1      | ⚠️ Partial    | ❌ No              | ❌ No            | ❌ No        | ❌ No        | Nova (best)             | First-class architecture     |
 |                      | GPU as First-Class Citizen  | ✅ Yes        | ❌ No         | ⚠️ DXGK            | ✅ Metal         | ❌ No        | ❌ No        | Nova (best)             | Unified scheduling           |
 | **AI/ML**            | OS-Level Inference Runtime  | ✅ Yes        | ❌ No         | ❌ No              | ⚠️ Core ML       | ❌ No        | ❌ No        | Nova (unique)           | Shared model cache           |
@@ -88,7 +88,7 @@
 
 | **Feature**      | **TempleOS Implementation**           | **Nova Opportunity**                                   |
 | ---------------- | ------------------------------------- | ------------------------------------------------------ |
-| Simplicity       | ~100KB kernel                         | **Nova:** Microkernel core <200KB (DDR-001)            |
+| Simplicity       | ~100KB kernel                         | **Nova:** Microkernel core &lt;200KB (DDR-001)         |
 | Single Developer | Proof that one person can build an OS | **Nova:** Bootstrap philosophy (Vol1 §13)              |
 | HolyC Language   | Custom language for OS                | **Nova:** Rust is better (memory safety + performance) |
 | Philosophy       | Strong, opinionated design            | **Nova:** Clear design principles (Vol1 §3)            |
@@ -121,22 +121,22 @@
 
 ```mermaid
 graph TD
-    A[Hardware] --> B[HAL: Hardware Abstraction Layer]
-    B --> C[Microkernel Core]
-    C --> D[Capability System]
-    C --> E[Memory Manager]
-    C --> F[Scheduler]
-    C --> G[IPC System]
-    D --> H[Drivers: Userspace]
-    E --> I[Physical Memory]
-    F --> J[Processes]
-    G --> K[Services]
-    H --> L[Storage]
-    H --> M[Network]
-    H --> N[GPU/NPU]
-    J --> O[Applications]
-    K --> O
-    L --> P[Nova FS]
-    M --> Q[nova-netd]
-    N --> R[nova-ai-runtime]
+    A[Hardware] --&gt; B[HAL: Hardware Abstraction Layer]
+    B --&gt; C[Microkernel Core]
+    C --&gt; D[Capability System]
+    C --&gt; E[Memory Manager]
+    C --&gt; F[Scheduler]
+    C --&gt; G[IPC System]
+    D --&gt; H[Drivers: Userspace]
+    E --&gt; I[Physical Memory]
+    F --&gt; J[Processes]
+    G --&gt; K[Services]
+    H --&gt; L[Storage]
+    H --&gt; M[Network]
+    H --&gt; N[GPU/NPU]
+    J --&gt; O[Applications]
+    K --&gt; O
+    L --&gt; P[Nova FS]
+    M --&gt; Q[nova-netd]
+    N --&gt; R[nova-ai-runtime]
 ```

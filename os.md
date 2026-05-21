@@ -1,7 +1,7 @@
 # 📋 Orion OS: Problems and Solutions
 
-> **A living document to track and resolve issues in the Orion OS project.**  
-> *Last Updated: May 17, 2026*
+&gt; **A living document to track and resolve issues in the Orion OS project.**  
+&gt; _Last Updated: May 17, 2026_
 
 ---
 
@@ -101,20 +101,23 @@ Add a **"Getting Started"** section at the top of the documentation with:
 
 **Example Structure**:
 
-```markdown
+````markdown
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Rust (nightly)
 - QEMU
 - NASM (temporary, until Cosmos Assembler is ready)
 
 ### Build Orion OS
+
 ```bash
 git clone https://github.com/orion-os/orion
 cd orion
 cargo build --release
 ```
+````
 
 ### Run in QEMU
 
@@ -128,7 +131,7 @@ qemu-system-x86_64 -kernel target/release/orion-kernel -m 4G
 2. Create a branch (`git checkout -b feature/your-feature`).
 3. Submit a PR.
 
-```
+````
 
 **Owner**: Narendra
 **Timeline**: 1 week
@@ -158,7 +161,7 @@ gantt
   section Phase 1: Core Being
   Process Model    :b1, 2027-03, 2027-05
   Vega FS          :b2, 2027-04, 2027-06
-```
+````
 
 **Owner**: Narendra  
 **Timeline**: 2 weeks  
@@ -288,10 +291,10 @@ Assumes Orion will run on **Raspberry Pi 4, VisionFive 2, etc.** by Phase 4, but
 
 ---
 
-### **10. Kernel Size Claim (<200KB)**
+### **10. Kernel Size Claim (&lt;200KB)**
 
 **Problem**:  
-The claim **"Hybrid microkernel (<200KB core)"** may be **unrealistic** for a modern kernel.
+The claim **"Hybrid microkernel (&lt;200KB core)"** may be **unrealistic** for a modern kernel.
 
 **Impact**:
 
@@ -301,7 +304,7 @@ The claim **"Hybrid microkernel (<200KB core)"** may be **unrealistic** for a mo
 **Solution**:
 
 - **Clarify what’s included**:
-  - "Core kernel binary <200KB, **excluding drivers**."
+  - "Core kernel binary &lt;200KB, **excluding drivers**."
 - **Provide a breakdown**:
   - Bootloader: 50KB
   - Kernel: 150KB
@@ -496,9 +499,8 @@ If Orion OS is **not purely a hobby project**, it’s unclear how it will **sust
 
 ## 📊 **Tracking Table**
 
-
-| **ID** | **Problem**                      | **Solution**                                      | **Owner**         | **Timeline** | **Status**    | **Priority** |
-| ------ | -------------------------------- | ------------------------------------------------- | ----------------- | ------------ | ------------- | ------------ |
+| **ID** | **Problem**                      | **Solution**                                      | **Owner**         | **Timeline** | **Status**     | **Priority** |
+| ------ | -------------------------------- | ------------------------------------------------- | ----------------- | ------------ | -------------- | ------------ |
 | 1      | Overwhelming detail              | Split into layers, prioritize key differentiators | Narendra          | 1 week       | ⬜ Not Started | High         |
 | 2      | Repetitive information           | Deduplicate, link to single source                | Narendra          | 1 week       | ⬜ Not Started | High         |
 | 3      | Inconsistent terminology         | Standardize naming, create glossary               | Narendra          | 1 week       | ⬜ Not Started | High         |
@@ -516,7 +518,6 @@ If Orion OS is **not purely a hobby project**, it’s unclear how it will **sust
 | 15     | No licensing information         | Choose and document a license                     | Legal/Team        | 1 month      | ⬜ Not Started | Medium       |
 | 16     | No business model                | Explore open-core, donations, partnerships        | Narendra          | 2 months     | ⬜ Not Started | Low          |
 
-
 ---
 
 ---
@@ -524,16 +525,23 @@ If Orion OS is **not purely a hobby project**, it’s unclear how it will **sust
 ## 🎯 **Next Steps**
 
 1. **Prioritize High-Impact Issues**:
-  - Start with **Quick Start guide, Problem Statement, and terminology standardization** (can be done in **1-2 weeks**).
-  - Address **aggressive timelines and compiler complexity** early to avoid future blockers.
+
+- Start with **Quick Start guide, Problem Statement, and terminology standardization** (can be done in **1-2 weeks**).
+- Address **aggressive timelines and compiler complexity** early to avoid future blockers.
+
 2. **Assign Owners**:
-  - Each issue should have a **clear owner** (e.g., Narendra for documentation, Hardware Team for hardware dependencies).
+
+- Each issue should have a **clear owner** (e.g., Narendra for documentation, Hardware Team for hardware dependencies).
+
 3. **Track Progress**:
-  - Update the **Status** column as work begins/completes.
-  - Use **GitHub Issues** or a **project board** to track progress.
+
+- Update the **Status** column as work begins/completes.
+- Use **GitHub Issues** or a **project board** to track progress.
+
 4. **Iterate**:
-  - **Review this document monthly** to update priorities and timelines.
-  - **Gather feedback** from the community on what’s most important.
+
+- **Review this document monthly** to update priorities and timelines.
+- **Gather feedback** from the community on what’s most important.
 
 ---
 
