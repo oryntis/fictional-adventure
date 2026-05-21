@@ -11,8 +11,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: "https://oryntis.github.io",
-  baseUrl: "fictional-adventure-gules.vercel.app/",
+  url: "https://fictional-adventure-14y4vzt4m-makren-s-projects.vercel.app/",
+  baseUrl: "/",
 
   organizationName: "oryntis",
   projectName: "frictional-advanture",
