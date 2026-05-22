@@ -193,6 +193,13 @@ const sidebars: SidebarsConfig = {
                 },
                 {
                   type: 'category',
+                  label: 'Orion Init',
+                  items: [
+                    'phases/core-being/tasks/orion-init/index',
+                  ],
+                },
+                {
+                  type: 'category',
                   label: 'Comit Package Manager',
                   items: [
                     'phases/core-being/tasks/comit-package-manager/index',
