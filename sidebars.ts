@@ -365,12 +365,19 @@ const sidebars: SidebarsConfig = {
                 },
                 {
                   type: 'category',
-                  label: 'PowerPC/LoongArch Port',
+                  label: 'PowerPC Port',
                   items: [
-                    'phases/hardware-transcendence/tasks/powerpc-loongarch-port/index',
-                    'phases/hardware-transcendence/tasks/powerpc-loongarch-port/implementation',
-                    'phases/hardware-transcendence/tasks/powerpc-loongarch-port/testing',
-                    'phases/hardware-transcendence/tasks/powerpc-loongarch-port/troubleshooting',
+                    'phases/hardware-transcendence/tasks/powerpc-port/index',
+                    'phases/hardware-transcendence/tasks/powerpc-port/implementation',
+                    'phases/hardware-transcendence/tasks/powerpc-port/testing',
+                    'phases/hardware-transcendence/tasks/powerpc-port/troubleshooting',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'LoongArch Port',
+                  items: [
+                    'phases/hardware-transcendence/tasks/loongarch-port/index',
                   ],
                 },
                 {
