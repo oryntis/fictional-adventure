@@ -1,41 +1,111 @@
-# Website
+# Cosmos Kernel
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+> A secure, capability-based hybrid microkernel written in Rust for next-generation operating systems, heterogeneous computing, and long-term self-hosting infrastructure.
 
-## Installation
+---
 
-```bash
-yarn
-```
+## Overview
 
-## Local Development
+Cosmos is the core kernel project powering the Orion ecosystem.
 
-```bash
-yarn start
-```
+It is an experimental hybrid microkernel focused on:
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+- Capability-based security
+- Memory-safe systems programming
+- Userspace isolation
+- High-performance IPC
+- AI-era hardware scheduling
+- Deterministic system architecture
+- Long-term maintainability
+- Self-hosting toolchain independence
 
-## Build
+Cosmos is not a Linux clone or a traditional monolithic kernel.
 
-```bash
-yarn build
-```
+The project explores what a modern kernel could look like if redesigned from first principles using modern hardware assumptions, strong isolation boundaries, and memory-safe infrastructure.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+---
 
-## Deployment
+# Core Objectives
 
-Using SSH:
+## Capability-Based Security
 
-```bash
-USE_SSH=true yarn deploy
-```
+Security is built into the architecture from the beginning.
 
-Not using SSH:
+Cosmos uses a capability-oriented model instead of traditional global permission systems.
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
+Key concepts include:
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+- Intent-based capabilities
+- Explicit resource delegation
+- Capability revocation
+- Userspace service isolation
+- Secure IPC boundaries
+- Minimal trusted kernel surface
+
+---
+
+## Hybrid Microkernel Architecture
+
+Cosmos combines microkernel isolation principles with carefully selected performance-oriented kernel subsystems.
+
+Architecture goals:
+
+- Minimal privileged core
+- Userspace drivers
+- Fast synchronous IPC
+- Tickless scheduling
+- Zero-copy communication
+- Modular subsystem design
+- Hardware abstraction portability
+
+---
+
+## Rust-First Kernel Development
+
+The kernel is developed primarily in Rust to reduce entire classes of low-level memory vulnerabilities.
+
+Goals include:
+
+- Elimination of unsafe patterns where possible
+- Strict error handling
+- Safer concurrency models
+- Strong type-driven APIs
+- Verifiable subsystem boundaries
+
+Formal verification and runtime validation are integrated into development workflows.
+
+---
+
+## AI-Era Compute Infrastructure
+
+Cosmos is designed for heterogeneous computing environments.
+
+Planned features include:
+
+- GPU/NPU/TPU-aware scheduling
+- Accelerator resource management
+- Unified compute abstraction
+- AI runtime integration
+- Heterogeneous workload dispatch
+
+---
+
+## Self-Hosting Infrastructure
+
+One of the long-term goals of Cosmos is complete toolchain independence.
+
+The roadmap includes development of:
+
+- Cosmos Assembler
+- Cosmos Linker
+- Cosmos Compiler
+- Cosmos Intermediate Representation (DDR-IR)
+
+The final objective is a fully self-hosted kernel development ecosystem without LLVM dependency.
+
+---
+
+# Current Status
+
+```text
+Phase 0 — Cosmic Dawn
