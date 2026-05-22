@@ -21,8 +21,8 @@
 
 ### Performance Targets
 
-- Frame budget: <8ms at 60Hz (leaves 8.7ms headroom), <2.8ms at 360Hz
-- Input latency: <16ms touch-to-pixel
+- Frame budget: &lt;8ms at 60Hz (leaves 8.7ms headroom), &lt;2.8ms at 360Hz
+- Input latency: &lt;16ms touch-to-pixel
 - Direct scanout: 0 compositor overhead for fullscreen apps
 
 ### Testing

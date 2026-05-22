@@ -21,7 +21,7 @@
 - [ ] WASM runtime: sandbox working, performance within 2× native
 - [ ] 100+ apps in App Store; comit handles distribution
 - [ ] Accessibility: screen reader + keyboard nav + WCAG AAA
-- [ ] Voice control: <500ms latency, offline only
+- [ ] Voice control: &lt;500ms latency, offline only
 - [ ] POSIX sandbox: 100 Linux app compatibility test passes
 - [ ] User testing completed with positive feedback
 - [ ] Security audit completed for all Phase 3 components

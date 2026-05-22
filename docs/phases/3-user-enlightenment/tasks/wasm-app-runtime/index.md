@@ -20,9 +20,9 @@
 
 ### Performance Targets
 
-- Startup: <1ms for cached WASM module
+- Startup: &lt;1ms for cached WASM module
 - Execution: within 2× native speed for compute-bound workloads
-- Memory: <10MB overhead per WASM instance
+- Memory: &lt;10MB overhead per WASM instance
 
 ### Testing
 
@@ -56,4 +56,4 @@
 - WCAG AAA audit: automated + manual accessibility review
 - Screen reader test: navigate entire desktop using only screen reader
 - Keyboard-only test: complete 20 common tasks without mouse
-- 500 voice commands: measure accuracy, latency (<500ms)
+- 500 voice commands: measure accuracy, latency (&lt;500ms)

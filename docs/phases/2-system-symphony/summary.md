@@ -21,7 +21,7 @@
 - [ ] Full desktop environment: Aurora + GPU acceleration + input drivers
 - [ ] 100+ packages in Nebula Hub; comit install/update/rollback working
 - [ ] FDE enabled; orion-cryptod operational
-- [ ] Quasar Runtime + orion-mld operational; inference latency <10ms
+- [ ] Quasar Runtime + orion-mld operational; inference latency &lt;10ms
 - [ ] Audio: PipeWire-compatible, 4 buffer modes
 - [ ] Security audit completed for all Phase 2 components
 - [ ] FPS benchmark ≥ Linux on same hardware/GPU

@@ -10,7 +10,7 @@
 - Desktop shell: taskbar, launcher, notification system, system tray
 - AI-assisted window placement: Quasar Runtime suggests optimal tiling layout based on usage patterns (hints only — user can override)
 - Themeable: TOML-based theme system, light/dark mode automatic
-- All UI state: <100ms response time (hardware cursor = 0ms)
+- All UI state: &lt;100ms response time (hardware cursor = 0ms)
 
 ### Security Rules
 
@@ -20,16 +20,16 @@
 
 ### Performance Targets
 
-- UI response: <100ms for any user interaction
+- UI response: &lt;100ms for any user interaction
 - Animation: 60Hz smooth, no dropped frames
-- Cold start: desktop ready in <3s from `ORION OK`
+- Cold start: desktop ready in &lt;3s from `ORION OK`
 
 ### Testing
 
 - Eye-tracking usability: test with 10 users, measure task completion time
 - 10K window operations: open/close/resize/move — no crashes, no leaks
-- Responsiveness: simulate CPU load, verify UI remains <100ms
-- Memory: 1-hour idle desktop session — no memory growth >10MB
+- Responsiveness: simulate CPU load, verify UI remains &lt;100ms
+- Memory: 1-hour idle desktop session — no memory growth &gt;10MB
 
 ### Troubleshooting
 
