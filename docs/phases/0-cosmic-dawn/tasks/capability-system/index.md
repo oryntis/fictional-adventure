@@ -1,4 +1,3 @@
-
 ## Task: Capability System
 
 **Component:** `cosmos_caps` | **DDR:** DDR-002, DDR-020, DDR-021, DDR-024
@@ -36,10 +35,10 @@ cargo fuzz run cap_fuzz_target -- -max_total_time=300
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Capability deadlock | Circular dependency in cap graph | Static analysis for cycles; never allow circular delegation |
-| TOCTOU still possible | Re-validation not atomic | Use kernel spinlock for entire check-and-use window |
-| System-wide cap exhaustion | No per-user limits enforced | Enforce per-user limit of 65,536; reject at 80% system capacity |
+| Problem                    | Likely Cause                     | Fix                                                             |
+| -------------------------- | -------------------------------- | --------------------------------------------------------------- |
+| Capability deadlock        | Circular dependency in cap graph | Static analysis for cycles; never allow circular delegation     |
+| TOCTOU still possible      | Re-validation not atomic         | Use kernel spinlock for entire check-and-use window             |
+| System-wide cap exhaustion | No per-user limits enforced      | Enforce per-user limit of 65,536; reject at 80% system capacity |
 
 ---

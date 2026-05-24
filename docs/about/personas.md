@@ -4,15 +4,15 @@
 
 Orion OS serves **all users**, not a niche. This differentiates it from every other new OS project.
 
-| User Group | What They Get | 
-|------------|---------------|
-| **Everyday Users** | Clean, fast, familiar UI. Boots in seconds. Works on 10-year-old laptops. |
-| **Gamers** | Low-latency kernel, direct GPU access, no background bloat, faster frame delivery. |
-| **AI / ML Engineers** | First-class NPU/TPU/GPU scheduling, huge-page memory, tensor-aware allocator. |
-| **Server / DevOps** | Minimal footprint, deterministic latency, container-native, secure by default. |
-| **Old Hardware Owners** | Runs on machines with 2GB RAM and 10-year-old CPUs. |
-| **Enterprise** | Verified boot, mandatory access control, audit trails, zero-trust networking. |
-| **Embedded / IoT** | Sub-32MB RAM footprint, deterministic scheduling, RISC-V first-class. |
+| User Group              | What They Get                                                                      |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| **Everyday Users**      | Clean, fast, familiar UI. Boots in seconds. Works on 10-year-old laptops.          |
+| **Gamers**              | Low-latency kernel, direct GPU access, no background bloat, faster frame delivery. |
+| **AI / ML Engineers**   | First-class NPU/TPU/GPU scheduling, huge-page memory, tensor-aware allocator.      |
+| **Server / DevOps**     | Minimal footprint, deterministic latency, container-native, secure by default.     |
+| **Old Hardware Owners** | Runs on machines with 2GB RAM and 10-year-old CPUs.                                |
+| **Enterprise**          | Verified boot, mandatory access control, audit trails, zero-trust networking.      |
+| **Embedded / IoT**      | Sub-32MB RAM footprint, deterministic scheduling, RISC-V first-class.              |
 
 ### The Old Hardware Opportunity
 

@@ -360,7 +360,7 @@ DDR-005
 
 Real-time + general co-existence
 
-PREEMPT\_RT is a separate kernel; mainstream kernel has poor RT latency
+PREEMPT_RT is a separate kernel; mainstream kernel has poor RT latency
 
 Realtime scheduling class by design; hard preemption guarantees
 
@@ -372,7 +372,7 @@ Tickless operation
 
 Default 250Hz timer wakes CPU even when idle
 
-NO\_HZ\_FULL tickless by default; CPU sleeps until next event
+NO_HZ_FULL tickless by default; CPU sleeps until next event
 
 DDR-005
 
@@ -1378,8 +1378,8 @@ Use CRDTs for offline sync (Year 5+). No blockchain anywhere.
 
 This document is updated every time a Orion OS component reaches a new status. The workflow:
 
-*   When a component moves from ❌ Missing to ⬜ Not started: a DDR has been written. Design is complete.
-*   When a component moves from ⬜ Not started to ⚠️ Partial: code exists but not complete or not tested.
-*   When a component moves from ⚠️ Partial to ✅ Covered: implementation complete, CI tests passing, benchmarks measured.
+- When a component moves from ❌ Missing to ⬜ Not started: a DDR has been written. Design is complete.
+- When a component moves from ⬜ Not started to ⚠️ Partial: code exists but not complete or not tested.
+- When a component moves from ⚠️ Partial to ✅ Covered: implementation complete, CI tests passing, benchmarks measured.
 
 _The dashboard in §9 is the single source of truth for how much of the Orion OS problem space has been addressed. Share it with collaborators and update it on every milestone._

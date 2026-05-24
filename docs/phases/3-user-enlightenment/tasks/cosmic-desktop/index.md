@@ -33,8 +33,8 @@
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Desktop freezes under load | compositor running at Normal scheduler class | Move aurora and cosmic to Interactive class |
-| Window decorations missing | Compositor not receiving window metadata | Verify Wayland xdg_toplevel protocol implementation |
-| AI layout suggestions incorrect | Model not trained on user patterns | Ensure orion-mld telemetry opt-in for layout learning |
+| Problem                         | Likely Cause                                 | Fix                                                   |
+| ------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
+| Desktop freezes under load      | compositor running at Normal scheduler class | Move aurora and cosmic to Interactive class           |
+| Window decorations missing      | Compositor not receiving window metadata     | Verify Wayland xdg_toplevel protocol implementation   |
+| AI layout suggestions incorrect | Model not trained on user patterns           | Ensure orion-mld telemetry opt-in for layout learning |

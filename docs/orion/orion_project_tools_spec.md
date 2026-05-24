@@ -101,25 +101,25 @@ Click Export — Claude analyses priority and suggests a day-by-day plan
 
 ## **Day 1 Setup**
 
-*   Open the Task Manager in Claude
-*   Filter to P0 — 11 critical tasks that must be done before writing any kernel code
-*   Work through them in order, checking each off when complete
-*   When P0 is clear, filter to P1 — 14 tasks needed before Phase 1 starts
+- Open the Task Manager in Claude
+- Filter to P0 — 11 critical tasks that must be done before writing any kernel code
+- Work through them in order, checking each off when complete
+- When P0 is clear, filter to P1 — 14 tasks needed before Phase 1 starts
 
 ## **Weekly Sprint Planning**
 
-*   Monday morning: open the Task Manager
-*   Check off any tasks completed last week
-*   Click Export — sends your full task list to Claude
-*   Ask Claude: 'What should I focus on this week? Give me a day-by-day plan'
-*   Claude analyses priorities and dependencies and returns a sprint plan
+- Monday morning: open the Task Manager
+- Check off any tasks completed last week
+- Click Export — sends your full task list to Claude
+- Ask Claude: 'What should I focus on this week? Give me a day-by-day plan'
+- Claude analyses priorities and dependencies and returns a sprint plan
 
 ## **Adding New Tasks**
 
-*   As new DDRs are identified or new gaps are found: add them immediately
-*   Format: '\[DDR number or Vol section\]: brief description of what needs to be done'
-*   Assign priority using the definitions below
-*   Assign phase using the definitions below
+- As new DDRs are identified or new gaps are found: add them immediately
+- Format: '\[DDR number or Vol section\]: brief description of what needs to be done'
+- Assign priority using the definitions below
+- Assign phase using the definitions below
 
 # **Priority Definitions**
 
@@ -213,7 +213,7 @@ Community
 
 GitHub infrastructure, community management, public presence.
 
-Add ISSUE\_TEMPLATE, write README.md, set up Matrix server
+Add ISSUE_TEMPLATE, write README.md, set up Matrix server
 
 # **All 55 Pre-Loaded Tasks — Complete Reference**
 
@@ -237,7 +237,7 @@ Services misuse caps on attacker's behalf — capability model's biggest known f
 
 2
 
-Update DDR-002: atomic checks + CAP\_LOCK + reference counting
+Update DDR-002: atomic checks + CAP_LOCK + reference counting
 
 Security
 
@@ -301,7 +301,7 @@ Original Vol 2 is missing DDR-015 through DDR-COMIT
 
 10
 
-Add README.md, CODE\_OF\_CONDUCT.md, SECURITY.md, CONTRIBUTING.md to repo
+Add README.md, CODE_OF_CONDUCT.md, SECURITY.md, CONTRIBUTING.md to repo
 
 Community
 
@@ -327,7 +327,7 @@ Fuzzing that doesn't block merges has no security value
 
 12
 
-Draft DDR-024: cap\_revoke() syscall + ECAPREVOKED handling spec
+Draft DDR-024: cap_revoke() syscall + ECAPREVOKED handling spec
 
 Security
 
@@ -415,7 +415,7 @@ Dependency redirect attack possible without signed metadata
 
 23
 
-Add .github/ISSUE\_TEMPLATE, PR template, MAINTAINERS.md to repo
+Add .github/ISSUE_TEMPLATE, PR template, MAINTAINERS.md to repo
 
 Community
 
@@ -561,7 +561,7 @@ GPU memory exhaustion denial-of-service not addressed
 
 40
 
-Add explicit rule to DDR-002: CLOCK\_MONOTONIC mandatory, CLOCK\_REALTIME banned for security
+Add explicit rule to DDR-002: CLOCK_MONOTONIC mandatory, CLOCK_REALTIME banned for security
 
 Security
 

@@ -6,13 +6,13 @@ All drivers run in unprivileged userspace processes. IOMMU enforces DMA ranges. 
 
 ### Core drivers to implement in Phase 1
 
-| Driver | Component | Priority | Testing |
-|--------|-----------|----------|---------|
-| virtio-blk | `orion-virtio-blk` | P0 | QEMU block device I/O |
-| NVMe | `orion-nvme` | P0 | Benchmark vs Linux |
-| AHCI/SATA | `orion-ahci` | P1 | Legacy hardware boot |
-| Intel e1000e | `orion-net-intel` | P0 | Throughput benchmark |
-| Realtek r8169 | `orion-net-realtek` | P1 | Consumer hardware test |
+| Driver        | Component           | Priority | Testing                |
+| ------------- | ------------------- | -------- | ---------------------- |
+| virtio-blk    | `orion-virtio-blk`  | P0       | QEMU block device I/O  |
+| NVMe          | `orion-nvme`        | P0       | Benchmark vs Linux     |
+| AHCI/SATA     | `orion-ahci`        | P1       | Legacy hardware boot   |
+| Intel e1000e  | `orion-net-intel`   | P0       | Throughput benchmark   |
+| Realtek r8169 | `orion-net-realtek` | P1       | Consumer hardware test |
 
 ### Security Rules
 
@@ -22,10 +22,10 @@ All drivers run in unprivileged userspace processes. IOMMU enforces DMA ranges. 
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Driver crashes system | Kernel-mode assumption in driver | All drivers 100% userspace; crash = process restart |
-| DMA out of bounds | Missing IOMMU enforcement | Always validate DMA mappings against MemoryCapability |
-| Driver fails to load | Capability set too restrictive | Review capability set in driver manifest |
+| Problem               | Likely Cause                     | Fix                                                   |
+| --------------------- | -------------------------------- | ----------------------------------------------------- |
+| Driver crashes system | Kernel-mode assumption in driver | All drivers 100% userspace; crash = process restart   |
+| DMA out of bounds     | Missing IOMMU enforcement        | Always validate DMA mappings against MemoryCapability |
+| Driver fails to load  | Capability set too restrictive   | Review capability set in driver manifest              |
 
 ---

@@ -2,7 +2,7 @@
 
 **Version:** 0.4.0 → 0.4.2 (RC) | **Duration:** 9–12 months | **Target:** Q4 2029 → Q2 2030
 
-&gt; *"Breaking the chains of architecture — true hardware freedom"*
+&gt; _"Breaking the chains of architecture — true hardware freedom"_
 &gt; **Philosophy:** Hardware is but a vessel for the software soul. A chameleon that adapts perfectly to its environment. True portability comes from abstraction, not compromise.
 
 ## Architecture Map

@@ -2,7 +2,7 @@
 
 **Version:** 0.3.0 → 0.3.2 (Beta → RC) | **Duration:** 6–9 months | **Target:** Q1 2029 → Q3 2029
 
-&gt; *"The system becomes tangible — empowering the user"*
+&gt; _"The system becomes tangible — empowering the user"_
 &gt; **Philosophy:** Technology should adapt to humans, not the other way around. A garden where users grow their digital lives. The best interface is one you don't notice.
 
 ## Architecture Map

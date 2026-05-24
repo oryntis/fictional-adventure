@@ -1,4 +1,3 @@
-
 ## Task: Cosmos Assembler
 
 **Component:** `cosmos-asm` (Rust) | **DDR:** DDR-IR

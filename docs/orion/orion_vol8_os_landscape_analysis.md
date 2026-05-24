@@ -91,9 +91,9 @@ Named tree of files is intuitive and universally understood.
 
 fork() as the process creation primitive
 
-fork() copies the entire address space then exec() replaces it. CoW helps but the semantics are wrong: threads + fork = disaster (pthread\_atfork is a nightmare). Plan 9, Fuchsia, and Nova all agree: fork is a design mistake.
+fork() copies the entire address space then exec() replaces it. CoW helps but the semantics are wrong: threads + fork = disaster (pthread_atfork is a nightmare). Plan 9, Fuchsia, and Nova all agree: fork is a design mistake.
 
-Orion OS: no fork(). spawn() creates a new process from an executable with an explicit capability set. No address space copying, no pthread\_atfork, no fork-exec gap race conditions.
+Orion OS: no fork(). spawn() creates a new process from an executable with an explicit capability set. No address space copying, no pthread_atfork, no fork-exec gap race conditions.
 
 Root as a binary superuser
 
@@ -167,17 +167,17 @@ Resource accounting and isolation primitives that make containers possible.
 
 **Orion OS: Job hierarchy (DDR-004) provides resource limits. Namespace concept applies but implemented via the capability model, not Linux-style namespace cloning.**
 
-io\_uring
+io_uring
 
 Asynchronous I/O without syscall overhead. Submission + completion ring buffers. Huge performance win for servers.
 
-**Orion OS: Event Queues in Vol 3 §1.5 are explicitly io\_uring-inspired. Zero syscall overhead for batched I/O. Critical for NVMe performance.**
+**Orion OS: Event Queues in Vol 3 §1.5 are explicitly io_uring-inspired. Zero syscall overhead for batched I/O. Critical for NVMe performance.**
 
-Tickless kernel (NO\_HZ\_FULL)
+Tickless kernel (NO_HZ_FULL)
 
 CPU sleeps until next event rather than waking every timer tick. Critical for battery life and real-time.
 
-**Orion OS: tickless by default (DDR-005). Core design choice, not an afterthought like Linux's NO\_HZ\_FULL which required years to land.**
+**Orion OS: tickless by default (DDR-005). Core design choice, not an afterthought like Linux's NO_HZ_FULL which required years to land.**
 
 Control groups v2
 
@@ -237,7 +237,7 @@ Orion OS: FileCapability with R/W/X/STAT/DELETE/WATCH bits per capability. Arbit
 
 **Orion OS Verdict on Linux**
 
-Linux is the most successful OS in history. Its driver ecosystem, community, and infrastructure are unmatched. But its architecture is a monolith carrying 30 years of debt. Orion OS steals Linux's best ideas (io\_uring, tickless, cgroups concepts, driver breadth strategy) and uses a clean architecture that Linux can never migrate to.
+Linux is the most successful OS in history. Its driver ecosystem, community, and infrastructure are unmatched. But its architecture is a monolith carrying 30 years of debt. Orion OS steals Linux's best ideas (io_uring, tickless, cgroups concepts, driver breadth strategy) and uses a clean architecture that Linux can never migrate to.
 
 **🍎 macOS / XNU** _— The most polished desktop OS — hybrid kernel, beautiful UX, catastrophic lock-in_
 
@@ -1041,15 +1041,15 @@ Vol 3 Void Crypto Lib
 
 ✅ Specified
 
-io\_uring-style async I/O
+io_uring-style async I/O
 
-Linux io\_uring
+Linux io_uring
 
 Vol 3 §1.5 Event Queues
 
 ✅ Specified
 
-Tickless kernel (NO\_HZ\_FULL)
+Tickless kernel (NO_HZ_FULL)
 
 Linux
 

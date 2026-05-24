@@ -1,9 +1,8 @@
-
 # Phase 1: Core Being
 
 **Version:** 0.1.0 → 0.1.2 (Alpha) | **Duration:** 6–9 months | **Target:** Q3 2027 → Q1 2028
 
-&gt; *"A being exists. A being acts. A being creates."*
+&gt; _"A being exists. A being acts. A being creates."_
 &gt; **Philosophy:** The kernel comes alive. Build the things users and contributors actually see and use.
 
 ## Architecture Map

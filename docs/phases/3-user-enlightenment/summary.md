@@ -1,19 +1,19 @@
 ## Phase 3 Task Tracker
 
-| Task | Component | DDR | Status |
-|------|-----------|-----|--------|
-| Cosmic Desktop | `cosmic` | DDR-COMPOSITOR | ⬜ |
-| Window Manager | `cosmic-wm` | DDR-COMPOSITOR | ⬜ |
-| WASM Runtime | `quasar-wasm` | DDR-COMIT | ⬜ |
-| Native App Framework | `orion-ui` | — | ⬜ |
-| App Store (Nebula Hub v2) | `nebula-hub-v2` | DDR-COMIT | ⬜ |
-| Screen Reader | `cosmic-a11y` | — | ⬜ |
-| Keyboard Navigation | `cosmic-a11y` | — | ⬜ |
-| Voice Control | `orion-voice` | DDR-019 | ⬜ |
-| Zen Mode | `cosmic-ui` | — | ⬜ |
-| Orion AI Assistant | `orion-assist` | DDR-017 | ⬜ |
-| Desktop Shell | `cosmic-shell` | — | ⬜ |
-| POSIX Sandbox | `posix-compat` | DDR-POSIX | ⬜ |
+| Task                      | Component       | DDR            | Status |
+| ------------------------- | --------------- | -------------- | ------ |
+| Cosmic Desktop            | `cosmic`        | DDR-COMPOSITOR | ⬜     |
+| Window Manager            | `cosmic-wm`     | DDR-COMPOSITOR | ⬜     |
+| WASM Runtime              | `quasar-wasm`   | DDR-COMIT      | ⬜     |
+| Native App Framework      | `orion-ui`      | —              | ⬜     |
+| App Store (Nebula Hub v2) | `nebula-hub-v2` | DDR-COMIT      | ⬜     |
+| Screen Reader             | `cosmic-a11y`   | —              | ⬜     |
+| Keyboard Navigation       | `cosmic-a11y`   | —              | ⬜     |
+| Voice Control             | `orion-voice`   | DDR-019        | ⬜     |
+| Zen Mode                  | `cosmic-ui`     | —              | ⬜     |
+| Orion AI Assistant        | `orion-assist`  | DDR-017        | ⬜     |
+| Desktop Shell             | `cosmic-shell`  | —              | ⬜     |
+| POSIX Sandbox             | `posix-compat`  | DDR-POSIX      | ⬜     |
 
 ## Phase 3 Exit Criteria
 

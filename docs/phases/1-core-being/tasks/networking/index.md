@@ -1,4 +1,3 @@
-
 ## Task: Network Stack (ether-d + orion-pf)
 
 **Component:** `ether-d` + `orion-pf` | **DDR:** DDR-011, DDR-PF

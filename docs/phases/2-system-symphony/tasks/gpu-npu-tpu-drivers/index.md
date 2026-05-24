@@ -6,13 +6,13 @@
 
 ### Capability Model
 
-| Capability | Hardware | Rights Bitmap | Primary Holder |
-|-----------|---------|--------------|---------------|
-| `GPUCapability` | Intel xe/i915, AMD amdgpu, NVIDIA open, Mali, Adreno, AGX | `RENDER │ COMPUTE │ COPY │ DISPLAY` | Aurora (DISPLAY), games (RENDER), Quasar (COMPUTE) |
-| `NPUCapability` | Intel VPU, Apple ANE, Qualcomm Hexagon, MediaTek APU | `INFER │ TRAIN_LITE │ MODEL_LOAD` | Quasar Runtime, orion-mld |
-| `TPUCapability` | Google Edge TPU, future custom silicon | `INFER │ BATCH_INFER` | Quasar Runtime only |
-| `ComputeCapability` | Abstract — OS chooses best peer | `COMPUTE` | General apps |
-| `DisplayCapability` | Display output scanout only | `DISPLAY │ CURSOR` | Aurora compositor only |
+| Capability          | Hardware                                                  | Rights Bitmap                       | Primary Holder                                     |
+| ------------------- | --------------------------------------------------------- | ----------------------------------- | -------------------------------------------------- |
+| `GPUCapability`     | Intel xe/i915, AMD amdgpu, NVIDIA open, Mali, Adreno, AGX | `RENDER │ COMPUTE │ COPY │ DISPLAY` | Aurora (DISPLAY), games (RENDER), Quasar (COMPUTE) |
+| `NPUCapability`     | Intel VPU, Apple ANE, Qualcomm Hexagon, MediaTek APU      | `INFER │ TRAIN_LITE │ MODEL_LOAD`   | Quasar Runtime, orion-mld                          |
+| `TPUCapability`     | Google Edge TPU, future custom silicon                    | `INFER │ BATCH_INFER`               | Quasar Runtime only                                |
+| `ComputeCapability` | Abstract — OS chooses best peer                           | `COMPUTE`                           | General apps                                       |
+| `DisplayCapability` | Display output scanout only                               | `DISPLAY │ CURSOR`                  | Aurora compositor only                             |
 
 ### Scheduler Rules
 

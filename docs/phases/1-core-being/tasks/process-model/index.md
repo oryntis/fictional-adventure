@@ -1,4 +1,3 @@
-
 ## Task: Process Model
 
 **Component:** `cosmos_process` | **DDR:** DDR-004
@@ -29,10 +28,10 @@ No `fork()`. Only `spawn()`. Child process receives an explicit capability set f
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Spawn hangs | Deadlock in capability system during spawn | Timeout-based cap checks; stress test spawn |
-| Child inherits wrong caps | Incorrect cap set passed to spawn | Explicitly enumerate every cap in the spawn call |
-| Zombie processes | Wait not called on exit | Implement wait4() equivalent; orion-init reaps orphans |
+| Problem                   | Likely Cause                               | Fix                                                    |
+| ------------------------- | ------------------------------------------ | ------------------------------------------------------ |
+| Spawn hangs               | Deadlock in capability system during spawn | Timeout-based cap checks; stress test spawn            |
+| Child inherits wrong caps | Incorrect cap set passed to spawn          | Explicitly enumerate every cap in the spawn call       |
+| Zombie processes          | Wait not called on exit                    | Implement wait4() equivalent; orion-init reaps orphans |
 
 ---

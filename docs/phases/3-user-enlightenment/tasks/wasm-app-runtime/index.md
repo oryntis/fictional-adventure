@@ -41,15 +41,15 @@
 
 ### Implementation
 
-| Feature | Component | Notes |
-|---------|-----------|-------|
-| Screen reader | `cosmic-a11y` | Reads all UI elements via AT-SPI2 protocol |
-| Keyboard navigation | `cosmic-a11y` | All UI fully keyboard-navigable — no mouse required |
-| Voice control | `orion-voice` | Local processing only — no cloud, Quasar Runtime |
-| High contrast mode | `cosmic-ui` | System-wide high contrast theme |
-| Text scaling | `cosmic-ui` | 100% → 200% text scaling, no layout breaks |
-| RTL language support | `cosmic-ui` | Arabic, Hebrew — full right-to-left layout |
-| CJK support | `cosmic-ui` | Chinese, Japanese, Korean — full input method support |
+| Feature              | Component     | Notes                                                 |
+| -------------------- | ------------- | ----------------------------------------------------- |
+| Screen reader        | `cosmic-a11y` | Reads all UI elements via AT-SPI2 protocol            |
+| Keyboard navigation  | `cosmic-a11y` | All UI fully keyboard-navigable — no mouse required   |
+| Voice control        | `orion-voice` | Local processing only — no cloud, Quasar Runtime      |
+| High contrast mode   | `cosmic-ui`   | System-wide high contrast theme                       |
+| Text scaling         | `cosmic-ui`   | 100% → 200% text scaling, no layout breaks            |
+| RTL language support | `cosmic-ui`   | Arabic, Hebrew — full right-to-left layout            |
+| CJK support          | `cosmic-ui`   | Chinese, Japanese, Korean — full input method support |
 
 ### Testing
 

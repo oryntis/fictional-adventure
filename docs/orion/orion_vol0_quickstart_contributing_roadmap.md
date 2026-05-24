@@ -15,11 +15,11 @@ Revision 1.0 • May 2025
 
 Vol 0 is the entry point for everyone — new contributors, users reading about the project, and the project lead reviewing priorities. It answers four questions in order:
 
-*   What is Orion OS and who is it for? (§1 — User Personas)
-*   How do I set up my environment and build something? (§2 — Quick Start)
-*   How do I contribute to the project? (§3 — Contributing Guide)
-*   What is being built and when? (§4 — Public Roadmap)
-*   What do all the terms mean? (§5 — Glossary)
+- What is Orion OS and who is it for? (§1 — User Personas)
+- How do I set up my environment and build something? (§2 — Quick Start)
+- How do I contribute to the project? (§3 — Contributing Guide)
+- What is being built and when? (§4 — Public Roadmap)
+- What do all the terms mean? (§5 — Glossary)
 
 # **§1 — User Personas**
 
@@ -33,17 +33,17 @@ _Orion OS is not built for a single user type. These five personas define exactl
 
 ### **Pain Points Today**
 
-*   Modern Linux distros require 4GB+ RAM just to boot a desktop
-*   Windows 11 hardware requirements exclude 600+ million PCs
-*   Their 2012–2018 laptop is perfectly functional hardware — the OS got heavy
-*   Forced to buy new hardware purely because of OS bloat
+- Modern Linux distros require 4GB+ RAM just to boot a desktop
+- Windows 11 hardware requirements exclude 600+ million PCs
+- Their 2012–2018 laptop is perfectly functional hardware — the OS got heavy
+- Forced to buy new hardware purely because of OS bloat
 
 ### **What Orion OS Gives Them**
 
-*   &lt;150MB idle RAM — runs full desktop on 2GB
-*   ZRAM-powered memory compression — turns 2GB into ~4GB effective
-*   Hardware aging compensation — Cosmos scheduler knows their SSD is old and compensates
-*   Boot in under 3 seconds on a spinning HDD
+- &lt;150MB idle RAM — runs full desktop on 2GB
+- ZRAM-powered memory compression — turns 2GB into ~4GB effective
+- Hardware aging compensation — Cosmos scheduler knows their SSD is old and compensates
+- Boot in under 3 seconds on a spinning HDD
 
 ### **Strategic Note**
 
@@ -57,17 +57,17 @@ _The biggest untapped market. 600M+ PCs running Windows 10 lose support in Octob
 
 ### **Pain Points Today**
 
-*   Every AI framework ships its own 500MB runtime — PyTorch, TensorFlow, ONNX all duplicated
-*   GPU scheduling is designed for graphics, not compute — LLM inference gets no scheduler priority
-*   Running a 7B model requires 8–16GB RAM; the OS wastes 3–4GB of that on its own
-*   No OS-level NPU scheduling — the NPU sits idle while the CPU struggles
+- Every AI framework ships its own 500MB runtime — PyTorch, TensorFlow, ONNX all duplicated
+- GPU scheduling is designed for graphics, not compute — LLM inference gets no scheduler priority
+- Running a 7B model requires 8–16GB RAM; the OS wastes 3–4GB of that on its own
+- No OS-level NPU scheduling — the NPU sits idle while the CPU struggles
 
 ### **What Orion OS Gives Them**
 
-*   Quasar Runtime — shared OS-level inference engine, one copy of model weights for all apps
-*   Cosmos kernel schedules GPU/NPU as first-class compute peers
-*   Unified memory model — CPU and GPU share the same pool on unified-memory hardware
-*   Hardware-accelerated quantisation via orion-mld
+- Quasar Runtime — shared OS-level inference engine, one copy of model weights for all apps
+- Cosmos kernel schedules GPU/NPU as first-class compute peers
+- Unified memory model — CPU and GPU share the same pool on unified-memory hardware
+- Hardware-accelerated quantisation via orion-mld
 
 ### **Strategic Note**
 
@@ -81,17 +81,17 @@ _The fastest-growing developer segment. Every dev is now an AI developer. Orion 
 
 ### **Pain Points Today**
 
-*   Every OS leaks hardware identifiers — MAC address, CPU serial, disk ID — to every app
-*   Windows telemetry cannot be fully disabled
-*   macOS CSAM scanning proved Apple will compromise on-device privacy under pressure
-*   Every browser extension, every app can fingerprint your hardware
+- Every OS leaks hardware identifiers — MAC address, CPU serial, disk ID — to every app
+- Windows telemetry cannot be fully disabled
+- macOS CSAM scanning proved Apple will compromise on-device privacy under pressure
+- Every browser extension, every app can fingerprint your hardware
 
 ### **What Orion OS Gives Them**
 
-*   Hardware ID randomisation — MAC/CPU/GPU IDs are different every session by default
-*   Capability model — no app can read hardware IDs without explicit HardwareIDCapability
-*   Void Crypto Library — post-quantum by default, no RSA/ECC
-*   Zero telemetry — the OS cannot phone home without a NetworkCapability grant
+- Hardware ID randomisation — MAC/CPU/GPU IDs are different every session by default
+- Capability model — no app can read hardware IDs without explicit HardwareIDCapability
+- Void Crypto Library — post-quantum by default, no RSA/ECC
+- Zero telemetry — the OS cannot phone home without a NetworkCapability grant
 
 ### **Strategic Note**
 
@@ -105,17 +105,17 @@ _Signal-compatible users, Tor users, journalists, activists, enterprise security
 
 ### **Pain Points Today**
 
-*   Windows driver crashes cause game crashes — kernel-mode graphics drivers are unstable
-*   CrowdStrike-style security software crashes games (kernel-mode antivirus)
-*   Linux gaming has a compatibility layer tax — Proton adds latency
-*   Anti-cheat refuses to run on Linux because it cannot verify kernel integrity
+- Windows driver crashes cause game crashes — kernel-mode graphics drivers are unstable
+- CrowdStrike-style security software crashes games (kernel-mode antivirus)
+- Linux gaming has a compatibility layer tax — Proton adds latency
+- Anti-cheat refuses to run on Linux because it cannot verify kernel integrity
 
 ### **What Orion OS Gives Them**
 
-*   Userspace GPU drivers — a driver crash restarts the driver, not the game
-*   Real-time scheduling class for games — zero competition from background processes
-*   Kernel attestation — anti-cheat can cryptographically verify the Cosmos kernel is unmodified
-*   DirectStorage-equivalent — NVMe to GPU DMA with no CPU involvement
+- Userspace GPU drivers — a driver crash restarts the driver, not the game
+- Real-time scheduling class for games — zero competition from background processes
+- Kernel attestation — anti-cheat can cryptographically verify the Cosmos kernel is unmodified
+- DirectStorage-equivalent — NVMe to GPU DMA with no CPU involvement
 
 ### **Strategic Note**
 
@@ -129,17 +129,17 @@ _100M+ PC gamers who want Windows-level compatibility and Linux-level stability.
 
 ### **Pain Points Today**
 
-*   Container isolation on Linux is still syscall-based — not capability-based
-*   A compromised container can escape via kernel vulnerabilities
-*   Alpine Linux is minimal but still carries 30 years of Unix security debt
-*   OCI compatibility is table stakes — everything else needs to be better
+- Container isolation on Linux is still syscall-based — not capability-based
+- A compromised container can escape via kernel vulnerabilities
+- Alpine Linux is minimal but still carries 30 years of Unix security debt
+- OCI compatibility is table stakes — everything else needs to be better
 
 ### **What Orion OS Gives Them**
 
-*   Capability-isolated containers — each container gets exactly the capabilities it declares, no more
-*   Orion unikernel mode — single-application OS image under 10MB
-*   OCI-compatible via orion-runc — existing Docker workflows work unchanged
-*   Deterministic builds — every binary is bit-for-bit reproducible
+- Capability-isolated containers — each container gets exactly the capabilities it declares, no more
+- Orion unikernel mode — single-application OS image under 10MB
+- OCI-compatible via orion-runc — existing Docker workflows work unchanged
+- Deterministic builds — every binary is bit-for-bit reproducible
 
 ### **Strategic Note**
 
@@ -207,7 +207,7 @@ rustup update stable
 
 ### **Step 2 — Add bare-metal build targets**
 
-rustup target add x86\_64-unknown-none
+rustup target add x86_64-unknown-none
 
 rustup target add aarch64-unknown-none
 
@@ -229,7 +229,7 @@ cargo install kani-verifier --locked
 
 ### **Step 5 — Install assembler and cross-compiler**
 
-\# macOS: brew install nasm x86\_64-elf-gcc aarch64-elf-gcc
+\# macOS: brew install nasm x86_64-elf-gcc aarch64-elf-gcc
 
 \# Ubuntu: sudo apt install nasm gcc-x86-64-linux-gnu gcc-aarch64-linux-gnu
 
@@ -253,7 +253,7 @@ code --install-extension tamasfe.even-better-toml
 
 rustc --version # should print rustc 1.7x.x
 
-qemu-system-x86\_64 --version # should print QEMU emulator version 8.x
+qemu-system-x86_64 --version # should print QEMU emulator version 8.x
 
 nasm --version # should print NASM version 2.1x
 
@@ -327,7 +327,7 @@ dw 0xAA55
 
 nasm -f bin boot.asm -o boot.bin
 
-qemu-system-x86\_64 -drive format=raw,file=boot.bin
+qemu-system-x86_64 -drive format=raw,file=boot.bin
 
 \# You should see: ORION OS
 
@@ -359,7 +359,7 @@ B1.2
 
 Kernel Entry
 
-Assembly trampoline → long mode → Rust kernel\_main()
+Assembly trampoline → long mode → Rust kernel_main()
 
 Vol 3 §1.1
 
@@ -437,10 +437,10 @@ We are committed to making participation in Orion OS a harassment-free experienc
 
 The short version:
 
-*   Be welcoming to newcomers — everyone was a beginner once
-*   Criticise ideas, never people — 'this approach has a problem' not 'you're wrong'
-*   Assume good faith — most mistakes are honest mistakes
-*   Kernel code review can be blunt — that is normal and does not violate the CoC
+- Be welcoming to newcomers — everyone was a beginner once
+- Criticise ideas, never people — 'this approach has a problem' not 'you're wrong'
+- Assume good faith — most mistakes are honest mistakes
+- Kernel code review can be blunt — that is normal and does not violate the CoC
 
 ## **3.2 — RFC Process (Request for Comments)**
 
@@ -686,7 +686,7 @@ Kernel
 
 Implement physical memory page bitmap tracker
 
-Rust, bare-metal, no\_std
+Rust, bare-metal, no_std
 
 Medium
 

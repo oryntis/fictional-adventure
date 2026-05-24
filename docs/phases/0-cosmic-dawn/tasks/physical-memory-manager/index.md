@@ -32,10 +32,10 @@ cargo test --package cosmos_pmm
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| PMM panics on boot | UEFI memory map misread | Validate memory map entries; skip reserved regions |
-| Alloc returns wrong size | Buddy order calculation off-by-one | Add Kani harness for order calculation |
-| NUMA alloc on wrong node | Missing topology detection | Parse ACPI SRAT table for NUMA topology |
+| Problem                  | Likely Cause                       | Fix                                                |
+| ------------------------ | ---------------------------------- | -------------------------------------------------- |
+| PMM panics on boot       | UEFI memory map misread            | Validate memory map entries; skip reserved regions |
+| Alloc returns wrong size | Buddy order calculation off-by-one | Add Kani harness for order calculation             |
+| NUMA alloc on wrong node | Missing topology detection         | Parse ACPI SRAT table for NUMA topology            |
 
 ---

@@ -21,11 +21,11 @@
 
 ### Performance Targets
 
-| Hardware | Boot Time | Idle RAM | Peak IPC |
-|----------|-----------|----------|---------|
-| Raspberry Pi 4 (4GB) | &lt;2s | &lt;100MB | Goal: match Linux |
-| Apple M1 (8GB) | &lt;1s | &lt;120MB | Goal: ≥ Linux/macOS |
-| Ampere Altra (server) | &lt;3s | &lt;200MB | Goal: match Linux server |
+| Hardware              | Boot Time | Idle RAM  | Peak IPC                 |
+| --------------------- | --------- | --------- | ------------------------ |
+| Raspberry Pi 4 (4GB)  | &lt;2s    | &lt;100MB | Goal: match Linux        |
+| Apple M1 (8GB)        | &lt;1s    | &lt;120MB | Goal: ≥ Linux/macOS      |
+| Ampere Altra (server) | &lt;3s    | &lt;200MB | Goal: match Linux server |
 
 ### Testing
 
@@ -37,11 +37,11 @@
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| MTE tag mismatch fault | Incorrect memory tag assignment on alloc | Audit allocator tag assignment; use ARM MTE-aware allocator |
-| Raspberry Pi 4 hangs at boot | Incorrect device tree or UART init | Use `miniUART` (UART1) not `PL011` for early console on RPi 4 |
-| TrustZone secure world fault | Incorrect EL2/EL1/EL0 transition | Verify exception level transitions with ARMv8 reference manual |
-| big.LITTLE wrong core selection | Missing ACPI PPTT topology data | Parse PPTT table for cluster topology |
+| Problem                         | Likely Cause                             | Fix                                                            |
+| ------------------------------- | ---------------------------------------- | -------------------------------------------------------------- |
+| MTE tag mismatch fault          | Incorrect memory tag assignment on alloc | Audit allocator tag assignment; use ARM MTE-aware allocator    |
+| Raspberry Pi 4 hangs at boot    | Incorrect device tree or UART init       | Use `miniUART` (UART1) not `PL011` for early console on RPi 4  |
+| TrustZone secure world fault    | Incorrect EL2/EL1/EL0 transition         | Verify exception level transitions with ARMv8 reference manual |
+| big.LITTLE wrong core selection | Missing ACPI PPTT topology data          | Parse PPTT table for cluster topology                          |
 
 ---

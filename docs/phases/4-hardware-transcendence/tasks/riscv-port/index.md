@@ -33,10 +33,10 @@
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| PMP misconfiguration | Incorrect region granularity (PMPGRANULE) | Ensure PMP granularity ≥ page size; test with pmp_checker harness |
-| SBI call fails | Wrong extension ID or function ID | Verify against OpenSBI source and SBI spec v1.0 |
-| VisionFive 2 no serial | Wrong UART base address | Use `0x10000000` (NS16550) for JH7110 |
+| Problem                | Likely Cause                              | Fix                                                               |
+| ---------------------- | ----------------------------------------- | ----------------------------------------------------------------- |
+| PMP misconfiguration   | Incorrect region granularity (PMPGRANULE) | Ensure PMP granularity ≥ page size; test with pmp_checker harness |
+| SBI call fails         | Wrong extension ID or function ID         | Verify against OpenSBI source and SBI spec v1.0                   |
+| VisionFive 2 no serial | Wrong UART base address                   | Use `0x10000000` (NS16550) for JH7110                             |
 
 ---

@@ -23,119 +23,119 @@ You uploaded 11 files. Several have duplicate versions, inconsistent naming, and
 
 **Action**
 
-Nova\_Vol\_2\_Technical\_Architecture.docx
+Nova_Vol_2_Technical_Architecture.docx
 
 V1
 
 Mixed case, no version suffix
 
-orion\_vol2\_technical\_architecture.docx
+orion_vol2_technical_architecture.docx
 
 REPLACE with v2
 
-nova\_00\_master\_index.docx
+nova_00_master_index.docx
 
 V1
 
 Older version — missing Vol 6 & new sections
 
-nova\_00\_master\_index\_v1.docx
+nova_00_master_index_v1.docx
 
 ARCHIVE
 
-nova\_00\_master\_index\_v2.docx
+nova_00_master_index_v2.docx
 
 V2
 
 Correct — most current index
 
-nova\_00\_master\_index.docx
+nova_00_master_index.docx
 
 KEEP as canonical
 
-orion\_master\_feedback\_report.docx
+orion_master_feedback_report.docx
 
 —
 
 Not a volume — should be separate
 
-orion\_feedback\_report\_v1.docx
+orion_feedback_report_v1.docx
 
 KEEP separate
 
-orion\_vol1\_vision\_strategy.docx
+orion_vol1_vision_strategy.docx
 
 —
 
 No version suffix, correct naming
 
-orion\_vol1\_vision\_strategy.docx
+orion_vol1_vision_strategy.docx
 
 KEEP
 
-orion\_vol2\_technical\_architecture\_v2.docx
+orion_vol2_technical_architecture_v2.docx
 
 V2
 
 Correct — use this as Vol 2 canonical
 
-orion\_vol2\_technical\_architecture.docx
+orion_vol2_technical_architecture.docx
 
 KEEP (rename, drop \_v2)
 
-orion\_vol3\_build\_requirements.docx
+orion_vol3_build_requirements.docx
 
 —
 
 Correct naming
 
-orion\_vol3\_build\_requirements.docx
+orion_vol3_build_requirements.docx
 
 KEEP
 
-orion\_vol4\_learning\_resources.docx
+orion_vol4_learning_resources.docx
 
 —
 
 Correct naming
 
-orion\_vol4\_learning\_resources.docx
+orion_vol4_learning_resources.docx
 
 KEEP
 
-orion\_vol5\_problems\_philosophy\_solutions.docx
+orion_vol5_problems_philosophy_solutions.docx
 
 —
 
 WRONG: content matches what should be Vol 6 or a philosophy supplement
 
-orion\_vol5\_philosophy\_problems.docx
+orion_vol5_philosophy_problems.docx
 
 RENAME & CLARIFY
 
-orion\_vol6\_developer\_tools.docx
+orion_vol6_developer_tools.docx
 
 —
 
 Content is developer tools only
 
-orion\_vol6\_developer\_tools.docx
+orion_vol6_developer_tools.docx
 
 KEEP
 
-orion\_vol6\_problems\_solutions.docx
+orion_vol6_problems_solutions.docx
 
 —
 
 DUPLICATE vol number! Two files named Vol 6
 
-orion\_vol6\_problems\_solutions.docx
+orion_vol6_problems_solutions.docx
 
 RENUMBER → Vol 7
 
 **⚠ Critical Naming Issue**
 
-You have TWO files both labelled Vol 6: orion\_vol6\_developer\_tools.docx and orion\_vol6\_problems\_solutions.docx. The problems/solutions document must be renumbered to Vol 7. Otherwise your document system is self-contradictory.
+You have TWO files both labelled Vol 6: orion_vol6_developer_tools.docx and orion_vol6_problems_solutions.docx. The problems/solutions document must be renumbered to Vol 7. Otherwise your document system is self-contradictory.
 
 # **2\. Correct Document System & Reading Order**
 
@@ -151,7 +151,7 @@ The correct canonical structure — after renaming and deduplication — is:
 
 **Status**
 
-nova\_00\_master\_index.docx
+nova_00_master_index.docx
 
 **Index**
 
@@ -161,7 +161,7 @@ First, always
 
 ✅ Exists (use v2)
 
-orion\_vol1\_vision\_strategy.docx
+orion_vol1_vision_strategy.docx
 
 **Vol 1**
 
@@ -171,7 +171,7 @@ Before any technical work
 
 ✅ Exists
 
-orion\_vol2\_technical\_architecture.docx
+orion_vol2_technical_architecture.docx
 
 **Vol 2**
 
@@ -181,7 +181,7 @@ Before writing any kernel code
 
 ✅ Exists (use \_v2)
 
-orion\_vol3\_build\_requirements.docx
+orion_vol3_build_requirements.docx
 
 **Vol 3**
 
@@ -191,7 +191,7 @@ During active development
 
 ✅ Exists
 
-orion\_vol4\_learning\_resources.docx
+orion_vol4_learning_resources.docx
 
 **Vol 4**
 
@@ -201,7 +201,7 @@ Continuously, phase by phase
 
 ✅ Exists
 
-orion\_vol5\_philosophy\_problems.docx
+orion_vol5_philosophy_problems.docx
 
 **Vol 5**
 
@@ -211,7 +211,7 @@ When designing solutions
 
 ✅ Exists (rename)
 
-orion\_vol6\_developer\_tools.docx
+orion_vol6_developer_tools.docx
 
 **Vol 6**
 
@@ -221,7 +221,7 @@ When setting up workflow
 
 ✅ Exists
 
-orion\_vol7\_problems\_solutions.docx
+orion_vol7_problems_solutions.docx
 
 **Vol 7**
 
@@ -231,7 +231,7 @@ Living checklist during build
 
 ✅ Exists (renumber)
 
-orion\_vol8\_os\_landscape\_analysis.docx
+orion_vol8_os_landscape_analysis.docx
 
 **Vol 8**
 
@@ -241,7 +241,7 @@ Strategic planning stage
 
 🆕 NEW — Created here
 
-orion\_feedback\_report.docx
+orion_feedback_report.docx
 
 **Report**
 
@@ -453,75 +453,75 @@ _v2 is dramatically better than v1. Use v2 only. Needs Vol 8 entry and updated s
 
 ### **Problems Identified**
 
-*   Sections §1-§28 are not consistently grouped by theme — vision, technical, philosophy, and tooling ideas are interspersed. A reader picks this up expecting strategy, then hits a Mac Dev Setup section (§16).
-*   §7 Skill Tree and §8 Development Roadmap belong in Vol 4 (Learning Resources), not Vol 1.
-*   §16 Mac Dev Setup is pure tooling — belongs in Vol 6.
-*   No executive summary or TL;DR at the top — a new contributor can't orient quickly.
+- Sections §1-§28 are not consistently grouped by theme — vision, technical, philosophy, and tooling ideas are interspersed. A reader picks this up expecting strategy, then hits a Mac Dev Setup section (§16).
+- §7 Skill Tree and §8 Development Roadmap belong in Vol 4 (Learning Resources), not Vol 1.
+- §16 Mac Dev Setup is pure tooling — belongs in Vol 6.
+- No executive summary or TL;DR at the top — a new contributor can't orient quickly.
 
 ### **Recommended Fixes**
 
-*   Reorder Vol 1 sections into 3 clear groups: (A) Vision & Philosophy §1-§3, §9, §11, §18-§20, §22, §24; (B) Strategy & Market §2, §5, §10, §12, §23, §25, §26; (C) Architecture Overview §4, §13-§15, §19.
-*   Move §7 Skill Tree to Vol 4. Move §16 Mac Dev Setup to Vol 6.
-*   Add a 1-page Executive Summary as the very first section.
+- Reorder Vol 1 sections into 3 clear groups: (A) Vision & Philosophy §1-§3, §9, §11, §18-§20, §22, §24; (B) Strategy & Market §2, §5, §10, §12, §23, §25, §26; (C) Architecture Overview §4, §13-§15, §19.
+- Move §7 Skill Tree to Vol 4. Move §16 Mac Dev Setup to Vol 6.
+- Add a 1-page Executive Summary as the very first section.
 
 ## **Vol 2 — Technical Architecture**
 
 ### **Problems Identified**
 
-*   DDR-001 to DDR-007 are fully written. DDR-008 to DDR-019 exist as proposals but the body of each DDR is incomplete — the 'Decision', 'Rationale', and 'Trade-off' fields are stub-level.
-*   No HAL (Hardware Abstraction Layer) section — critical for multi-architecture support.
-*   No Cosmos IR (Intermediate Representation) section — critical for compiler bootstrap.
-*   Vol 2 is structured as one file but is growing large enough that it needs a clear section map at the top.
+- DDR-001 to DDR-007 are fully written. DDR-008 to DDR-019 exist as proposals but the body of each DDR is incomplete — the 'Decision', 'Rationale', and 'Trade-off' fields are stub-level.
+- No HAL (Hardware Abstraction Layer) section — critical for multi-architecture support.
+- No Cosmos IR (Intermediate Representation) section — critical for compiler bootstrap.
+- Vol 2 is structured as one file but is growing large enough that it needs a clear section map at the top.
 
 ### **Recommended Fixes**
 
-*   Complete DDR-008 through DDR-019 in the body of Vol 2 (templates from feedback report exist — just needs the full text).
-*   Add §15 HAL Design (timer, IRQ, MMU, CPU, serial per architecture).
-*   Add §16 Cosmos IR Design (SSA form, type system, capability intrinsics).
-*   Add a Table of Contents / section map at the very start of Vol 2.
+- Complete DDR-008 through DDR-019 in the body of Vol 2 (templates from feedback report exist — just needs the full text).
+- Add §15 HAL Design (timer, IRQ, MMU, CPU, serial per architecture).
+- Add §16 Cosmos IR Design (SSA form, type system, capability intrinsics).
+- Add a Table of Contents / section map at the very start of Vol 2.
 
 ## **Vol 3 — Build Requirements**
 
 ### **Problems Identified**
 
-*   No testing strategy — build checklist exists but no test harness, fuzzer setup, or CI integration plan.
-*   Gaming subsystem listed but no explicit platform targets (x86 only? ARM?)
-*   i18n (internationalisation) / IME framework not listed as a build item.
-*   Accessibility subsystem missing from build requirements.
+- No testing strategy — build checklist exists but no test harness, fuzzer setup, or CI integration plan.
+- Gaming subsystem listed but no explicit platform targets (x86 only? ARM?)
+- i18n (internationalisation) / IME framework not listed as a build item.
+- Accessibility subsystem missing from build requirements.
 
 ### **Recommended Fixes**
 
-*   Add §16 Testing Strategy: kernel unit test framework, integration test harness, syzkaller fuzzing plan.
-*   Add §17 i18n & IME Framework: UTF-8 pipeline, RTL layout, input method engine interface.
-*   Add §18 Accessibility Layer: AT-SPI equivalent, screen reader hook, high-contrast mode.
+- Add §16 Testing Strategy: kernel unit test framework, integration test harness, syzkaller fuzzing plan.
+- Add §17 i18n & IME Framework: UTF-8 pipeline, RTL layout, input method engine interface.
+- Add §18 Accessibility Layer: AT-SPI equivalent, screen reader hook, high-contrast mode.
 
 ## **Vol 4 — Learning Resources**
 
 ### **Problems Identified**
 
-*   Stage Zero (Python) section is correctly placed but may confuse readers who are already programmers — needs a skip condition.
-*   No GPU programming books listed (Metal Programming Guide, Vulkan Programming Guide, CUDA by Example).
-*   NVMe specification section exists in hardware manuals but no 'how to read NVMe spec' guide.
+- Stage Zero (Python) section is correctly placed but may confuse readers who are already programmers — needs a skip condition.
+- No GPU programming books listed (Metal Programming Guide, Vulkan Programming Guide, CUDA by Example).
+- NVMe specification section exists in hardware manuals but no 'how to read NVMe spec' guide.
 
 ### **Recommended Fixes**
 
-*   Add a 'Skip if...' box at the top of Stage Zero for readers with programming experience.
-*   Add GPU programming book list to Phase 2.
-*   Add NVMe Deep Dive reading guide in the hardware manuals section.
+- Add a 'Skip if...' box at the top of Stage Zero for readers with programming experience.
+- Add GPU programming book list to Phase 2.
+- Add NVMe Deep Dive reading guide in the hardware manuals section.
 
 ## **Vol 5 — Philosophy & Problems**
 
 ### **Problems Identified**
 
-*   This document currently covers: AI problems, kernel problems, filesystem problems, memory problems — overlapping significantly with Vol 7 (Problems & Solutions).
-*   The philosophical sections are mixed in with technical problem statements in a way that makes neither as strong as it could be.
-*   The 'New Philosophy' callouts are the most valuable and original content — but they're buried inside problem descriptions.
+- This document currently covers: AI problems, kernel problems, filesystem problems, memory problems — overlapping significantly with Vol 7 (Problems & Solutions).
+- The philosophical sections are mixed in with technical problem statements in a way that makes neither as strong as it could be.
+- The 'New Philosophy' callouts are the most valuable and original content — but they're buried inside problem descriptions.
 
 ### **Recommended Fixes**
 
-*   Refocus Vol 5 as the Philosophy Document: extract all 'New Philosophy' sections into a standalone philosophy chapter at the front.
-*   Move status tracking (✅/⚠/❌) rows into Vol 7 where they belong.
-*   Keep Vol 5 as: Orion OS Philosophy Principles + Problem Root Cause Analysis (without solutions — those go to Vol 7).
+- Refocus Vol 5 as the Philosophy Document: extract all 'New Philosophy' sections into a standalone philosophy chapter at the front.
+- Move status tracking (✅/⚠/❌) rows into Vol 7 where they belong.
+- Keep Vol 5 as: Orion OS Philosophy Principles + Problem Root Cause Analysis (without solutions — those go to Vol 7).
 
 # **5\. Knowledge & Documentation Gaps**
 
@@ -785,7 +785,7 @@ Only Plan 9 and early Unix achieved this. Nova correctly identifies it as the no
 
 1-2 days
 
-Rename files per naming table. Archive nova\_00\_master\_index.docx (v1). Archive Nova\_Vol\_2... (mixed case v1). Move Vol 6 problems\_solutions → Vol 7.
+Rename files per naming table. Archive nova_00_master_index.docx (v1). Archive Nova_Vol_2... (mixed case v1). Move Vol 6 problems_solutions → Vol 7.
 
 Clean file system, no duplicates.
 

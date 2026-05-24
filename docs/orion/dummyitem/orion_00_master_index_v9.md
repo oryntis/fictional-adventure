@@ -15,7 +15,7 @@ Revision 9.0 • May 2025 • Canonical current index — supersedes all previou
 
 **Use Only These 16 Files**
 
-Download these files. Delete all older versions: any nova\_\* files, orion\_\*\_v3 through v8 index files, orion\_vol2b\_critical\_ddrs.docx, orion\_vol2\_technical\_architecture.docx (original). The supplements (vol1\_supplement, vol3\_supplement) should be merged into their main volumes when convenient.
+Download these files. Delete all older versions: any nova\_\* files, orion\_\*\_v3 through v8 index files, orion_vol2b_critical_ddrs.docx, orion_vol2_technical_architecture.docx (original). The supplements (vol1_supplement, vol3_supplement) should be merged into their main volumes when convenient.
 
 **File**
 
@@ -25,7 +25,7 @@ Download these files. Delete all older versions: any nova\_\* files, orion\_\*\_
 
 **When to Open**
 
-orion\_00\_master\_index\_v9.docx
+orion_00_master_index_v9.docx
 
 Index
 
@@ -33,7 +33,7 @@ Master Index (this file)
 
 Always first
 
-orion\_vol0\_quickstart\_contributing\_roadmap.docx
+orion_vol0_quickstart_contributing_roadmap.docx
 
 Vol 0
 
@@ -41,7 +41,7 @@ Quick Start, Contributing & Roadmap
 
 New contributor / environment setup
 
-orion\_vol1\_vision\_strategy.docx
+orion_vol1_vision_strategy.docx
 
 Vol 1
 
@@ -49,7 +49,7 @@ Vision, Strategy & Innovation
 
 Strategic planning, market, principles
 
-orion\_vol1\_supplement.docx
+orion_vol1_supplement.docx
 
 Vol 1S
 
@@ -57,7 +57,7 @@ Governance, Philosophy, Embedded Config
 
 RFC process, CLA, CoC, Orion Micro — merge into Vol 1
 
-orion\_vol2\_unified.docx
+orion_vol2_unified.docx
 
 Vol 2
 
@@ -65,7 +65,7 @@ Technical Architecture — ALL 32 DDRs
 
 Before writing any kernel or subsystem code
 
-orion\_vol3\_build\_requirements.docx
+orion_vol3_build_requirements.docx
 
 Vol 3
 
@@ -73,7 +73,7 @@ Complete Build Requirements
 
 During active development
 
-orion\_vol3\_supplement.docx
+orion_vol3_supplement.docx
 
 Vol 3S
 
@@ -81,7 +81,7 @@ Testing, User Tools, HW Matrix, A11y, i18n
 
 Testing strategy, driver priorities — merge into Vol 3
 
-orion\_vol4\_learning\_resources.docx
+orion_vol4_learning_resources.docx
 
 Vol 4
 
@@ -89,7 +89,7 @@ Learning Resources & Roadmap
 
 Phase-ordered study plan
 
-orion\_vol5\_philosophy\_problems.docx
+orion_vol5_philosophy_problems.docx
 
 Vol 5
 
@@ -97,7 +97,7 @@ Philosophy & Problem Analysis
 
 Designing solutions, 'why not X?' questions
 
-orion\_vol6\_developer\_tools.docx
+orion_vol6_developer_tools.docx
 
 Vol 6
 
@@ -105,7 +105,7 @@ Developer Tools & Workflow
 
 Build / debug / test workflow setup
 
-orion\_vol7\_problems\_solutions.docx
+orion_vol7_problems_solutions.docx
 
 Vol 7
 
@@ -113,7 +113,7 @@ Problems, Current State & Solutions
 
 Living implementation status dashboard
 
-orion\_vol8\_os\_landscape\_analysis.docx
+orion_vol8_os_landscape_analysis.docx
 
 Vol 8
 
@@ -121,7 +121,7 @@ OS Landscape Analysis
 
 Competitive research, lessons from other OSes
 
-orion\_vol9\_research\_innovation\_hub.docx
+orion_vol9_research_innovation_hub.docx
 
 Vol 9
 
@@ -129,7 +129,7 @@ Research & Innovation Hub
 
 ML strategy, research papers, future directions
 
-orion\_master\_flaw\_register.docx
+orion_master_flaw_register.docx
 
 Flaws
 
@@ -137,7 +137,7 @@ Master Flaw, Gap & Edge Case Register
 
 Security audit, P0–P3 gap list, 55 action items
 
-orion\_project\_tools\_spec.docx
+orion_project_tools_spec.docx
 
 Tools
 
@@ -145,7 +145,7 @@ orion-tasks Task Manager Specification
 
 Task Manager usage, 55-task reference list
 
-orion\_analysis\_feedback\_report.docx
+orion_analysis_feedback_report.docx
 
 Report
 
@@ -205,7 +205,7 @@ Hybrid microkernel. Cosmos = scheduler+MM+IPC+caps. All drivers userspace.
 
 DDR-002
 
-Kernel-managed cap tables. Integer handles. Atomic checks at use time. CAP\_LOCK. Reference counting. CLOCK\_MONOTONIC for all security checks.
+Kernel-managed cap tables. Integer handles. Atomic checks at use time. CAP_LOCK. Reference counting. CLOCK_MONOTONIC for all security checks.
 
 ✅ LOCKED
 
@@ -265,7 +265,7 @@ Measured boot + TPM PCR + Dilithium3 signatures + rollback counter. FDE: ChaCha2
 
 DDR-012
 
-5 adversaries. 7-layer security. Post-quantum everywhere. Spectre: array\_index\_nospec(). Constant-time cap lookups.
+5 adversaries. 7-layer security. Post-quantum everywhere. Spectre: array_index_nospec(). Constant-time cap lookups.
 
 ✅ LOCKED
 
@@ -277,7 +277,7 @@ Kani verification: cap system + PMM + IPC + scheduler. &lt;15K lines scope.
 
 DDR-014
 
-13 syscalls + syscall 14 (cap\_revoke) + vDSO. Capability handles only — no integer resource IDs.
+13 syscalls + syscall 14 (cap_revoke) + vDSO. Capability handles only — no integer resource IDs.
 
 ✅ LOCKED
 
@@ -301,7 +301,7 @@ Quasar Runtime: privileged daemon, shared model weights, NPUCapability, 4-priori
 
 DDR-018
 
-Tier 1 kernel ML: tract-onnx no\_std, static embed, mandatory non-ML fallback, &lt;100µs, ≤512KB total budget.
+Tier 1 kernel ML: tract-onnx no_std, static embed, mandatory non-ML fallback, &lt;100µs, ≤512KB total budget.
 
 ✅ LOCKED
 
@@ -325,7 +325,7 @@ Confused Deputy fix: intent-based capabilities (FileCapability:/path:INTENT). Se
 
 DDR-022
 
-Hardware memory safety: ARM MTE (ARM64), Intel CET (x86-64), cap table in MPK domain, array\_index\_nospec().
+Hardware memory safety: ARM MTE (ARM64), Intel CET (x86-64), cap table in MPK domain, array_index_nospec().
 
 ✅ LOCKED
 
@@ -337,7 +337,7 @@ Secure build: HSM-backed signing, 2-of-3 maintainer multi-sig, cargo vet in CI, 
 
 DDR-024
 
-cap\_revoke(pid, handle) syscall. ECAPREVOKED error. Reference counting — revocation after all holders drop.
+cap_revoke(pid, handle) syscall. ECAPREVOKED error. Reference counting — revocation after all holders drop.
 
 ✅ LOCKED
 
@@ -397,7 +397,7 @@ DDR-COMIT
 
 **📐 Rule Before Any Code**
 
-Open orion\_vol2\_unified.docx. Find the DDR for your subsystem. All 32 DDRs are in one file, all locked. If a DDR needs changing: open an RFC using the template in Vol 1S §22.2. Do not write code that deviates from a locked DDR without an accepted RFC.
+Open orion_vol2_unified.docx. Find the DDR for your subsystem. All 32 DDRs are in one file, all locked. If a DDR needs changing: open an RFC using the template in Vol 1S §22.2. Do not write code that deviates from a locked DDR without an accepted RFC.
 
 **🗂️ orion-tasks — Task Manager**
 

@@ -29,10 +29,10 @@ Hardware enclave-backed cryptography daemon. All key material lives in SGX (x86-
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| FDE boot fails | TPM PCR values changed (BIOS update) | User enters BIP39 recovery mnemonic to reseal |
-| Encryption key loss | BIP39 mnemonic not backed up | Require BIP39 backup confirmation before enabling FDE |
-| SGX enclave fails | SGX not supported on hardware | Fall back to TrustZone (ARM64) or software-only with reduced security |
+| Problem             | Likely Cause                         | Fix                                                                   |
+| ------------------- | ------------------------------------ | --------------------------------------------------------------------- |
+| FDE boot fails      | TPM PCR values changed (BIOS update) | User enters BIP39 recovery mnemonic to reseal                         |
+| Encryption key loss | BIP39 mnemonic not backed up         | Require BIP39 backup confirmation before enabling FDE                 |
+| SGX enclave fails   | SGX not supported on hardware        | Fall back to TrustZone (ARM64) or software-only with reduced security |
 
 ---

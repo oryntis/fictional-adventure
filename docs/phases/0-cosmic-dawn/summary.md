@@ -1,4 +1,3 @@
-
 ## Phase 0 Exit Criteria
 
 &gt; **All of the following must be ✅ Done before proceeding to Phase 1:**

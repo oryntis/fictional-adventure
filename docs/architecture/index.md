@@ -16,21 +16,20 @@
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-
 ### Key Architecture Decisions
 
-| **Decision** | **Choice** | **Why** |
-|--------------|------------|---------|
-| **Kernel type** | Hybrid microkernel | Security isolation without pure-microkernel IPC overhead |
-| **Language** | Rust (kernel + core services) | Memory safety without GC, accepted by Linux in 2022 |
-| **Driver model** | 100% userspace | A driver crash cannot crash the OS |
-| **Security model** | Capability-based | Zero ambient authority — no root, no sudo |
-| **Filesystem** | Vega FS (custom) | CoW, BLAKE3 checksums, O(1) snapshots, native encryption |
-| **Crypto** | Post-quantum (Kyber + Dilithium3) | Quantum-resistant from day one |
-| **Display** | Aurora (Wayland-compatible) | GPU-accelerated, VRR, HDR, direct scanout |
-| **Package manager** | Comit + Nebula Hub | 9-step atomic install with rollback |
-| **AI runtime** | Quasar (privileged daemon) | Shared model weights, NPU scheduling, privacy-first |
-| **Init system** | orion-init | DAG ordering, socket activation, 6 boot stages |
+| **Decision**        | **Choice**                        | **Why**                                                  |
+| ------------------- | --------------------------------- | -------------------------------------------------------- |
+| **Kernel type**     | Hybrid microkernel                | Security isolation without pure-microkernel IPC overhead |
+| **Language**        | Rust (kernel + core services)     | Memory safety without GC, accepted by Linux in 2022      |
+| **Driver model**    | 100% userspace                    | A driver crash cannot crash the OS                       |
+| **Security model**  | Capability-based                  | Zero ambient authority — no root, no sudo                |
+| **Filesystem**      | Vega FS (custom)                  | CoW, BLAKE3 checksums, O(1) snapshots, native encryption |
+| **Crypto**          | Post-quantum (Kyber + Dilithium3) | Quantum-resistant from day one                           |
+| **Display**         | Aurora (Wayland-compatible)       | GPU-accelerated, VRR, HDR, direct scanout                |
+| **Package manager** | Comit + Nebula Hub                | 9-step atomic install with rollback                      |
+| **AI runtime**      | Quasar (privileged daemon)        | Shared model weights, NPU scheduling, privacy-first      |
+| **Init system**     | orion-init                        | DAG ordering, socket activation, 6 boot stages           |
 
 ---
 

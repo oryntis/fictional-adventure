@@ -339,7 +339,7 @@ Phase 2 Kernel Integration
 
 Months 6-12
 
-Port MicroTVM to Orion OS no\_std Rust. Implement static model loading (include\_bytes!). Add workload classifier to scheduler. Add anomaly detector to security subsystem. Optimize to &lt;100µs inference. Add non-ML fallback rules.
+Port MicroTVM to Orion OS no_std Rust. Implement static model loading (include_bytes!). Add workload classifier to scheduler. Add anomaly detector to security subsystem. Optimize to &lt;100µs inference. Add non-ML fallback rules.
 
 Working Tier 1 ML in cosmos kernel
 
@@ -347,7 +347,7 @@ Phase 3 Userspace Daemon
 
 Months 12-18
 
-Build orion-mld in Rust. Expose /dev/orion\_ml\_data (kernel → mld data feed). Add power predictor (LSTM). Add malware detector. Add user intent predictor. Sandbox mld with MLDaemonCapability only.
+Build orion-mld in Rust. Expose /dev/orion_ml_data (kernel → mld data feed). Add power predictor (LSTM). Add malware detector. Add user intent predictor. Sandbox mld with MLDaemonCapability only.
 
 Working orion-mld with 3 active models
 
@@ -371,11 +371,11 @@ _New Paradigm: Everything is a typed, versioned, capability-gated data object. F
 
 ### **Key Ideas**
 
-*   Objects: FileObject, TensorObject, StreamCapability, DatabaseCapability, ModelObject
-*   Immutable by default — every write creates a new version (like Git)
-*   Content-addressable via BLAKE3 hashes — object identity is its content
-*   Relationships between objects (ModelObject depends on DatasetObject)
-*   CRDTs for offline-first sync — no conflicts, no central coordinator
+- Objects: FileObject, TensorObject, StreamCapability, DatabaseCapability, ModelObject
+- Immutable by default — every write creates a new version (like Git)
+- Content-addressable via BLAKE3 hashes — object identity is its content
+- Relationships between objects (ModelObject depends on DatasetObject)
+- CRDTs for offline-first sync — no conflicts, no central coordinator
 
 ### **Orion OS Implementation**
 
@@ -393,10 +393,10 @@ _New Paradigm: Capabilities are a limited, delegatable resource. Lending a capab
 
 ### **Key Ideas**
 
-*   Capability budgets per process — a process can only hold N capabilities
-*   Delegation creates an audit trail (who gave what to whom)
-*   Rate-limited capabilities (e.g., NetworkCapability allows 10 connections/sec)
-*   Capability expiry — time-limited access without explicit revocation
+- Capability budgets per process — a process can only hold N capabilities
+- Delegation creates an audit trail (who gave what to whom)
+- Rate-limited capabilities (e.g., NetworkCapability allows 10 connections/sec)
+- Capability expiry — time-limited access without explicit revocation
 
 ### **Orion OS Implementation**
 
@@ -414,11 +414,11 @@ _New Paradigm: Core OS is read-only always. Only user data and declared config i
 
 ### **Key Ideas**
 
-*   System partition: read-only, hash-verified, immutable
-*   User layer: mutable, snapshotted, rollback-enabled
-*   Configuration: declarative TOML files, no 'drift' possible
-*   Updates: atomic A/B partition swap
-*   Inspired by NixOS, ChromeOS, Flatcar Linux
+- System partition: read-only, hash-verified, immutable
+- User layer: mutable, snapshotted, rollback-enabled
+- Configuration: declarative TOML files, no 'drift' possible
+- Updates: atomic A/B partition swap
+- Inspired by NixOS, ChromeOS, Flatcar Linux
 
 ### **Orion OS Implementation**
 
@@ -436,10 +436,10 @@ _New Paradigm: OS transparently offloads compute to nearby Nova nodes. Old hardw
 
 ### **Key Ideas**
 
-*   orion-offload: transparent compute delegation to a Nova server
-*   Old machine runs the shell; orion-server runs the heavy computation
-*   Compression + zero-copy networking for low latency
-*   Privacy-preserving: data never leaves without NetworkCapability grant
+- orion-offload: transparent compute delegation to a Nova server
+- Old machine runs the shell; orion-server runs the heavy computation
+- Compression + zero-copy networking for low latency
+- Privacy-preserving: data never leaves without NetworkCapability grant
 
 ### **Orion OS Implementation**
 
@@ -457,11 +457,11 @@ _New Paradigm: Every process has an energy budget in milliwatts. The OS enforces
 
 ### **Key Ideas**
 
-*   Per-process energy accounting via Intel RAPL + ARM PMU
-*   EnergyCapability: apps declare their power profile at install
-*   nova energy dashboard: real-time milliwatt view per process
-*   Scheduler can deprioritise processes exceeding energy budget
-*   Hardware aging compensation adjusts power policy per device age
+- Per-process energy accounting via Intel RAPL + ARM PMU
+- EnergyCapability: apps declare their power profile at install
+- nova energy dashboard: real-time milliwatt view per process
+- Scheduler can deprioritise processes exceeding energy budget
+- Hardware aging compensation adjusts power policy per device age
 
 ### **Orion OS Implementation**
 
@@ -479,10 +479,10 @@ _New Paradigm: OS learns user patterns and adapts scheduler, prefetch, and I/O s
 
 ### **Key Ideas**
 
-*   Workload classifier adapts to this user's application mix (ML Phase 4)
-*   Cache prefetch model trained on this device's access patterns
-*   orion config auto-tunes based on observed workload
-*   Transparent — user can inspect and override any auto-tuned decision
+- Workload classifier adapts to this user's application mix (ML Phase 4)
+- Cache prefetch model trained on this device's access patterns
+- orion config auto-tunes based on observed workload
+- Transparent — user can inspect and override any auto-tuned decision
 
 ### **Orion OS Implementation**
 
@@ -500,11 +500,11 @@ _New Paradigm: Nothing is trusted by default. Every resource access requires a c
 
 ### **Key Ideas**
 
-*   No ambient authority at any level (kernel principle — DDR-002)
-*   Default network policy: deny all (orion-pf default ruleset)
-*   Every process starts with zero capabilities — capabilities granted explicitly
-*   IPC requires capability token — cannot message a process you haven't met
-*   Verified boot ensures the kernel itself hasn't been tampered with
+- No ambient authority at any level (kernel principle — DDR-002)
+- Default network policy: deny all (orion-pf default ruleset)
+- Every process starts with zero capabilities — capabilities granted explicitly
+- IPC requires capability token — cannot message a process you haven't met
+- Verified boot ensures the kernel itself hasn't been tampered with
 
 ### **Orion OS Implementation**
 
@@ -522,11 +522,11 @@ _New Paradigm: CPU, GPU, NPU, TPU, and PIM are first-class compute peers — all
 
 ### **Key Ideas**
 
-*   Unified compute scheduler (DDR-005 + DDR-015)
-*   ComputeCapability encompasses CPU, GPU, NPU — apps request compute, OS dispatches
-*   Shared memory pool visible to all compute peers (unified memory model)
-*   Work-stealing across CPU/GPU if one is idle
-*   PIM-aware allocation: compute that should run inside the RAM module
+- Unified compute scheduler (DDR-005 + DDR-015)
+- ComputeCapability encompasses CPU, GPU, NPU — apps request compute, OS dispatches
+- Shared memory pool visible to all compute peers (unified memory model)
+- Work-stealing across CPU/GPU if one is idle
+- PIM-aware allocation: compute that should run inside the RAM module
 
 ### **Orion OS Implementation**
 
@@ -544,11 +544,11 @@ _New Paradigm: Every cryptographic operation uses post-quantum algorithms by def
 
 ### **Key Ideas**
 
-*   CRYSTALS-Kyber for key encapsulation (NIST PQC standard 2024)
-*   CRYSTALS-Dilithium for digital signatures (boot chain, packages, IPC)
-*   BLAKE3 for hashing — quantum-resistant at 256-bit security
-*   Hybrid classical+PQ during transition period
-*   No RSA, no ECDSA, no X25519 as primary algorithms
+- CRYSTALS-Kyber for key encapsulation (NIST PQC standard 2024)
+- CRYSTALS-Dilithium for digital signatures (boot chain, packages, IPC)
+- BLAKE3 for hashing — quantum-resistant at 256-bit security
+- Hybrid classical+PQ during transition period
+- No RSA, no ECDSA, no X25519 as primary algorithms
 
 ### **Orion OS Implementation**
 
@@ -566,11 +566,11 @@ _New Paradigm: A full Orion OS runs on any device with 32MB RAM. Capabilities, s
 
 ### **Key Ideas**
 
-*   Orion Micro: &lt;500KB kernel, &lt;32MB RAM — full capability model, no features removed
-*   WASM runtime scales down: smaller heap, fewer concurrent instances
-*   Drivers: select only needed drivers at compile time (dead code elimination)
-*   TinyML: Orion Watch uses TFLite Micro for on-device ML
-*   CAN bus and embedded protocols built into ether-d for IoT
+- Orion Micro: &lt;500KB kernel, &lt;32MB RAM — full capability model, no features removed
+- WASM runtime scales down: smaller heap, fewer concurrent instances
+- Drivers: select only needed drivers at compile time (dead code elimination)
+- TinyML: Orion Watch uses TFLite Micro for on-device ML
+- CAN bus and embedded protocols built into ether-d for IoT
 
 ### **Orion OS Implementation**
 
@@ -630,7 +630,7 @@ Nova driver model (DDR-007) + IPC (.nova IDL)
 
 ⭐⭐⭐⭐
 
-Proof that full Rust no\_std kernel is buildable. Source code is required reading.
+Proof that full Rust no_std kernel is buildable. Source code is required reading.
 
 Cosmos kernel implementation approach
 
@@ -828,7 +828,7 @@ Void Crypto Library
 
 ⭐⭐⭐⭐⭐
 
-Formal verification for Rust code. No other tool works as well for no\_std Rust.
+Formal verification for Rust code. No other tool works as well for no_std Rust.
 
 Nova formal verification (DDR-013)
 
@@ -1322,7 +1322,7 @@ Real-Time Scheduling
 
 ✅ Built-in
 
-⚠️ PREEMPT\_RT
+⚠️ PREEMPT_RT
 
 ⚠️ Partial
 

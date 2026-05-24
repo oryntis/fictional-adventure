@@ -1,4 +1,3 @@
-
 ## Task: IPC Fast Path
 
 **Component:** `cosmos_ipc` | **DDR:** DDR-006 (DDR-004 in master index)

@@ -34,11 +34,11 @@
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Compositor tearing | Non-atomic framebuffer swap | Use `DRM_MODE_ATOMIC_COMMIT` only — never legacy flip |
-| VRR not activating | KMS not detecting VRR-capable display | Verify `vrr_capable` property in DRM connector |
-| GPU driver crash kills compositor | Driver in wrong isolation domain | All GPU drivers in userspace — compositor restarts on crash |
-| High input latency | Compositor running at wrong scheduler class | Aurora must run in `Interactive` scheduling class |
+| Problem                           | Likely Cause                                | Fix                                                         |
+| --------------------------------- | ------------------------------------------- | ----------------------------------------------------------- |
+| Compositor tearing                | Non-atomic framebuffer swap                 | Use `DRM_MODE_ATOMIC_COMMIT` only — never legacy flip       |
+| VRR not activating                | KMS not detecting VRR-capable display       | Verify `vrr_capable` property in DRM connector              |
+| GPU driver crash kills compositor | Driver in wrong isolation domain            | All GPU drivers in userspace — compositor restarts on crash |
+| High input latency                | Compositor running at wrong scheduler class | Aurora must run in `Interactive` scheduling class           |
 
 ---

@@ -2,7 +2,7 @@
 
 **Version:** 0.2.0 → 0.2.2 (Beta) | **Duration:** 6–9 months | **Target:** Q2 2028 → Q4 2028
 
-&gt; *"Individual notes become a melody — integrating the subsystems"*
+&gt; _"Individual notes become a melody — integrating the subsystems"_
 &gt; **Philosophy:** An orchestra where each instrument plays its part perfectly. The whole is greater than the sum of its parts.
 
 ## Architecture Map

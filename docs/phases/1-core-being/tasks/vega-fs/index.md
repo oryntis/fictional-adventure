@@ -1,4 +1,3 @@
-
 ## Task: Vega FS
 
 **Component:** `vega-fs` + `vega-vfsd` | **DDR:** DDR-009, DDR-VFS
@@ -29,10 +28,10 @@
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
+| Problem                        | Likely Cause                                | Fix                                                |
+| ------------------------------ | ------------------------------------------- | -------------------------------------------------- |
 | Filesystem corruption on crash | CoW path not flushed before metadata update | Use `fsync` barriers; verify with crash simulation |
-| BLAKE3 mismatch | Bit rot in storage | Automatic repair from redundant copy if available |
-| Namespace escape | VFS path resolution bug | Fuzz path resolution with `../` sequences |
+| BLAKE3 mismatch                | Bit rot in storage                          | Automatic repair from redundant copy if available  |
+| Namespace escape               | VFS path resolution bug                     | Fuzz path resolution with `../` sequences          |
 
 ---

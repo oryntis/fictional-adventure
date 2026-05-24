@@ -1,4 +1,3 @@
-
 ## Task: Scheduler Core
 
 **Component:** `cosmos_sched` | **DDR:** DDR-005
@@ -7,13 +6,13 @@
 
 ### Implementation
 
-| Class | For | Behaviour |
-|-------|-----|-----------|
-| RealTime | Audio, HID drivers | FIFO, hard latency guarantees |
-| Interactive | Shell, browser | Lowest latency, boosts on I/O |
-| Normal | General processes | CFS-inspired, fair sharing |
-| Batch | Compilation, backups | Lower priority, no latency guarantees |
-| Idle | Screen saver | Only runs when nothing else can |
+| Class       | For                  | Behaviour                             |
+| ----------- | -------------------- | ------------------------------------- |
+| RealTime    | Audio, HID drivers   | FIFO, hard latency guarantees         |
+| Interactive | Shell, browser       | Lowest latency, boosts on I/O         |
+| Normal      | General processes    | CFS-inspired, fair sharing            |
+| Batch       | Compilation, backups | Lower priority, no latency guarantees |
+| Idle        | Screen saver         | Only runs when nothing else can       |
 
 - Tickless: `NO_HZ_FULL` — CPU sleeps until next event
 - P/E-core aware: interactive tasks → P-cores; batch → E-cores

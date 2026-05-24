@@ -1,20 +1,20 @@
 ## Phase 2 Task Tracker
 
-| Task | Component | DDR | Status |
-|------|-----------|-----|--------|
-| Aurora Compositor | `aurora` | DDR-COMPOSITOR | ⬜ |
-| Intel GPU Driver | `orion-gpu-intel` | DDR-015 | ⬜ |
-| AMD GPU Driver | `orion-gpu-amd` | DDR-015 | ⬜ |
-| Input Drivers | `orion-input` | DDR-007 | ⬜ |
-| Comit v2 + Nebula Hub | `comit`, `nebula-hub` | DDR-COMIT | ⬜ |
-| orion-cryptod | `orion-cryptod` | DDR-025 | ⬜ |
-| Full Disk Encryption | `vega-fs` + FDE | DDR-FDE | ⬜ |
-| Quasar Runtime | `quasar-runtime` | DDR-017 | ⬜ |
-| orion-mld | `orion-mld` | DDR-019 | ⬜ |
-| Void Audio Server | `void-audio` | DDR-AUDIO | ⬜ |
-| WiFi (Intel AX210) | `orion-wifi-intel` | DDR-007 | ⬜ |
-| Bluetooth HCI | `orion-bt` | DDR-007 | ⬜ |
-| Gaming Subsystem | `orion-gaming` | DDR-015 | ⬜ |
+| Task                  | Component             | DDR            | Status |
+| --------------------- | --------------------- | -------------- | ------ |
+| Aurora Compositor     | `aurora`              | DDR-COMPOSITOR | ⬜     |
+| Intel GPU Driver      | `orion-gpu-intel`     | DDR-015        | ⬜     |
+| AMD GPU Driver        | `orion-gpu-amd`       | DDR-015        | ⬜     |
+| Input Drivers         | `orion-input`         | DDR-007        | ⬜     |
+| Comit v2 + Nebula Hub | `comit`, `nebula-hub` | DDR-COMIT      | ⬜     |
+| orion-cryptod         | `orion-cryptod`       | DDR-025        | ⬜     |
+| Full Disk Encryption  | `vega-fs` + FDE       | DDR-FDE        | ⬜     |
+| Quasar Runtime        | `quasar-runtime`      | DDR-017        | ⬜     |
+| orion-mld             | `orion-mld`           | DDR-019        | ⬜     |
+| Void Audio Server     | `void-audio`          | DDR-AUDIO      | ⬜     |
+| WiFi (Intel AX210)    | `orion-wifi-intel`    | DDR-007        | ⬜     |
+| Bluetooth HCI         | `orion-bt`            | DDR-007        | ⬜     |
+| Gaming Subsystem      | `orion-gaming`        | DDR-015        | ⬜     |
 
 ## Phase 2 Exit Criteria
 

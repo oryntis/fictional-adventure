@@ -14,9 +14,9 @@
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Endianness bugs | Mixed big/little endian handling | Enforce little-endian mode; endianness test suite |
-| SMT thread scheduling wrong | Missing SMT topology detection | Parse device tree for SMT configuration |
+| Problem                     | Likely Cause                     | Fix                                               |
+| --------------------------- | -------------------------------- | ------------------------------------------------- |
+| Endianness bugs             | Mixed big/little endian handling | Enforce little-endian mode; endianness test suite |
+| SMT thread scheduling wrong | Missing SMT topology detection   | Parse device tree for SMT configuration           |
 
 ---

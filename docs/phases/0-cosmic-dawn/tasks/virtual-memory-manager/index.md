@@ -1,4 +1,3 @@
-
 ## Task: Virtual Memory Manager
 
 **Component:** `cosmos_vmm` | **DDR:** DDR-003
@@ -29,10 +28,10 @@
 
 ### Troubleshooting
 
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| Page fault on valid address | TLB not flushed after map | Add `INVLPG` after every `map_page()` call |
-| ASLR entropy too low | PRNG not seeded with hardware randomness | Use `RDRAND` for ASLR seed |
-| Kernel address in userspace backtrace | Missing U/S bit in page table | Set U/S = 0 on all kernel pages |
+| Problem                               | Likely Cause                             | Fix                                        |
+| ------------------------------------- | ---------------------------------------- | ------------------------------------------ |
+| Page fault on valid address           | TLB not flushed after map                | Add `INVLPG` after every `map_page()` call |
+| ASLR entropy too low                  | PRNG not seeded with hardware randomness | Use `RDRAND` for ASLR seed                 |
+| Kernel address in userspace backtrace | Missing U/S bit in page table            | Set U/S = 0 on all kernel pages            |
 
 ---

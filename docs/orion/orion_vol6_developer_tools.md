@@ -77,9 +77,9 @@ Compiler toolchain
 
 Rust uses LLVM; needed for objdump/readelf
 
-x86\_64-elf toolchain
+x86_64-elf toolchain
 
-brew install x86\_64-elf-gcc
+brew install x86_64-elf-gcc
 
 Cross-compiler for bare-metal x86
 
@@ -149,7 +149,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 _\# 2. Add bare-metal target_
 
-rustup target add x86\_64-unknown-none aarch64-unknown-none riscv64gc-unknown-none-elf
+rustup target add x86_64-unknown-none aarch64-unknown-none riscv64gc-unknown-none-elf
 
 _\# 3. Add Rust components_
 
@@ -165,7 +165,7 @@ brew install qemu
 
 _\# 6. Test: boot QEMU_
 
-qemu-system-x86\_64 -nographic -m 64M # should show blank screen — ready for your bootloader
+qemu-system-x86_64 -nographic -m 64M # should show blank screen — ready for your bootloader
 
 # **§2 — Kernel & Driver Development Tools**
 
@@ -747,7 +747,7 @@ QEMU in CI
 
 Boot test in CI
 
-qemu-system-x86\_64 in GitHub Actions runner
+qemu-system-x86_64 in GitHub Actions runner
 
 Catch kernel panics on every commit
 
@@ -763,7 +763,7 @@ mold linker
 
 Fast linker — replaces ld
 
-CARGO\_TARGET\_X86\_64\_LINKER=mold
+CARGO_TARGET_X86_64_LINKER=mold
 
 Reduce link time from 30s to 3s
 
@@ -965,7 +965,7 @@ tract-onnx (Rust)
 
 Rust-native ONNX inference
 
-Rust kernel ML — best long-term choice for no\_std
+Rust kernel ML — best long-term choice for no_std
 
 Alternative to MicroTVM for Rust kernel
 
@@ -1355,7 +1355,7 @@ Work — Verify
 
 If touching DDR-013 targets: run Kani on changed code.
 
-kani --function &lt;fn\_name&gt;
+kani --function &lt;fn_name&gt;
 
 As needed
 

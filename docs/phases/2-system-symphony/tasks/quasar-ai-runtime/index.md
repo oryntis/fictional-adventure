@@ -20,6 +20,7 @@
 ### Kernel ML Integration (DDR-018)
 
 Tier 1 (kernel-embedded ML for kernel decisions only):
+
 - `tract-onnx` in `no_std` mode — statically embedded in kernel
 - Used for: scheduler workload classification, I/O pattern prediction, thermal management
 - Hard limits: &lt;100µs inference time, ≤512KB total budget
@@ -28,6 +29,7 @@ Tier 1 (kernel-embedded ML for kernel decisions only):
 ### orion-mld (DDR-019)
 
 Tier 2 ML daemon — runs in userspace, provides hints to kernel and apps:
+
 - `MLHintCapability` only — hints are not commands, kernel can ignore them
 - Hot-swappable models: update model without daemon restart
 - Telemetry feed: anonymised usage patterns for model improvement (opt-in)

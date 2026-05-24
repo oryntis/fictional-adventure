@@ -59,7 +59,7 @@ Computer architecture, C, x86 assembly, basic OS theory. Before you write one li
 
 **Phase 1 (Years 1-3)**
 
-Rust (no\_std), bootloaders, memory management, scheduling, interrupts. While writing kernel core.
+Rust (no_std), bootloaders, memory management, scheduling, interrupts. While writing kernel core.
 
 **Phase 2 (Years 2-5)**
 
@@ -147,7 +147,7 @@ Must Read
 
 **Rust Embedded Book**
 
-Free at docs.rust-embedded.org/book. no\_std Rust, bare metal, PAC/HAL layers. Essential for writing kernel code in Rust. Read before writing bootloader.
+Free at docs.rust-embedded.org/book. no_std Rust, bare metal, PAC/HAL layers. Essential for writing kernel code in Rust. Read before writing bootloader.
 
 Must Read
 
@@ -427,7 +427,7 @@ Reference
 
 **Rust Embedded Book**
 
-docs.rust-embedded.org/book — Bare metal Rust. no\_std, HAL, PAC, interrupt handling. Essential for kernel code.
+docs.rust-embedded.org/book — Bare metal Rust. no_std, HAL, PAC, interrupt handling. Essential for kernel code.
 
 Phase 1 Essential
 
@@ -521,9 +521,9 @@ Radical alternative: expose hardware directly to apps via safe abstractions. Inf
 
 Phase 1
 
-**'io\_uring' — Axboe 2019**
+**'io_uring' — Axboe 2019**
 
-The design of Linux's io\_uring async I/O interface. Blueprint for Orion OS async I/O.
+The design of Linux's io_uring async I/O interface. Blueprint for Orion OS async I/O.
 
 Phase 2
 
@@ -593,13 +593,13 @@ Phase 2
 
 **QEMU**
 
-qemu-system-x86\_64. Your virtual hardware lab. brew install qemu. Used every day.
+qemu-system-x86_64. Your virtual hardware lab. brew install qemu. Used every day.
 
 Day 1
 
 **Rust + rustup**
 
-rustup.rs. Manage Rust versions and targets. Add: x86\_64-unknown-none, aarch64-unknown-none.
+rustup.rs. Manage Rust versions and targets. Add: x86_64-unknown-none, aarch64-unknown-none.
 
 Day 1
 
@@ -621,9 +621,9 @@ Cross-compiler for bootstrap phase. brew install llvm.
 
 Day 1
 
-**x86\_64-elf-gcc**
+**x86_64-elf-gcc**
 
-Cross-compilation GCC. brew install x86\_64-elf-gcc on Mac.
+Cross-compilation GCC. brew install x86_64-elf-gcc on Mac.
 
 Day 1
 
@@ -681,7 +681,7 @@ Phase 2+
 
 **Step 2: Core tools**
 
-brew install qemu nasm gdb llvm x86\_64-elf-gcc x86\_64-elf-binutils
+brew install qemu nasm gdb llvm x86_64-elf-gcc x86_64-elf-binutils
 
 **Step 3: Rust**
 
@@ -689,7 +689,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 **Step 4: Rust targets**
 
-rustup target add x86\_64-unknown-none aarch64-unknown-none riscv64gc-unknown-none-elf
+rustup target add x86_64-unknown-none aarch64-unknown-none riscv64gc-unknown-none-elf
 
 **Step 5: Rust nightly (for kernel features)**
 
@@ -701,11 +701,11 @@ cargo install just cargo-binutils cargo-watch
 
 **Step 7: VSCode extensions**
 
-Install: rust-analyzer, CodeLLDB, x86 and x86\_64 Assembly, Even Better TOML
+Install: rust-analyzer, CodeLLDB, x86 and x86_64 Assembly, Even Better TOML
 
 **Step 8: QEMU test**
 
-qemu-system-x86\_64 --version (should print version)
+qemu-system-x86_64 --version (should print version)
 
 # **7\. The First 12 Months — Week by Week**
 
@@ -763,7 +763,7 @@ Boot in 64-bit long mode with paging
 
 **Weeks 29-32**
 
-Read Rust Embedded Book. Jump from bootloader into first Rust function. No\_std kernel entry. Linker script. MIT Lab 3 (page tables). Read Phil Opp Part 1-3.
+Read Rust Embedded Book. Jump from bootloader into first Rust function. No_std kernel entry. Linker script. MIT Lab 3 (page tables). Read Phil Opp Part 1-3.
 
 Rust code running on bare metal
 
@@ -891,17 +891,17 @@ Low-latency audio graph that handles gaming, streaming, and communication simult
 
 **What Orion OS does better**
 
-Kernel-level anti-cheat attestation (SteamOS cannot do this — Linux kernel integrity is unprovable). Real-time scheduler by design (SteamOS patches PREEMPT\_RT). Gaming compositor built into Nova compositor (not a separate product). Shader cache shared globally at OS level.
+Kernel-level anti-cheat attestation (SteamOS cannot do this — Linux kernel integrity is unprovable). Real-time scheduler by design (SteamOS patches PREEMPT_RT). Gaming compositor built into Nova compositor (not a separate product). Shader cache shared globally at OS level.
 
 ## **SteamOS Resources to Study**
 
-*   github.com/ValveSoftware/gamescope — Read entire compositor source
-*   github.com/ValveSoftware/Proton — Understand the compatibility layer architecture
-*   github.com/ValveSoftware/steam-runtime — The container that isolates game library dependencies
-*   Valve's GDC talks on YouTube — 'Steam Deck Hardware Deep Dive', 'Proton: Past, Present, Future'
-*   ProtonDB.com — 75,000+ game compatibility reports. See which games fail and why.
-*   github.com/lutris/lutris — Alternative game launcher. Different compatibility approach.
-*   github.com/nicowillis/linux-gaming-guide — Comprehensive current-state Linux gaming guide.
+- github.com/ValveSoftware/gamescope — Read entire compositor source
+- github.com/ValveSoftware/Proton — Understand the compatibility layer architecture
+- github.com/ValveSoftware/steam-runtime — The container that isolates game library dependencies
+- Valve's GDC talks on YouTube — 'Steam Deck Hardware Deep Dive', 'Proton: Past, Present, Future'
+- ProtonDB.com — 75,000+ game compatibility reports. See which games fail and why.
+- github.com/lutris/lutris — Alternative game launcher. Different compatibility approach.
+- github.com/nicowillis/linux-gaming-guide — Comprehensive current-state Linux gaming guide.
 
 # **10\. Multi-Platform Learning Resources**
 
@@ -973,7 +973,7 @@ Nova SBC
 
 **Rockchip RK3588 TRM**
 
-radxa.com/files/RK3588\_TRM — Technical Reference Manual for RK3588 SoC. Used in Rock 5, Orange Pi 5.
+radxa.com/files/RK3588_TRM — Technical Reference Manual for RK3588 SoC. Used in Rock 5, Orange Pi 5.
 
 Nova SBC
 
@@ -1131,7 +1131,7 @@ Phase 2
 
 **Rust Embedded Book**
 
-docs.rust-embedded.org/book — Essential. No\_std Rust for microcontrollers. PAC (Peripheral Access Crate), HAL (Hardware Abstraction Layer), RTIC (Real-Time Interrupt Concurrency). Required reading before writing any bare-metal Orion OS code.
+docs.rust-embedded.org/book — Essential. No_std Rust for microcontrollers. PAC (Peripheral Access Crate), HAL (Hardware Abstraction Layer), RTIC (Real-Time Interrupt Concurrency). Required reading before writing any bare-metal Orion OS code.
 
 Phase 1 — Read Now
 
@@ -1143,7 +1143,7 @@ Phase 1
 
 **Embedded Rust Community**
 
-matrix.to/#/#rust-embedded:matrix.org — Active Matrix community. Ask questions about no\_std, HAL design, specific microcontroller issues. Very welcoming to newcomers.
+matrix.to/#/#rust-embedded:matrix.org — Active Matrix community. Ask questions about no_std, HAL design, specific microcontroller issues. Very welcoming to newcomers.
 
 Ongoing
 
@@ -1413,7 +1413,7 @@ Review and update this tracker every month. If a topic has been 'in progress' fo
 
 \[ \] Reviewed
 
-**io\_uring paper**
+**io_uring paper**
 
 \[ \] Not started \[ \] Read
 

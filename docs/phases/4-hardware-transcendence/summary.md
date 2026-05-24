@@ -1,14 +1,14 @@
 ## Phase 4 Task Tracker
 
-| Task | Component | DDR | Status |
-|------|-----------|-----|--------|
-| ARM64 Port | `cosmos-hal-arm64` | DDR-HAL, DDR-022 | ⬜ |
-| RISC-V Port | `cosmos-hal-riscv` | DDR-HAL | ⬜ |
-| PowerPC Port | `cosmos-hal-powerpc` | DDR-HAL | ⬜ |
-| LoongArch Port | `cosmos-hal-loongarch` | DDR-HAL | ⬜ |
-| Mali GPU Driver | `orion-gpu-mali` | DDR-015 | ⬜ |
-| RISC-V Vector Support | `cosmos-hal-riscv` | DDR-HAL | ⬜ |
-| Cross-Arch CI Pipeline | `orion-ci` | DDR-023 | ⬜ |
+| Task                   | Component              | DDR              | Status |
+| ---------------------- | ---------------------- | ---------------- | ------ |
+| ARM64 Port             | `cosmos-hal-arm64`     | DDR-HAL, DDR-022 | ⬜     |
+| RISC-V Port            | `cosmos-hal-riscv`     | DDR-HAL          | ⬜     |
+| PowerPC Port           | `cosmos-hal-powerpc`   | DDR-HAL          | ⬜     |
+| LoongArch Port         | `cosmos-hal-loongarch` | DDR-HAL          | ⬜     |
+| Mali GPU Driver        | `orion-gpu-mali`       | DDR-015          | ⬜     |
+| RISC-V Vector Support  | `cosmos-hal-riscv`     | DDR-HAL          | ⬜     |
+| Cross-Arch CI Pipeline | `orion-ci`             | DDR-023          | ⬜     |
 
 ## Phase 4 Exit Criteria
 

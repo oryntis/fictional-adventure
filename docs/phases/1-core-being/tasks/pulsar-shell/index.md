@@ -1,4 +1,3 @@
-
 ## Task: Pulsar Shell
 
 **Component:** `pulsar-sh` | **DDR:** DDR-004

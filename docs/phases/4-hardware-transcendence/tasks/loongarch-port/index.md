@@ -1,4 +1,3 @@
-
 ## Task: LoongArch Port
 
 **Component:** `cosmos-hal-loongarch` | **DDR:** DDR-HAL

@@ -163,11 +163,11 @@ A 'file' is a named array of bytes in a hierarchical namespace. This was designe
 
 **The tree-shaped filesystem namespace does not match how data actually relates**
 
-**⚠ The Problem:** Your photo of your sister is in /home/user/Pictures/2024/vacation/IMG\_4521.jpg. It is also your sister's photo. It is also a vacation photo. It is also a file taken in Italy. In a hierarchy, it can only be in one place — you must choose one dimension of organisation. This mismatch between tree-shaped storage and graph-shaped reality has caused 60 years of workarounds (symlinks, tags, databases).
+**⚠ The Problem:** Your photo of your sister is in /home/user/Pictures/2024/vacation/IMG_4521.jpg. It is also your sister's photo. It is also a vacation photo. It is also a file taken in Italy. In a hierarchy, it can only be in one place — you must choose one dimension of organisation. This mismatch between tree-shaped storage and graph-shaped reality has caused 60 years of workarounds (symlinks, tags, databases).
 
 **📍 Current State:** All major filesystems (ext4, NTFS, APFS, btrfs) are hierarchical. Windows shortcuts and Linux symlinks are hacks. macOS Tags are application-level metadata, not filesystem-level relationships. No filesystem models data as a graph.
 
-**✅ Orion OS Solution:** Vega FS namespace: files have a primary location AND arbitrary tags and relationships. /data/photos/IMG\_4521.novafs is the canonical path but the file is also reachable via /data/tags/sister, /data/tags/vacation, /data/tags/italy. Relationships are first-class filesystem objects. No application-level workarounds needed.
+**✅ Orion OS Solution:** Vega FS namespace: files have a primary location AND arbitrary tags and relationships. /data/photos/IMG_4521.novafs is the canonical path but the file is also reachable via /data/tags/sister, /data/tags/vacation, /data/tags/italy. Relationships are first-class filesystem objects. No application-level workarounds needed.
 
 **💡 New Philosophy:** Data has relationships. Storage must model relationships. A hierarchical namespace is a special case of a graph — start with the general model.
 
@@ -433,7 +433,7 @@ A 'file' is a named array of bytes in a hierarchical namespace. This was designe
 
 **📍 Current State:** Linux: fork() + exec() is the standard way to start programs. Many programs have fork-safety bugs they are not aware of. Python's multiprocessing uses fork() and has known issues with multithreaded programs. The POSIX committee acknowledges fork() is broken but cannot remove it due to compatibility.
 
-**✅ Orion OS Solution:** Orion OS process spawning: use posix\_spawn() semantics (specify the new program, arguments, and capabilities directly — no parent duplication) or Orion OS native spawn (capability-based, specifies exact initial capability set). fork() is available in the POSIX compatibility layer but is not the native model. No copy of parent process, no copy-on-write overhead.
+**✅ Orion OS Solution:** Orion OS process spawning: use posix_spawn() semantics (specify the new program, arguments, and capabilities directly — no parent duplication) or Orion OS native spawn (capability-based, specifies exact initial capability set). fork() is available in the POSIX compatibility layer but is not the native model. No copy of parent process, no copy-on-write overhead.
 
 **💡 New Philosophy:** Process creation should be declaration of intent, not copying of current state. 'Create a new process with this program and these capabilities' is cleaner than 'copy me and then replace yourself with a different program'.
 
@@ -559,11 +559,11 @@ These problems do not fully exist yet — but they will arrive. If Orion OS is b
 
 **Professional audio on Linux requires heroic effort — it should be invisible**
 
-**⚠ The Problem:** Recording audio for music production requires: &lt; 5ms round-trip latency (input to output), no audio dropouts (xruns) under any CPU load, guaranteed CPU time for the audio thread. Linux requires: JACK audio server, PREEMPT\_RT kernel patch, realtime group membership, PAM limits configuration, and manual buffer tuning. Even then, a background apt update can cause an xrun that ruins a recording take.
+**⚠ The Problem:** Recording audio for music production requires: &lt; 5ms round-trip latency (input to output), no audio dropouts (xruns) under any CPU load, guaranteed CPU time for the audio thread. Linux requires: JACK audio server, PREEMPT_RT kernel patch, realtime group membership, PAM limits configuration, and manual buffer tuning. Even then, a background apt update can cause an xrun that ruins a recording take.
 
-**📍 Current State:** Linux: PulseAudio (consumer audio) and JACK (pro audio) are separate incompatible systems. PipeWire (2021) is better but still complex. PREEMPT\_RT is a patch series maintained separately from the main kernel. Windows: ASIO drivers provide low latency but require proprietary hardware drivers. macOS: CoreAudio is excellent — the best out-of-the-box pro audio experience on any OS.
+**📍 Current State:** Linux: PulseAudio (consumer audio) and JACK (pro audio) are separate incompatible systems. PipeWire (2021) is better but still complex. PREEMPT_RT is a patch series maintained separately from the main kernel. Windows: ASIO drivers provide low latency but require proprietary hardware drivers. macOS: CoreAudio is excellent — the best out-of-the-box pro audio experience on any OS.
 
-**✅ Orion OS Solution:** Orion OS real-time audio by design: the kernel scheduler has real-time paths from day one (not a patch). The audio graph (orion-audiod) runs at SCHED\_DEADLINE with hard CPU guarantees. Buffer sizes configurable from 64 samples (1.3ms at 48kHz) down. A background package update cannot preempt the audio thread. Pro audio works out of the box — no configuration.
+**✅ Orion OS Solution:** Orion OS real-time audio by design: the kernel scheduler has real-time paths from day one (not a patch). The audio graph (orion-audiod) runs at SCHED_DEADLINE with hard CPU guarantees. Buffer sizes configurable from 64 samples (1.3ms at 48kHz) down. A background package update cannot preempt the audio thread. Pro audio works out of the box — no configuration.
 
 **💡 New Philosophy:** Audio latency is a scheduler correctness problem, not an audio driver problem. An OS with a real-time scheduler solves professional audio as a consequence of good kernel design.
 

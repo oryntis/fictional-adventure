@@ -11,6 +11,7 @@ just qemu         # boot Orion OS in QEMU x86-64
 ```
 
 Expected output:
+
 ```
 [cosmos] Initialising on x86-64. 8GiB RAM detected.
 [cosmos] Capability table initialised. 1,048,576 slots available.

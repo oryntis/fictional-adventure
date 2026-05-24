@@ -1,4 +1,5 @@
 # Orion OS — Complete Documentation & Repository Structure
+
 &gt; **The definitive, unified folder structure for the entire project.**
 &gt; Every file has a purpose. Every folder has a clear entry and exit. The team never wonders "where does this go?" or "what do I do next?"
 
@@ -558,14 +559,14 @@ toolchain/                              # Build toolchain
 
 ## Key Rules (for the README)
 
-| Rule | Where it's documented |
-|------|----------------------|
-| Follow task order T00 → TXX within each phase | `03-phases/README.md` |
-| Check `⬅️-entry-requirements.md` before starting a phase | Each phase folder |
-| All tasks have a `➡️-next.md` — always know what's next | Each task folder |
-| DDRs are locked — amend via RFC only | `02-architecture/ddrs/README.md` |
-| Every kernel change needs a Kani harness | `04-engineering/testing/kani-formal-verification.md` |
-| Every parser/syscall change needs a fuzz target | `04-engineering/testing/fuzzing.md` |
-| Never add `unsafe` without a justification comment | DDR-022, `00-start-here/coding-standards.md` |
-| Security issues go to security@orionos.dev — never a public issue | `07-community/SECURITY.md` |
-| 2-of-3 maintainer sign-off on all releases | DDR-023 |
+| Rule                                                              | Where it's documented                                |
+| ----------------------------------------------------------------- | ---------------------------------------------------- |
+| Follow task order T00 → TXX within each phase                     | `03-phases/README.md`                                |
+| Check `⬅️-entry-requirements.md` before starting a phase          | Each phase folder                                    |
+| All tasks have a `➡️-next.md` — always know what's next           | Each task folder                                     |
+| DDRs are locked — amend via RFC only                              | `02-architecture/ddrs/README.md`                     |
+| Every kernel change needs a Kani harness                          | `04-engineering/testing/kani-formal-verification.md` |
+| Every parser/syscall change needs a fuzz target                   | `04-engineering/testing/fuzzing.md`                  |
+| Never add `unsafe` without a justification comment                | DDR-022, `00-start-here/coding-standards.md`         |
+| Security issues go to security@orionos.dev — never a public issue | `07-community/SECURITY.md`                           |
+| 2-of-3 maintainer sign-off on all releases                        | DDR-023                                              |

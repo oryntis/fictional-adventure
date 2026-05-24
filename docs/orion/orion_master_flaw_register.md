@@ -81,7 +81,7 @@ DDR-002
 
 Services misuse capabilities on behalf of attackers
 
-Add intent suffix: FileCapability:/etc/shadow:READ\_FOR\_AUTH — kernel enforces allowed use
+Add intent suffix: FileCapability:/etc/shadow:READ_FOR_AUTH — kernel enforces allowed use
 
 DDR-021
 
@@ -131,7 +131,7 @@ Capability lock needed
 
 No way for a process to 'lock' a capability during a critical section.
 
-Add CAP\_LOCK flag: kernel guarantees no revocation while locked. Max lock duration: 10ms.
+Add CAP_LOCK flag: kernel guarantees no revocation while locked. Max lock duration: 10ms.
 
 ## **1.3 — 🔴 P0 Supply Chain Attack Surface (DDR-COMIT, DDR-011)**
 
@@ -243,13 +243,13 @@ Capability table in same address space as kernel heap
 
 Any kernel UAF can corrupt cap table
 
-Isolate capability table in a separate MPK (Memory Protection Key) domain. Only cap\_lookup() and cap\_alloc() can write to it.
+Isolate capability table in a separate MPK (Memory Protection Key) domain. Only cap_lookup() and cap_alloc() can write to it.
 
 No Spectre v1 mitigations specified
 
 Spectre v1 leaks kernel memory via speculative loads
 
-Add array\_index\_nospec() equivalent for all capability table lookups. Documented in DDR-012 update.
+Add array_index_nospec() equivalent for all capability table lookups. Documented in DDR-012 update.
 
 Kani doesn't verify side-channel resistance
 
@@ -259,7 +259,7 @@ Add constant-time capability lookup for sensitive operations (auth, crypto).
 
 ## **1.6 — 🟠 P1 No Capability Revocation for Live Processes (Missing DDR-024)**
 
-_If ether-d is compromised mid-session, you cannot revoke its NetworkCapability without killing it (which breaks networking). There is no cap\_revoke(pid, capability) syscall in DDR-014's 13-syscall ABI._
+_If ether-d is compromised mid-session, you cannot revoke its NetworkCapability without killing it (which breaks networking). There is no cap_revoke(pid, capability) syscall in DDR-014's 13-syscall ABI._
 
 **Missing Component**
 
@@ -267,7 +267,7 @@ _If ether-d is compromised mid-session, you cannot revoke its NetworkCapability 
 
 **Fix**
 
-cap\_revoke(pid, cap\_handle) syscall
+cap_revoke(pid, cap_handle) syscall
 
 No way to surgically remove a capability from a live process
 
@@ -283,7 +283,7 @@ No emergency revocation for user sessions
 
 Compromised session keeps all caps until logout
 
-orion-init can call cap\_revoke\_session(uid) to revoke all caps for a user's session without logout.
+orion-init can call cap_revoke_session(uid) to revoke all caps for a user's session without logout.
 
 ## **1.7 — 🟠 P1 POSIX Compatibility Layer Bypasses Capability Model (Vol 3 §13)**
 
@@ -351,7 +351,7 @@ No tamper-evident hardware spec
 
 Attacker opens case, reads JTAG
 
-Document: seal TPM JTAG port in production builds. TPM2\_PCR\_Extend on chassis intrusion detection.
+Document: seal TPM JTAG port in production builds. TPM2_PCR_Extend on chassis intrusion detection.
 
 ## **1.9 — 🟠 P1 No Rollback Protection for User Data (Vol 5 §3.3)**
 
@@ -371,13 +371,13 @@ Retention policy: minimum 1 pre-comit-install snapshot kept forever (pinned). We
 
 No immutable /home profile layer
 
-Malicious comit package modifies .bashrc or .ssh/authorized\_keys
+Malicious comit package modifies .bashrc or .ssh/authorized_keys
 
 Read-only base profile at /system/user-profiles/USERNAME/. Writable overrides at /home/USERNAME/overrides/. Merged at session start.
 
 No Dilithium-signed user credentials
 
-Attacker replaces ~/.ssh/authorized\_keys
+Attacker replaces ~/.ssh/authorized_keys
 
 Critical files (.ssh/, .gnupg/, .config/orion/) have Dilithium signatures checked at session start. Mismatch → warn user.
 
@@ -429,7 +429,7 @@ Capability expiry uses wall clock
 
 Set system clock back → expired caps become valid again
 
-Use CLOCK\_MONOTONIC exclusively for all capability expiry checks. Wall clock only for display.
+Use CLOCK_MONOTONIC exclusively for all capability expiry checks. Wall clock only for display.
 
 🟡 P2
 
@@ -453,7 +453,7 @@ No monotonic time spec in DDR-002
 
 Developers will use wall clock by accident
 
-Add explicit rule to DDR-002: 'All security checks MUST use CLOCK\_MONOTONIC. Using CLOCK\_REALTIME for security is a bug.'
+Add explicit rule to DDR-002: 'All security checks MUST use CLOCK_MONOTONIC. Using CLOCK_REALTIME for security is a bug.'
 
 🟡 P2
 
@@ -477,7 +477,7 @@ No Spectre v1 mitigation in userspace
 
 Malicious process reads another process's memory via speculative execution
 
-All kernel boundary crossings use array\_index\_nospec(). Documented in DDR-010 update.
+All kernel boundary crossings use array_index_nospec(). Documented in DDR-010 update.
 
 Hyper-Threading not documented
 
@@ -517,7 +517,7 @@ Ship Orion OS Secure Boot keys. Installer optionally replaces OEM keys with Orio
 
 **Confirmed Error**
 
-orion\_vol7\_problems\_solutions.docx has 'Volume 6: Problems, Current State & Nova Solutions' in its header. The rename from Vol 6 → Vol 7 updated the filename but NOT the internal document title. Also still says 'Nova Solutions' not 'Orion Solutions'.
+orion_vol7_problems_solutions.docx has 'Volume 6: Problems, Current State & Nova Solutions' in its header. The rename from Vol 6 → Vol 7 updated the filename but NOT the internal document title. Also still says 'Nova Solutions' not 'Orion Solutions'.
 
 Fix: Open Vol 7, change header to 'Vol 7: Problems, Current State & Orion Solutions'. Also update the preface text which says 'Vol 6 Exists'.
 
@@ -531,19 +531,19 @@ Fix: Update Vol 6 §12 heading and all tool names inside it. Use the rename map:
 
 The outputs folder contains master index files v3 through v8. Only v8 is canonical. Having 6 versions of the index in the same folder will cause anyone reading the docs to open the wrong one. v3–v7 should be archived or deleted.
 
-Fix: Delete or move orion\_00\_master\_index\_v3.docx through v7.docx to an /archive/ subfolder. Rename v8 to orion\_00\_master\_index.docx (no version suffix — it IS the current version).
+Fix: Delete or move orion_00_master_index_v3.docx through v7.docx to an /archive/ subfolder. Rename v8 to orion_00_master_index.docx (no version suffix — it IS the current version).
 
 ## **2.4 — 🟠 P1 Vol 2 and Vol 2 Unified Both Exist — Which Is Canonical?**
 
-The folder contains both orion\_vol2\_technical\_architecture.docx (original Vol 2, DDR-001 to DDR-014 only, 100KB) and orion\_vol2\_unified.docx (merged, all 25 DDRs, 67KB). This is the same ambiguity problem as the Vol 6 duplicate from session 1. A contributor will open the original Vol 2 and miss DDR-015 through DDR-COMIT.
+The folder contains both orion_vol2_technical_architecture.docx (original Vol 2, DDR-001 to DDR-014 only, 100KB) and orion_vol2_unified.docx (merged, all 25 DDRs, 67KB). This is the same ambiguity problem as the Vol 6 duplicate from session 1. A contributor will open the original Vol 2 and miss DDR-015 through DDR-COMIT.
 
-Fix: Rename orion\_vol2\_unified.docx → orion\_vol2\_technical\_architecture.docx. Archive the old Vol 2 as ARCHIVE\_orion\_vol2\_v1\_ddr001-014\_only.docx.
+Fix: Rename orion_vol2_unified.docx → orion_vol2_technical_architecture.docx. Archive the old Vol 2 as ARCHIVE_orion_vol2_v1_ddr001-014_only.docx.
 
 ## **2.5 — 🟠 P1 Vol 3 and Vol 3 Supplement Both Exist — Same Problem**
 
 Same issue as Vol 2. A contributor reading Vol 3 misses the testing strategy, hardware matrix, accessibility spec, i18n spec, and dev tool specs because they're in the supplement, not the main document.
 
-Fix: Physically merge Vol 3S content into orion\_vol3\_build\_requirements.docx. Archive the supplement.
+Fix: Physically merge Vol 3S content into orion_vol3_build_requirements.docx. Archive the supplement.
 
 ## **2.6 — 🟠 P1 Vol 1 and Vol 1 Supplement Both Exist**
 
@@ -597,16 +597,16 @@ Fix: Add 'Depends On' and 'Depended On By' fields to every DDR. This is a docume
 
 The Vol 0 glossary has 31 terms. Missing terms that appear throughout all documents:
 
-*   Confused Deputy (critical security concept — referenced in security analysis but not defined)
-*   TOCTOU (Time-of-Check to Time-of-Use — referenced in security DDRs)
-*   IOMMU (defined implicitly in DDR-007 but not in glossary)
-*   BLAKE3 (the checksum algorithm — mentioned everywhere, never defined for readers)
-*   PubGrub (dependency resolution algorithm in DDR-COMIT — not defined)
-*   MPK (Memory Protection Keys — mentioned in security analysis, not defined)
-*   SGX / TrustZone (mentioned in DDR-012 gap analysis, not defined)
-*   HSM (Hardware Security Module — mentioned in supply chain fix, not defined)
-*   NTS (Network Time Security — mentioned in time attack fix, not defined)
-*   CoW (Copy-on-Write — mentioned 50+ times, never defined in glossary)
+- Confused Deputy (critical security concept — referenced in security analysis but not defined)
+- TOCTOU (Time-of-Check to Time-of-Use — referenced in security DDRs)
+- IOMMU (defined implicitly in DDR-007 but not in glossary)
+- BLAKE3 (the checksum algorithm — mentioned everywhere, never defined for readers)
+- PubGrub (dependency resolution algorithm in DDR-COMIT — not defined)
+- MPK (Memory Protection Keys — mentioned in security analysis, not defined)
+- SGX / TrustZone (mentioned in DDR-012 gap analysis, not defined)
+- HSM (Hardware Security Module — mentioned in supply chain fix, not defined)
+- NTS (Network Time Security — mentioned in time attack fix, not defined)
+- CoW (Copy-on-Write — mentioned 50+ times, never defined in glossary)
 
 # **3 — Architecture Design Gaps (Missing DDRs)**
 
@@ -654,7 +654,7 @@ DDR-023
 
 Capability Revocation API
 
-cap\_revoke() syscall semantics, ECAPREVOKED error handling, reference counting
+cap_revoke() syscall semantics, ECAPREVOKED error handling, reference counting
 
 Every long-running service
 
@@ -828,7 +828,7 @@ Fix: Write the benchmark harness before writing any kernel subsystem. Every DDR 
 
 DDR-COMIT specifies that the .cpkg binary and WASM module are Dilithium-signed. But the package metadata (manifest.toml, dependency tree, version information) is not separately signed. An attacker who can serve a modified manifest.toml can redirect dependencies to malicious packages without breaking the binary signature.
 
-Fix: The Nebula Hub must sign the full dependency resolution result, not just individual packages. Add: Dilithium3(manifest.toml + full\_dep\_tree + timestamp) = registry\_signature. comit verifies registry\_signature before accepting the resolution.
+Fix: The Nebula Hub must sign the full dependency resolution result, not just individual packages. Add: Dilithium3(manifest.toml + full_dep_tree + timestamp) = registry_signature. comit verifies registry_signature before accepting the resolution.
 
 ## **4.7 — 🟡 P2 No Atomic Update for /home (Only for /system)**
 
@@ -976,7 +976,7 @@ Create README.md: 1-sentence tagline, 3 key features, links to Vol 0 and GitHub 
 
 RFC template exists in docs but not in .github/
 
-Add .github/DISCUSSION\_TEMPLATE/rfc.md (copy from Vol 1S §22.2)
+Add .github/DISCUSSION_TEMPLATE/rfc.md (copy from Vol 1S §22.2)
 
 30 min
 
@@ -990,9 +990,9 @@ Add CLA Assistant bot to repo. Configure to require Signed-off-by on all commits
 
 🔴 P0
 
-CODE\_OF\_CONDUCT.md not in repo root
+CODE_OF_CONDUCT.md not in repo root
 
-Copy Contributor Covenant text from Vol 1S §22.1 to CODE\_OF\_CONDUCT.md
+Copy Contributor Covenant text from Vol 1S §22.1 to CODE_OF_CONDUCT.md
 
 20 min
 
@@ -1022,9 +1022,9 @@ Create SECURITY.md: how to report vulnerabilities responsibly (do not create pub
 
 🟠 P1
 
-No issue templates (.github/ISSUE\_TEMPLATE/)
+No issue templates (.github/ISSUE_TEMPLATE/)
 
-Create: bug\_report.md, feature\_request.md, rfc\_request.md templates
+Create: bug_report.md, feature_request.md, rfc_request.md templates
 
 1 hour
 
@@ -1032,7 +1032,7 @@ Create: bug\_report.md, feature\_request.md, rfc\_request.md templates
 
 No PR template
 
-Create .github/PULL\_REQUEST\_TEMPLATE.md: description, type (feat/fix/docs), DDR affected, tests added, CI passes
+Create .github/PULL_REQUEST_TEMPLATE.md: description, type (feat/fix/docs), DDR affected, tests added, CI passes
 
 30 min
 
@@ -1186,7 +1186,7 @@ The single biggest capability model flaw. Blocks all service implementation.
 
 2
 
-Update DDR-002: Atomic cap checks + reference counting + CAP\_LOCK flag
+Update DDR-002: Atomic cap checks + reference counting + CAP_LOCK flag
 
 2 days
 
@@ -1250,7 +1250,7 @@ Prevents contributors missing DDR-015 through DDR-COMIT.
 
 10
 
-Add README.md, CODE\_OF\_CONDUCT.md, SECURITY.md, CONTRIBUTING.md to repo
+Add README.md, CODE_OF_CONDUCT.md, SECURITY.md, CONTRIBUTING.md to repo
 
 2 hours
 
@@ -1276,7 +1276,7 @@ Fuzzing must be blocking to be effective.
 
 12
 
-Draft DDR-024: cap\_revoke() syscall + ECAPREVOKED handling
+Draft DDR-024: cap_revoke() syscall + ECAPREVOKED handling
 
 2 days
 
@@ -1364,7 +1364,7 @@ Manifest.toml not separately signed — dep redirect attack.
 
 23
 
-Add .github/ISSUE\_TEMPLATE + PR template + MAINTAINERS.md
+Add .github/ISSUE_TEMPLATE + PR template + MAINTAINERS.md
 
 2 hours
 
@@ -1510,7 +1510,7 @@ GPU memory exhaustion DoS not addressed.
 
 40
 
-Add monotonic time rule to DDR-002 (explicit ban on CLOCK\_REALTIME for security)
+Add monotonic time rule to DDR-002 (explicit ban on CLOCK_REALTIME for security)
 
 30 min
 

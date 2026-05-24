@@ -1,6 +1,7 @@
 ## 🎯 **Documentation Structure**
 
 ### **📁 Folder Hierarchy**
+
 ```text
 orion-docs/
 ├── about/
@@ -170,7 +171,6 @@ orion-docs/
         └── riscv.md                 # RISC-V-specific docs
 
 ```
-
 
 ```
 orion/
@@ -465,7 +465,6 @@ orion/
 ├── examples/
 └── third_party/
 ```
-
 
 ```
 orion-docs/
