@@ -39,6 +39,41 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
+          label: "Phase B: Pre-Kernel",
+          items: [
+            "phases/B-pre-kernel/index",
+            {
+              type: "category",
+              label: "Tasks",
+              items: [
+                {
+                  type: "category",
+                  label: "Cosmos IR",
+                  items: [
+                    "phases/B-pre-kernel/tasks/ir/index",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "HAL Skeleton",
+                  items: [
+                    "phases/B-pre-kernel/tasks/hal/index",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Assembler Bootstrap",
+                  items: [
+                    "phases/B-pre-kernel/tasks/assembler/index",
+                  ],
+                },
+              ],
+            },
+            "phases/B-pre-kernel/summary",
+          ],
+        },
+        {
+          type: "category",
           label: "Phase 0: Cosmic Dawn",
           items: [
             "phases/cosmic-dawn/index",
