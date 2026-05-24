@@ -52,7 +52,7 @@ const sidebars: SidebarsConfig = {
                 {
                   type: "category",
                   label: "Assembler Bootstrap",
-                  items: ["phases//B-pre-kernel/tasks/assembler/index"],
+                  items: ["phases/B-pre-kernel/tasks/assembler/index"],
                 },
               ],
             },
